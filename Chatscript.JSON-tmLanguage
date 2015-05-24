@@ -5,26 +5,20 @@
 
         { 
           "comment": "Comments",
-          "match": "(\\#\\s+.*)|(\\#!\\s+.*)",
+          "match": "(\\#.*)|(\\#!.*)",
           "name": "comment.line.number-sign.Chatscript"
         },        
 
         { 
-          "comment": "Concept and topics",
-          "match": "",
-          "name": "support.function.Chatscript"
-        },        
-
-        { 
           "comment": "Outputmacro/table",
-          "match": "outputmacro:|table:",
+          "match": "outputmacro:|table:|OUTPUTMACRO:|TABLE:",
           "name": "support.function.Chatscript"
         },
 
         { 
           "comment": "Concepts/topics",
           "name": "string",
-          "begin": "(concept:)|(topic:)",
+          "begin": "concept:|topic:|CONCEPT:|TOPIC:",
           "beginCaptures": {
                "1": { "name": "support.function.Chatscript" },
                "2": { "name": "support.function.Chatscript" }

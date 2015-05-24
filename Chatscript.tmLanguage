@@ -14,29 +14,21 @@
 			<key>comment</key>
 			<string>Comments</string>
 			<key>match</key>
-			<string>(\#\s+.*)|(\#!\s+.*)</string>
+			<string>(\#.*)|(\#!.*)</string>
 			<key>name</key>
 			<string>comment.line.number-sign.Chatscript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
-			<string>Concept and topics</string>
-			<key>match</key>
-			<string></string>
-			<key>name</key>
-			<string>support.function.Chatscript</string>
-		</dict>
-		<dict>
-			<key>comment</key>
 			<string>Outputmacro/table</string>
 			<key>match</key>
-			<string>outputmacro:|table:</string>
+			<string>outputmacro:|table:|OUTPUTMACRO:|TABLE:</string>
 			<key>name</key>
 			<string>support.function.Chatscript</string>
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(concept:)|(topic:)</string>
+			<string>concept:|topic:|CONCEPT:|TOPIC:</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>

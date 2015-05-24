@@ -9,11 +9,13 @@ I use Monokai as my ST color scheme, but it should look fine with others as well
 Version 0.5
 May 2015
 
+![alt tag](http://i.imgur.com/SUYO0jn.png)
+
 ### Usage ###
 * Put the *Chatscript.tmLanguage* file in your Package/User folder
-** Windows: %APPDATA%\Sublime Text 2
-** OSX: ~/Library/Application Support/Sublime Text 2
-** Linux: ~/.config/sublime-text-2
+  * Windows: %APPDATA%\Sublime Text 2
+  * OSX: ~/Library/Application Support/Sublime Text 2
+  * Linux: ~/.config/sublime-text-2
 * Restart Sublime Text 2
 * You can now select View/Syntax/Chatscript from the menu!
 
