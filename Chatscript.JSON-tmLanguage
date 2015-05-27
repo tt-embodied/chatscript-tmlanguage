@@ -5,9 +5,15 @@
 
         { 
           "comment": "Comments",
-          "match": "(\\#.*)|(\\#!.*)",
+          "match": "(\\#\\s+.*)|(\\#!\\s+.*)|(\\#!x\\s+.*)",
           "name": "comment.line.number-sign.Chatscript"
-        },        
+        },          
+
+        {
+        "comment": "Control tokens",
+          "match": "#DO_INTERJECTION_SPLITTING|#DO_SUBSTITUTE_SYSTEM|#DO_NUMBER_MERGE|#DO_DATE_MERGE|#DO_PROPERNAME_MERGE|#DO_SPELLCHECK|#DO_PARSE",
+          "name": "keyword.source.Chatscript"
+        },
 
         { 
           "comment": "Outputmacro/table",
@@ -19,10 +25,10 @@
           "comment": "Concepts/topics",
           "name": "string",
           "begin": "concept:|topic:|CONCEPT:|TOPIC:",
-          "beginCaptures": {
-               "1": { "name": "support.function.Chatscript" },
-               "2": { "name": "support.function.Chatscript" }
-          },
+                    "beginCaptures": {
+                         "1": { "name": "support.function.Chatscript" },
+                         "2": { "name": "support.function.Chatscript" }
+                    },
           "patterns": [
                { "include": "$self" },
 
@@ -34,8 +40,8 @@
 
                 { 
                   "comment": "Topic Control Flags",
-                  "match": "(NOUN|VERB|ADJECTIVE|ADVERB|IGNORESPELLING|RANDOM|NORANDOM|KEEP|ERASE|NOSTAY|STAY|REPEAT|NOREPEAT|PRIORITY|NORMAL|DEPRIORITIZE|SYSTEM|USER|NONBLOCKING|NOPATTERNS|NOSAMPLES|NOKEYS|BOT=)",
-                  "name": "entity.other.attribute-name"                                        
+                  "match": "(NOUN|VERB|ADJECTIVE|ADVERB|IGNORESPELLING|RANDOM|NORANDOM|KEEP|ERASE|NOSTAY|STAY|REPEAT|NOREPEAT|PRIORITY|NORMAL|DEPRIORITIZE|SYSTEM|USER|NONBLOCKING|NOPATTERNS|NOSAMPLES|NOKEYS|BOT=|noun|verb|adjective|adverb|ignorespelling|random|norandom|keep|erase|nostay|stay|repeat|norepeat|priority|normal|deprioritize|system|user|nonblocking|nopatterns|nosamples|nokeys|bot=)",
+                  "name": "keyword.source.Chatscript"                                        
                 },   
                 { 
                   "comment": "Intercepts ontologies",
@@ -52,7 +58,7 @@
 
         { 
           "comment": "Read/Set Variables",
-          "match": "(\\$)(control_pre|control_main|control_post|botprompt|userprompt|crashmsg|token|abstract|prepass|bot|login|randindex)",
+          "match": "(\\$)(control_pre|control_main|control_post|botprompt|userprompt|crashmsg|token|abstract|prepass|bot|login|randindex|CONTROL_PRE|CONTROL_MAIN|CONTROL_POST|BOTPROMPT|USERPROMPT|CRASHMSG|TOKEN|ABSTRACT|PREPASS|BOT|LOGIN|RANDINDEX)",
            "name": "string.single.Chatscript",
           "captures": {
               "1": { "name": "keyword.source.Chatscript" },
@@ -63,7 +69,7 @@
 
         { 
           "comment": "System Variables",
-          "match": "(%)(date|day|daynumber|fulltime|hour|leapyear|minute|month|monthname|second|volleytime|time|week|year|rand|foreign|input|length|more|morequestion|command|impliedyou|question|tense|userfirstline|userinput|voice|inputrejoinder|lastoutput|lastquestion|outputrejoinder|response|all|fact|document|regression|server|trace|rule|topic)",
+          "match": "(%)(date|day|daynumber|fulltime|hour|leapyear|minute|month|monthname|second|volleytime|time|week|year|rand|foreign|input|length|more|morequestion|command|impliedyou|question|tense|userfirstline|userinput|voice|inputrejoinder|lastoutput|lastquestion|outputrejoinder|response|all|fact|document|regression|server|trace|rule|topic|DATE|DAY|DAYNUMBER|FULLTIME|HOUR|LEAPYEAR|MINUTE|MONTH|MONTHNAME|SECOND|VOLLEYTIME|TIME|WEEK|YEAR|RAND|FOREIGN|INPUT|LENGTH|MORE|MOREQUESTION|COMMAND|IMPLIEDYOU|QUESTION|TENSE|USERFIRSTLINE|USERINPUT|VOICE|INPUTREJOINDER|LASTOUTPUT|LASTQUESTION|OUTPUTREJOINDER|RESPONSE|ALL|FACT|DOCUMENT|REGRESSION|SERVER|TRACE|RULE|TOPIC)",
            "name": "string.single.Chatscript",
           "captures": {
               "1": { "name": "keyword.source.Chatscript" },
@@ -109,8 +115,8 @@
                 },
 
                 { 
-                  "comment": "Intercept booleans, AND and OR (lower case in CS) that are not touching characters",
-                  "match": "(?<!\\w)(null|true|false|and|or)(?<!\\w)",
+                  "comment": "Intercept booleans that are not touching characters",
+                  "match": "(?<!\\w)(null|NULL|true|TRUE|false|FALSE|and|AND|or|OR)(?<!\\w)",
                   "name": "constant.language.Chatscript"
                 },  
 
@@ -177,12 +183,13 @@
                { "include": "$self" },
 
                 {   
-                  "match": "\\s((!=)|(>=)|(<=)|(>)|(<)|(==)|(=))",
-                  "comment": "Conditions and modifiers",
+                  "comment": "Conditions and operators",
+                  "match": "(!=|>=|<=|>|<|==)|(and|AND|or|OR)|(!)",
                   "captures": {
-                      "1": { "name": "keyword.source.Chatscript" },
-                      "8": { "name": "constant.other.Chatscript" }
-                    }
+                     "1": { "name": "keyword.source.Chatscript" },
+                     "2": { "name": "string" },
+                     "3": { "name": "constant.other.Chatscript" }
+                }
                 }
           ],
           "end": "(\\))",
@@ -204,21 +211,27 @@
 
         {   
          "comment": "Intercept variable assignements",
-          "match": "(\\s)((\\+=)|(-=)|(\\*=)|(/=)|(%=)|(\\|=)|(&=)|(\\^=)|(=))",  
+          "match": "(\\s?)((\\+=)|(-=)|(\\*=)|(/=)|(%=)|(\\|=)|(&=)|(\\^=)|((?<!=)=(?!=)))",  
           "name": "variable.parameter" 
         },
 
 
         { 
           "comment": "Intercept gambits without user input",
-          "match": "(([t,r,\\?]:)\\s*)",
+          "match": "(^([t,r,\\?]:)\\s*)",
           "name": "keyword.source.parameter"
+        },
+
+        { 
+          "comment": "Intercept @digit",
+          "match": "@(\\d+)",
+          "name": "constant.other.Chatscript"
         },
 
 
         { 
           "comment": "Intercept digits",
-          "match": "\\s([\\d])+|(?i)null",
+          "match": "\\s?(\\d)+|(?i)null",
           "name": "constant.other.Chatscript"
         },
 
@@ -245,11 +258,16 @@
           }
         },
 
+        { 
+          "comment": "Intercepts ontologies outside of regular match rules",
+          "match": "(~+[a-z,A-Z]\\w*\\b)|([a-z,A-Z]\\w*\\b~(\\d+))|([a-z,A-Z]\\w*\\b~(\\w+))",
+          "name": "entity.name.class"
+        },   
 
         { 
           "comment": "Topic Functions",
           "name": "rules.complex.Chatscript",
-          "begin": "(\\^)(addtopic|available|cleartopics|gambit|getrule|hasgambit|keep|lastused|next|poptopic|refine|rejoinder|respond|retry|reuse|setrejoinder|topicflags)(\\()",
+          "begin": "(\\^?)(addtopic|available|cleartopics|gambit|getrule|hasgambit|keep|lastused|next|poptopic|refine|rejoinder|respond|retry|reuse|setrejoinder|topicflags|ADDTOPIC|AVAILABLE|CLEARTOPICS|GAMBIT|GETRULE|HASGAMBIT|KEEP|LASTUSED|NEXT|POPTOPIC|REFINE|REJOINDER|RESPOND|RETRY|REUSE|SETREJOINDER|TOPICFLAGS)(\\s?\\()",
           "beginCaptures": {
                "1": { "name": "keyword.Chatscript" },
                "2": { "name": "variable.parameter.source.Chatscript" },
@@ -271,7 +289,7 @@
         { 
           "comment": "Marking Functions",
           "name": "rules.complex.Chatscript",
-          "begin": "(\\^)(mark|marked|unmark|position|setposition)(\\()",
+          "begin": "(\\^?)(mark|marked|unmark|position|setposition|mark|marked|unmark|position|setposition|MARK|MARKED|UNMARK|POSITION|SETPOSITION|MARK|MARKED|UNMARK|POSITION|SETPOSITION)(\\()",
           "beginCaptures": {
                "1": { "name": "keyword.Chatscript" },
                "2": { "name": "variable.parameter.source.Chatscript" },
@@ -293,7 +311,7 @@
         { 
           "comment": "Input Functions",
           "name": "rules.complex.Chatscript",
-          "begin": "(\\^)(capitalized|input|position|removetokenflags|settokenflags)(\\()",
+          "begin": "(\\^?)(capitalized|input|position|removetokenflags|settokenflags|CAPITALIZED|INPUT|POSITION|REMOVETOKENFLAGS|SETTOKENFLAGS)(\\()",
           "beginCaptures": {
                "1": { "name": "keyword.Chatscript" },
                "2": { "name": "variable.parameter.source.Chatscript" },
@@ -315,7 +333,7 @@
         { 
           "comment": "Number Functions",
           "name": "rules.complex.Chatscript",
-          "begin": "(\\^)(compute|timefromseconds)(\\()",
+          "begin": "(\\^?)(compute|timefromseconds|COMPUTE|TIMEFROMSECONDS)(\\()",
           "beginCaptures": {
                "1": { "name": "keyword.Chatscript" },
                "2": { "name": "variable.parameter.source.Chatscript" },
@@ -337,7 +355,7 @@
         { 
           "comment": "Output Functions",
           "name": "rules.complex.Chatscript",
-          "begin": "(\\^)(flushoutput|insertprint|keephistory|print|preprint|repeat|reviseOutput)(\\()",
+          "begin": "(\\^?)(flushoutput|insertprint|keephistory|print|preprint|repeat|reviseoutput|FLUSHOUTPUT|INSERTPRINT|KEEPHISTORY|PRINT|PREPRINT|REPEAT|REVISEOUTPUT)(\\()",
           "beginCaptures": {
                "1": { "name": "keyword.Chatscript" },
                "2": { "name": "variable.parameter.source.Chatscript" },
@@ -359,7 +377,7 @@
         { 
           "comment": "Output Functions",
           "name": "rules.complex.Chatscript",
-          "begin": "(\\^)(response|responsequestion|responserruleid)(\\()",
+          "begin": "(\\^?)(response|responsequestion|responserruleid|RESPONSE|RESPONSEQUESTION|RESPONSERRULEID)(\\()",
           "beginCaptures": {
                "1": { "name": "keyword.Chatscript" },
                "2": { "name": "variable.parameter.source.Chatscript" },
@@ -381,7 +399,7 @@
         { 
           "comment": "PostProcessing Functions",
           "name": "rules.complex.Chatscript",
-          "begin": "(\\^)(analyze|postprocessprint)(\\()",
+          "begin": "(\\^?)(analyze|postprocessprint|ANALYZE|POSTPROCESSPRINT)(\\()",
           "beginCaptures": {
                "1": { "name": "keyword.Chatscript" },
                "2": { "name": "variable.parameter.source.Chatscript" },
@@ -403,7 +421,7 @@
         { 
           "comment": "Control Flow Functions",
           "name": "rules.complex.Chatscript",
-          "begin": "(\\^)(command|end|eval|fail|match|nofail|notnull)(\\()",
+          "begin": "(\\^?)(command|end|eval|fail|loop|match|nofail|notnull|COMMAND|END|EVAL|FAIL|loop|MATCH|NOFAIL|NOTNULL)(\\()",
           "beginCaptures": {
                "1": { "name": "keyword.Chatscript" },
                "2": { "name": "variable.parameter.source.Chatscript" },
@@ -425,7 +443,7 @@
         { 
           "comment": "Word Manipulation Functions",
           "name": "rules.complex.Chatscript",
-          "begin": "(\\^)(burst|explode|intersectwords|join|properties|pos|tally|walkdictionary|rhyme|substitute|spell|sexed|uppercase)(\\()",
+          "begin": "(\\^?)(burst|explode|intersectwords|join|properties|pos|tally|walkdictionary|rhyme|substitute|spell|sexed|uppercase|BURST|EXPLODE|INTERSECTWORDS|JOIN|PROPERTIES|POS|TALLY|WALKDICTIONARY|RHYME|SUBSTITUTE|SPELL|SEXED|UPPERCASE)(\\()",
           "beginCaptures": {
                "1": { "name": "keyword.Chatscript" },
                "2": { "name": "variable.parameter.source.Chatscript" },
@@ -447,7 +465,7 @@
         { 
           "comment": "Dictionary Functions",
           "name": "rules.complex.Chatscript",
-          "begin": "(\\^)(addproperty|define|hasanyproperty|hasallproperty|removeproperty)(\\()",
+          "begin": "(\\^?)(addproperty|define|hasanyproperty|hasallproperty|removeproperty|ADDPROPERTY|DEFINE|HASANYPROPERTY|HASALLPROPERTY|REMOVEPROPERTY)(\\()",
           "beginCaptures": {
                "1": { "name": "keyword.Chatscript" },
                "2": { "name": "variable.parameter.source.Chatscript" },
@@ -469,7 +487,7 @@
         { 
           "comment": "Multipurpose Functions",
           "name": "rules.complex.Chatscript",
-          "begin": "(\\^)(disable|enable|length|pick|reset)(\\()",
+          "begin": "(\\^?)(disable|enable|length|pick|reset|DISABLE|ENABLE|LENGTH|PICK|RESET)(\\()",
           "beginCaptures": {
                "1": { "name": "keyword.Chatscript" },
                "2": { "name": "variable.parameter.source.Chatscript" },
@@ -491,7 +509,7 @@
         { 
           "comment": "Facts Functions (see ChatScript Fact Manual)",
           "name": "rules.complex.Chatscript",
-          "begin": "(\\^)(createattribute|intersectfacts|gambittopics|keywordtopics|pendingtopics|querytopics|addproperty|removeproperty|createfact|delete|flushfacts|field|find|findmarkedfact|first|last|length|next|pick|reset|query|save|sort|unduplicate|unpackfactref|makereal)(\\()",
+          "begin": "(\\^?)(createattribute|intersectfacts|gambittopics|keywordtopics|pendingtopics|querytopics|addproperty|removeproperty|createfact|delete|flushfacts|field|find|findmarkedfact|first|last|length|next|pick|reset|query|save|sort|unduplicate|unpackfactref|makereal|CREATEATTRIBUTE|INTERSECTFACTS|GAMBITTOPICS|KEYWORDTOPICS|PENDINGTOPICS|QUERYTOPICS|ADDPROPERTY|REMOVEPROPERTY|CREATEFACT|DELETE|FLUSHFACTS|FIELD|FIND|FINDMARKEDFACT|FIRST|LAST|LENGTH|NEXT|PICK|RESET|QUERY|SAVE|SORT|UNDUPLICATE|UNPACKFACTREF|MAKEREAL)(\\()",
           "beginCaptures": {
                "1": { "name": "keyword.Chatscript" },
                "2": { "name": "variable.parameter.source.Chatscript" },

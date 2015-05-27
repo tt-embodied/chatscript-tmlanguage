@@ -14,9 +14,17 @@
 			<key>comment</key>
 			<string>Comments</string>
 			<key>match</key>
-			<string>(\#.*)|(\#!.*)</string>
+			<string>(\#\s+.*)|(\#!\s+.*)|(\#!x\s+.*)</string>
 			<key>name</key>
 			<string>comment.line.number-sign.Chatscript</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Control tokens</string>
+			<key>match</key>
+			<string>#DO_INTERJECTION_SPLITTING|#DO_SUBSTITUTE_SYSTEM|#DO_NUMBER_MERGE|#DO_DATE_MERGE|#DO_PROPERNAME_MERGE|#DO_SPELLCHECK|#DO_PARSE</string>
+			<key>name</key>
+			<string>keyword.source.Chatscript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -74,9 +82,9 @@
 					<key>comment</key>
 					<string>Topic Control Flags</string>
 					<key>match</key>
-					<string>(NOUN|VERB|ADJECTIVE|ADVERB|IGNORESPELLING|RANDOM|NORANDOM|KEEP|ERASE|NOSTAY|STAY|REPEAT|NOREPEAT|PRIORITY|NORMAL|DEPRIORITIZE|SYSTEM|USER|NONBLOCKING|NOPATTERNS|NOSAMPLES|NOKEYS|BOT=)</string>
+					<string>(NOUN|VERB|ADJECTIVE|ADVERB|IGNORESPELLING|RANDOM|NORANDOM|KEEP|ERASE|NOSTAY|STAY|REPEAT|NOREPEAT|PRIORITY|NORMAL|DEPRIORITIZE|SYSTEM|USER|NONBLOCKING|NOPATTERNS|NOSAMPLES|NOKEYS|BOT=|noun|verb|adjective|adverb|ignorespelling|random|norandom|keep|erase|nostay|stay|repeat|norepeat|priority|normal|deprioritize|system|user|nonblocking|nopatterns|nosamples|nokeys|bot=)</string>
 					<key>name</key>
-					<string>entity.other.attribute-name</string>
+					<string>keyword.source.Chatscript</string>
 				</dict>
 				<dict>
 					<key>comment</key>
@@ -105,7 +113,7 @@
 			<key>comment</key>
 			<string>Read/Set Variables</string>
 			<key>match</key>
-			<string>(\$)(control_pre|control_main|control_post|botprompt|userprompt|crashmsg|token|abstract|prepass|bot|login|randindex)</string>
+			<string>(\$)(control_pre|control_main|control_post|botprompt|userprompt|crashmsg|token|abstract|prepass|bot|login|randindex|CONTROL_PRE|CONTROL_MAIN|CONTROL_POST|BOTPROMPT|USERPROMPT|CRASHMSG|TOKEN|ABSTRACT|PREPASS|BOT|LOGIN|RANDINDEX)</string>
 			<key>name</key>
 			<string>string.single.Chatscript</string>
 		</dict>
@@ -126,7 +134,7 @@
 			<key>comment</key>
 			<string>System Variables</string>
 			<key>match</key>
-			<string>(%)(date|day|daynumber|fulltime|hour|leapyear|minute|month|monthname|second|volleytime|time|week|year|rand|foreign|input|length|more|morequestion|command|impliedyou|question|tense|userfirstline|userinput|voice|inputrejoinder|lastoutput|lastquestion|outputrejoinder|response|all|fact|document|regression|server|trace|rule|topic)</string>
+			<string>(%)(date|day|daynumber|fulltime|hour|leapyear|minute|month|monthname|second|volleytime|time|week|year|rand|foreign|input|length|more|morequestion|command|impliedyou|question|tense|userfirstline|userinput|voice|inputrejoinder|lastoutput|lastquestion|outputrejoinder|response|all|fact|document|regression|server|trace|rule|topic|DATE|DAY|DAYNUMBER|FULLTIME|HOUR|LEAPYEAR|MINUTE|MONTH|MONTHNAME|SECOND|VOLLEYTIME|TIME|WEEK|YEAR|RAND|FOREIGN|INPUT|LENGTH|MORE|MOREQUESTION|COMMAND|IMPLIEDYOU|QUESTION|TENSE|USERFIRSTLINE|USERINPUT|VOICE|INPUTREJOINDER|LASTOUTPUT|LASTQUESTION|OUTPUTREJOINDER|RESPONSE|ALL|FACT|DOCUMENT|REGRESSION|SERVER|TRACE|RULE|TOPIC)</string>
 			<key>name</key>
 			<string>string.single.Chatscript</string>
 		</dict>
@@ -235,9 +243,9 @@
 				</dict>
 				<dict>
 					<key>comment</key>
-					<string>Intercept booleans, AND and OR (lower case in CS) that are not touching characters</string>
+					<string>Intercept booleans that are not touching characters</string>
 					<key>match</key>
-					<string>(?&lt;!\w)(null|true|false|and|or)(?&lt;!\w)</string>
+					<string>(?&lt;!\w)(null|NULL|true|TRUE|false|FALSE|and|AND|or|OR)(?&lt;!\w)</string>
 					<key>name</key>
 					<string>constant.language.Chatscript</string>
 				</dict>
@@ -350,16 +358,21 @@
 							<key>name</key>
 							<string>keyword.source.Chatscript</string>
 						</dict>
-						<key>8</key>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>string</string>
+						</dict>
+						<key>3</key>
 						<dict>
 							<key>name</key>
 							<string>constant.other.Chatscript</string>
 						</dict>
 					</dict>
 					<key>comment</key>
-					<string>Conditions and modifiers</string>
+					<string>Conditions and operators</string>
 					<key>match</key>
-					<string>\s((!=)|(&gt;=)|(&lt;=)|(&gt;)|(&lt;)|(==)|(=))</string>
+					<string>(!=|&gt;=|&lt;=|&gt;|&lt;|==)|(and|AND|or|OR)|(!)</string>
 				</dict>
 			</array>
 		</dict>
@@ -383,7 +396,7 @@
 			<key>comment</key>
 			<string>Intercept variable assignements</string>
 			<key>match</key>
-			<string>(\s)((\+=)|(-=)|(\*=)|(/=)|(%=)|(\|=)|(&amp;=)|(\^=)|(=))</string>
+			<string>(\s?)((\+=)|(-=)|(\*=)|(/=)|(%=)|(\|=)|(&amp;=)|(\^=)|((?&lt;!=)=(?!=)))</string>
 			<key>name</key>
 			<string>variable.parameter</string>
 		</dict>
@@ -391,15 +404,23 @@
 			<key>comment</key>
 			<string>Intercept gambits without user input</string>
 			<key>match</key>
-			<string>(([t,r,\?]:)\s*)</string>
+			<string>(^([t,r,\?]:)\s*)</string>
 			<key>name</key>
 			<string>keyword.source.parameter</string>
 		</dict>
 		<dict>
 			<key>comment</key>
+			<string>Intercept @digit</string>
+			<key>match</key>
+			<string>@(\d+)</string>
+			<key>name</key>
+			<string>constant.other.Chatscript</string>
+		</dict>
+		<dict>
+			<key>comment</key>
 			<string>Intercept digits</string>
 			<key>match</key>
-			<string>\s([\d])+|(?i)null</string>
+			<string>\s?(\d)+|(?i)null</string>
 			<key>name</key>
 			<string>constant.other.Chatscript</string>
 		</dict>
@@ -451,8 +472,16 @@
 			<string>string.single.Chatscript</string>
 		</dict>
 		<dict>
+			<key>comment</key>
+			<string>Intercepts ontologies outside of regular match rules</string>
+			<key>match</key>
+			<string>(~+[a-z,A-Z]\w*\b)|([a-z,A-Z]\w*\b~(\d+))|([a-z,A-Z]\w*\b~(\w+))</string>
+			<key>name</key>
+			<string>entity.name.class</string>
+		</dict>
+		<dict>
 			<key>begin</key>
-			<string>(\^)(addtopic|available|cleartopics|gambit|getrule|hasgambit|keep|lastused|next|poptopic|refine|rejoinder|respond|retry|reuse|setrejoinder|topicflags)(\()</string>
+			<string>(\^?)(addtopic|available|cleartopics|gambit|getrule|hasgambit|keep|lastused|next|poptopic|refine|rejoinder|respond|retry|reuse|setrejoinder|topicflags|ADDTOPIC|AVAILABLE|CLEARTOPICS|GAMBIT|GETRULE|HASGAMBIT|KEEP|LASTUSED|NEXT|POPTOPIC|REFINE|REJOINDER|RESPOND|RETRY|REUSE|SETREJOINDER|TOPICFLAGS)(\s?\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -501,7 +530,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^)(mark|marked|unmark|position|setposition)(\()</string>
+			<string>(\^?)(mark|marked|unmark|position|setposition|mark|marked|unmark|position|setposition|MARK|MARKED|UNMARK|POSITION|SETPOSITION|MARK|MARKED|UNMARK|POSITION|SETPOSITION)(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -550,7 +579,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^)(capitalized|input|position|removetokenflags|settokenflags)(\()</string>
+			<string>(\^?)(capitalized|input|position|removetokenflags|settokenflags|CAPITALIZED|INPUT|POSITION|REMOVETOKENFLAGS|SETTOKENFLAGS)(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -599,7 +628,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^)(compute|timefromseconds)(\()</string>
+			<string>(\^?)(compute|timefromseconds|COMPUTE|TIMEFROMSECONDS)(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -648,7 +677,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^)(flushoutput|insertprint|keephistory|print|preprint|repeat|reviseOutput)(\()</string>
+			<string>(\^?)(flushoutput|insertprint|keephistory|print|preprint|repeat|reviseoutput|FLUSHOUTPUT|INSERTPRINT|KEEPHISTORY|PRINT|PREPRINT|REPEAT|REVISEOUTPUT)(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -697,7 +726,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^)(response|responsequestion|responserruleid)(\()</string>
+			<string>(\^?)(response|responsequestion|responserruleid|RESPONSE|RESPONSEQUESTION|RESPONSERRULEID)(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -746,7 +775,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^)(analyze|postprocessprint)(\()</string>
+			<string>(\^?)(analyze|postprocessprint|ANALYZE|POSTPROCESSPRINT)(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -795,7 +824,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^)(command|end|eval|fail|match|nofail|notnull)(\()</string>
+			<string>(\^?)(command|end|eval|fail|loop|match|nofail|notnull|COMMAND|END|EVAL|FAIL|loop|MATCH|NOFAIL|NOTNULL)(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -844,7 +873,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^)(burst|explode|intersectwords|join|properties|pos|tally|walkdictionary|rhyme|substitute|spell|sexed|uppercase)(\()</string>
+			<string>(\^?)(burst|explode|intersectwords|join|properties|pos|tally|walkdictionary|rhyme|substitute|spell|sexed|uppercase|BURST|EXPLODE|INTERSECTWORDS|JOIN|PROPERTIES|POS|TALLY|WALKDICTIONARY|RHYME|SUBSTITUTE|SPELL|SEXED|UPPERCASE)(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -893,7 +922,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^)(addproperty|define|hasanyproperty|hasallproperty|removeproperty)(\()</string>
+			<string>(\^?)(addproperty|define|hasanyproperty|hasallproperty|removeproperty|ADDPROPERTY|DEFINE|HASANYPROPERTY|HASALLPROPERTY|REMOVEPROPERTY)(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -942,7 +971,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^)(disable|enable|length|pick|reset)(\()</string>
+			<string>(\^?)(disable|enable|length|pick|reset|DISABLE|ENABLE|LENGTH|PICK|RESET)(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -991,7 +1020,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^)(createattribute|intersectfacts|gambittopics|keywordtopics|pendingtopics|querytopics|addproperty|removeproperty|createfact|delete|flushfacts|field|find|findmarkedfact|first|last|length|next|pick|reset|query|save|sort|unduplicate|unpackfactref|makereal)(\()</string>
+			<string>(\^?)(createattribute|intersectfacts|gambittopics|keywordtopics|pendingtopics|querytopics|addproperty|removeproperty|createfact|delete|flushfacts|field|find|findmarkedfact|first|last|length|next|pick|reset|query|save|sort|unduplicate|unpackfactref|makereal|CREATEATTRIBUTE|INTERSECTFACTS|GAMBITTOPICS|KEYWORDTOPICS|PENDINGTOPICS|QUERYTOPICS|ADDPROPERTY|REMOVEPROPERTY|CREATEFACT|DELETE|FLUSHFACTS|FIELD|FIND|FINDMARKEDFACT|FIRST|LAST|LENGTH|NEXT|PICK|RESET|QUERY|SAVE|SORT|UNDUPLICATE|UNPACKFACTREF|MAKEREAL)(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
