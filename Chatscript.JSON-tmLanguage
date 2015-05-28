@@ -168,7 +168,7 @@
               }
            ],
            "comment": "Define the very last element of a ChatScript rule definition. Everything below this line is not matched yet.",
-           "end": "(\\))\\s*+(?!=(<<)|(>>)|((\\[)([a-z]))|(\\])|(\\{)|(\\})|(\\()|(\\))|(\\*)|(_\\D))",
+           "end": "(\\))\\s*+(?!=(<<)|(>>)|((\\[)(\\w*)(\\]))|(\\{)|(\\})|(\\()|(\\))|(\\*)|(_\\D))",
            "endCaptures": {
                "1": { "name": "keyword.Chatscript"}
            }

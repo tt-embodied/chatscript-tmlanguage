@@ -173,7 +173,7 @@
 			<key>comment</key>
 			<string>Define the very last element of a ChatScript rule definition. Everything below this line is not matched yet.</string>
 			<key>end</key>
-			<string>(\))\s*+(?!=(&lt;&lt;)|(&gt;&gt;)|((\[)([a-z]))|(\])|(\{)|(\})|(\()|(\))|(\*)|(_\D))</string>
+			<string>(\))\s*+(?!=(&lt;&lt;)|(&gt;&gt;)|((\[)(\w*)(\]))|(\{)|(\})|(\()|(\))|(\*)|(_\D))</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
