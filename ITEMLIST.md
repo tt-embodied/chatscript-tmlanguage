@@ -28,7 +28,32 @@
 #DO_PROPERNAME_MERGE
 ```
 
-##System Variables
+##Topic Control Flags
+```
+Random
+NoRandom
+Keep
+Erase
+NoStay
+Stay
+Repeat
+NoRepeat
+Priority
+Normal
+Deprioritize
+System
+User
+NoBlocking
+NoPatterns
+NoSamples
+NoKeys
+More
+Bot=
+bot:
+Share
+```
+
+##Read/Set System Variables
 ```
 $cs_prepass 
 $cs_control_pre 
@@ -48,6 +73,72 @@ $cs_randindex
 $bot 
 $login 
 ```
+##Date & Time & Numbers Variables
+%date 
+%day 
+%daynumber 
+%fulltime 
+%hour 
+%leapyear 
+%daylightsavings 
+%minute 
+%month 
+%monthname 
+%second 
+%volleytime 
+%time 
+%week 
+%year 
+%rand 
+
+##User Input Variables
+%bot 
+%revisedinput 
+%command 
+%foreign 
+%impliedyou 
+%input 
+%ip 
+%length 
+%more 
+%morequestion 
+%parsed 
+%question 
+%quotation 
+%sentence 
+%tense 
+%user 
+%userfirstline 
+%userinput 
+%voice 
+
+##Chatbot Output Variables
+%inputrejoinder
+%lastoutput 
+%lastquestion 
+%outputrejoinder
+%response 
+
+##System Variables
+%all 
+%document 
+%fact 
+%freetext 
+%freedict 
+%freefact 
+%regression 
+%server 
+%rule 
+%topic 
+%actualtopic 
+%trace 
+
+##Build Data Variables
+%dict 
+%engine 
+%os 
+%script 
+%version 
 
 ##Topic Fonctions  
 ```
