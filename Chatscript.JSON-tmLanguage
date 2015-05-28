@@ -1,6 +1,6 @@
 { "name": "Chatscript",
   "scopeName": "source.top",
-  "fileTypes": ["top"],
+  "fileTypes": ["top", "tbl"],
   "patterns": [
 
         { 
@@ -11,7 +11,7 @@
 
         {
         "comment": "Control tokens",
-          "match": "DO_DATE_MERGE|#DO_POSTAG|#DO_PARSE|#DO_CONDITIONAL_POSTAG|#NO_ERASE|#STRICT_CASING|#NO_INFER_QUESTION|#DO_SPELLCHECK|#ONLY_LOWERCASE|#NO_IMPERATIVE|#NO_WITHIN|#NO_SENTENCE_END|#NO_HYPHEN_END|#NO_COLON_END|#NO_SEMICOLON_END|#DO_ESSENTIALS|#DO_SUBSTITUTES|#DO_CONTRACTIONS|#DO_INTERJECTIONS|#DO_BRITISH|#DO_SPELLING|#DO_TEXTING|#DO_SUBSTITUTE_SYSTEM|#DO_INTERJECTION_SPLITTING|#DO_NUMBER_MERGE|#DO_PROPERNAME_MERGE",
+          "match": "#DO_DATE_MERGE|#DO_POSTAG|#DO_PARSE|#DO_CONDITIONAL_POSTAG|#NO_ERASE|#STRICT_CASING|#NO_INFER_QUESTION|#DO_SPELLCHECK|#ONLY_LOWERCASE|#NO_IMPERATIVE|#NO_WITHIN|#NO_SENTENCE_END|#NO_HYPHEN_END|#NO_COLON_END|#NO_SEMICOLON_END|#DO_ESSENTIALS|#DO_SUBSTITUTES|#DO_CONTRACTIONS|#DO_INTERJECTIONS|#DO_BRITISH|#DO_SPELLING|#DO_TEXTING|#DO_SUBSTITUTE_SYSTEM|#DO_INTERJECTION_SPLITTING|#DO_NUMBER_MERGE|#DO_PROPERNAME_MERGE",
           "name": "keyword.source.Chatscript"
         },
 
@@ -40,7 +40,7 @@
 
                 { 
                   "comment": "Topic Control Flags",
-                  "match": "(?i)(noun|verb|adjective|adverb|ignorespelling|random|norandom|keep|erase|nostay|stay|repeat|norepeat|priority|normal|deprioritize|system|user|nonblocking|nopatterns|nosamples|nokeys|bot=)",
+                  "match": "(?i)(\\s)(noun|verb|adjective|adverb|ignorespelling|random|norandom|keep|erase|nostay|stay|repeat|norepeat|priority|normal|deprioritize|system|user|nonblocking|nopatterns|nosamples|nokeys|bot=)(\\s)",
                   "name": "keyword.source.Chatscript"                                        
                 },   
                 { 
@@ -266,8 +266,11 @@
 
         { 
           "comment": "Intercepts ontologies outside of regular match rules",
-          "match": "(~+[a-z,A-Z]\\w*\\b)|([a-z,A-Z]\\w*\\b~(\\d+))|([a-z,A-Z]\\w*\\b~(\\w+))",
-          "name": "entity.name.class"
+          "match": "((~+[a-z,A-Z]\\w*\\b)|([a-z,A-Z]\\w*\\b~(\\d+))|([a-z,A-Z]\\w*\\b~(\\w+)))(\\.?)([A-Z]*)",
+          "name": "entity.name.class",
+          "captures": {
+              "7": { "name": "entity.name.class" }
+          }
         },   
 
         { 
