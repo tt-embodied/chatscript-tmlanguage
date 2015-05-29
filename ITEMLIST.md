@@ -221,7 +221,8 @@ $login
 ^command 
 ^end 
 ^eval 
-^fail 
+^fail
+^loop 
 ^match 
 ^nofail 
 ^notnull 

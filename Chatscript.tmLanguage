@@ -28,31 +28,63 @@
 			<string>keyword.source.Chatscript</string>
 		</dict>
 		<dict>
-			<key>comment</key>
-			<string>Outputmacro/table</string>
-			<key>match</key>
-			<string>(?i)outputmacro:|table:</string>
-			<key>name</key>
-			<string>support.function.Chatscript</string>
-		</dict>
-		<dict>
 			<key>begin</key>
-			<string>(?i)concept:|topic:</string>
-			<key>beginCaptures</key>
+			<string>(?i)(outputmacro:|table:)</string>
+			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>support.function.Chatscript</string>
 				</dict>
-				<key>2</key>
+			</dict>
+			<key>comment</key>
+			<string>Close parenteses</string>
+			<key>end</key>
+			<string>(\))</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>support.function.Chatscript</string>
 				</dict>
 			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>Open parenteses</string>
+					<key>match</key>
+					<string>(\()</string>
+					<key>name</key>
+					<string>support.function.Chatscript</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>Intercepts ontologies</string>
+					<key>match</key>
+					<string>(~+[a-z,A-Z,-,_]\w*\b)|([a-z,A-Z,-,_]\w*\b~(\d+))|([a-z,A-Z,-,_]\w*\b~(\w+))</string>
+					<key>name</key>
+					<string>entity.other.attribute-name</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>Intercepts variables</string>
+					<key>match</key>
+					<string>(?i)(\^\w*)</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(?i)concept:|topic:</string>
 			<key>comment</key>
-			<string>Concepts/topics</string>
+			<string>Close parenteses</string>
 			<key>end</key>
 			<string>(\))</string>
 			<key>endCaptures</key>
@@ -91,11 +123,19 @@
 					<key>comment</key>
 					<string>Intercepts ontologies</string>
 					<key>match</key>
-					<string>(~+[a-z,A-Z]\w*\b)|([a-z,A-Z]\w*\b~(\d+))|([a-z,A-Z]\w*\b~(\w+))</string>
+					<string>(~+[a-z,A-Z,-,_]\w*\b)|([a-z,A-Z,-,_]\w*\b~(\d+))|([a-z,A-Z,-,_]\w*\b~(\w+))</string>
 					<key>name</key>
 					<string>entity.other.attribute-name</string>
 				</dict>
 			</array>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Data</string>
+			<key>match</key>
+			<string>(?i)data:</string>
+			<key>name</key>
+			<string>support.function.Chatscript</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -156,7 +196,7 @@
 			<key>comment</key>
 			<string>System Variables</string>
 			<key>match</key>
-			<string>(?i)(%)(date|day|daynumber|fulltime|hour|leapyear|daylightsavings|minute|month|monthname|second|volleytime|time|week|year|rand|bot|revisedinput|command|foreign|impliedyou|input|ip|length|more|morequestion|parsed|question|quotation|sentence|tense|user|userfirstline|userinput|voice|inputrejoinde|lastoutput|lastquestion|outputrejoinde|response|all|document|fact|freetext|freedict|freefact|regression|server|rule|topic|actualtopic|trace|dict|engine|os|script|version)</string>
+			<string>(?i)(%)(date|day|daynumber|fulltime|hour|leapyear|daylightsavings|minute|month|monthname|second|volleytime|time|week|year|rand|bot|revisedinput|command|foreign|impliedyou|input|ip|length|more|morequestion|parsed|question|quotation|sentence|tense|user|userfirstline|userinput|voice|inputrejoinde|lastoutput|lastquestion|outputrejoinder|response|all|document|fact|freetext|freedict|freefact|regression|server|rule|topic|actualtopic|trace|dict|engine|os|script|version)</string>
 			<key>name</key>
 			<string>string.single.Chatscript</string>
 		</dict>
@@ -192,7 +232,7 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>Define the very last element of a ChatScript rule definition. Everything below this line is not matched yet.</string>
+			<string>#####Define the last element of the meta-scope#####</string>
 			<key>end</key>
 			<string>(\))\s*+(?!=(&lt;&lt;)|(&gt;&gt;)|((\[)(\w*)(\]))|(\{)|(\})|(\()|(\))|(\*)|(_\D))</string>
 			<key>endCaptures</key>
@@ -275,7 +315,7 @@
 					<key>comment</key>
 					<string>Intercepts ontologies</string>
 					<key>match</key>
-					<string>(~+[a-z,A-Z]\w*\b)|([a-z,A-Z]\w*\b~(\d+))|([a-z,A-Z]\w*\b~(\w+))</string>
+					<string>(~+[a-z,A-Z,-,_]\w*\b)|([a-z,A-Z,-,_]\w*\b~(\d+))|([a-z,A-Z,-,_]\w*\b~(\w+))</string>
 					<key>name</key>
 					<string>entity.name.class</string>
 				</dict>
@@ -336,7 +376,7 @@
 				</dict>
 				<dict>
 					<key>comment</key>
-					<string>Everything unmatched at this point is likely words to intercepts. Match 'everything'.</string>
+					<string>Everything unmatched at this point is likely words to intercepts so we match '.'</string>
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
@@ -513,7 +553,7 @@
 			<key>comment</key>
 			<string>Intercepts ontologies outside of regular match rules</string>
 			<key>match</key>
-			<string>((~+[a-z,A-Z]\w*\b)|([a-z,A-Z]\w*\b~(\d+))|([a-z,A-Z]\w*\b~(\w+)))(\.?)([A-Z]*)</string>
+			<string>((~+[a-z,A-Z,-,_]\w*\b)|([a-z,A-Z,-,_]\w*\b~(\d+))|([a-z,A-Z,-,_]\w*\b~(\w+)))(\.?)([A-Z]*)</string>
 			<key>name</key>
 			<string>entity.name.class</string>
 		</dict>
@@ -862,7 +902,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?i)(\^?)(argument|command|end|eval|fail|match|nofail|notnull|addcontext|incontext)(\()</string>
+			<string>(?i)(\^?)(argument|command|end|eval|fail|loop|match|nofail|notnull|addcontext|incontext)(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>

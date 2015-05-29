@@ -13,48 +13,72 @@
         "comment": "Control tokens",
           "match": "#DO_DATE_MERGE|#DO_POSTAG|#DO_PARSE|#DO_CONDITIONAL_POSTAG|#NO_ERASE|#STRICT_CASING|#NO_INFER_QUESTION|#DO_SPELLCHECK|#ONLY_LOWERCASE|#NO_IMPERATIVE|#NO_WITHIN|#NO_SENTENCE_END|#NO_HYPHEN_END|#NO_COLON_END|#NO_SEMICOLON_END|#DO_ESSENTIALS|#DO_SUBSTITUTES|#DO_CONTRACTIONS|#DO_INTERJECTIONS|#DO_BRITISH|#DO_SPELLING|#DO_TEXTING|#DO_SUBSTITUTE_SYSTEM|#DO_INTERJECTION_SPLITTING|#DO_NUMBER_MERGE|#DO_PROPERNAME_MERGE",
           "name": "keyword.source.Chatscript"
+        },        
+
+        { 
+        "comment": "Outputmacro/table",
+        "begin": "(?i)(outputmacro:|table:)",
+        "captures": {
+            "1": { "name": "support.function.Chatscript" }
+        },
+        "patterns": [
+             { "include": "$self" },
+              { 
+                "comment": "Open parenteses",
+                "match": "(\\()",
+                "name": "support.function.Chatscript"                                        
+              },                
+              { 
+                "comment": "Intercepts ontologies",
+                "match": "(~+[a-z,A-Z,-,_]\\w*\\b)|([a-z,A-Z,-,_]\\w*\\b~(\\d+))|([a-z,A-Z,-,_]\\w*\\b~(\\w+))",
+                "name": "entity.other.attribute-name"
+              },
+              { 
+                "comment": "Intercepts variables",
+                "match": "(?i)(\\^\\w*)"
+              }      
+        ],
+        "comment": "Close parenteses",
+        "end": "(\\))",
+        "endCaptures": {
+                     "1": { "name": "support.function.Chatscript"}
+                 }
         },
 
         { 
-          "comment": "Outputmacro/table",
-          "match": "(?i)outputmacro:|table:",
+        "comment": "Concepts/topics",
+        "name": "string",
+        "begin": "(?i)concept:|topic:",
+        "patterns": [
+             { "include": "$self" },
+              { 
+                "comment": "Open parenteses",
+                "match": "(\\()",
+                "name": "entity.other.attribute-name"                                        
+              },                
+              { 
+                "comment": "Topic Control Flags",
+                "match": "(?i)(Random|NoRandom|Keep|Erase|NoStay|Stay|Repeat|NoRepeat|Priority|Normal|Deprioritize|System|User|NoBlocking|NoPatterns|NoSamples|NoKeys|More|Bot=|bot:|Share)(\\s)",
+                "name": "keyword.source.Chatscript"                                        
+              },   
+              { 
+                "comment": "Intercepts ontologies",
+                "match": "(~+[a-z,A-Z,-,_]\\w*\\b)|([a-z,A-Z,-,_]\\w*\\b~(\\d+))|([a-z,A-Z,-,_]\\w*\\b~(\\w+))",
+                "name": "entity.other.attribute-name"
+              }   
+        ],
+        "comment": "Close parenteses",
+        "end": "(\\))",
+        "endCaptures": {
+                     "1": { "name": "entity.other.attribute-name"}
+                 }
+        },
+
+        {
+        "comment": "Data",
+          "match": "(?i)data:",
           "name": "support.function.Chatscript"
         },
-
-        { 
-          "comment": "Concepts/topics",
-          "name": "string",
-          "begin": "(?i)concept:|topic:",
-                    "beginCaptures": {
-                         "1": { "name": "support.function.Chatscript" },
-                         "2": { "name": "support.function.Chatscript" }
-                    },
-          "patterns": [
-               { "include": "$self" },
-
-                { 
-                  "comment": "Open parenteses",
-                  "match": "(\\()",
-                  "name": "entity.other.attribute-name"                                        
-                },                
-
-                { 
-                  "comment": "Topic Control Flags",
-                  "match": "(?i)(Random|NoRandom|Keep|Erase|NoStay|Stay|Repeat|NoRepeat|Priority|Normal|Deprioritize|System|User|NoBlocking|NoPatterns|NoSamples|NoKeys|More|Bot=|bot:|Share)(\\s)",
-                  "name": "keyword.source.Chatscript"                                        
-                },   
-                { 
-                  "comment": "Intercepts ontologies",
-                  "match": "(~+[a-z,A-Z]\\w*\\b)|([a-z,A-Z]\\w*\\b~(\\d+))|([a-z,A-Z]\\w*\\b~(\\w+))",
-                  "name": "entity.other.attribute-name"
-                }   
-          ],
-          "end": "(\\))",
-          "endCaptures": {
-                       "1": { "name": "entity.other.attribute-name"}
-                   }
-        },
-
 
         { 
           "comment": "Read/Set System Variables",
@@ -78,7 +102,7 @@
 
         { 
           "comment": "System Variables",
-          "match": "(?i)(%)(date|day|daynumber|fulltime|hour|leapyear|daylightsavings|minute|month|monthname|second|volleytime|time|week|year|rand|bot|revisedinput|command|foreign|impliedyou|input|ip|length|more|morequestion|parsed|question|quotation|sentence|tense|user|userfirstline|userinput|voice|inputrejoinde|lastoutput|lastquestion|outputrejoinde|response|all|document|fact|freetext|freedict|freefact|regression|server|rule|topic|actualtopic|trace|dict|engine|os|script|version)",
+          "match": "(?i)(%)(date|day|daynumber|fulltime|hour|leapyear|daylightsavings|minute|month|monthname|second|volleytime|time|week|year|rand|bot|revisedinput|command|foreign|impliedyou|input|ip|length|more|morequestion|parsed|question|quotation|sentence|tense|user|userfirstline|userinput|voice|inputrejoinde|lastoutput|lastquestion|outputrejoinder|response|all|document|fact|freetext|freedict|freefact|regression|server|rule|topic|actualtopic|trace|dict|engine|os|script|version)",
            "name": "string.single.Chatscript",
           "captures": {
               "1": { "name": "keyword.source.Chatscript" },
@@ -88,7 +112,7 @@
 
 
         { 
-           "comment": "Style and intercept Chatscript rules (u:,s:,t:,r:,?:,a-q:). Also include LABELS, whitespace, open parens. Everything until the 'end' property act under this meta-rule",
+           "comment": "#####This is the metascope that encapsulate most matching#####",
            "name": "rules.complex.Chatscript",
            "begin": "(([u,s,t,r,\\?]:\\s*)|([a-q\\?]:\\s*))(\\w*+)(\\s*)(\\()",
            "beginCaptures": {
@@ -98,7 +122,6 @@
                "6": { "name": "keyword.Chatscript" },
                "7": { "name": "keyword.Chatscript" }
            },
-
            "patterns": [
                { "include": "$self" },
                {
@@ -112,7 +135,6 @@
                   "10": { "name": "keyword.Chatscript" }
                 }
                },
-
                 { 
                   "comment": "Intercept user variables",
                   "match": "(\\$)(\\w+)",
@@ -122,31 +144,26 @@
                   "2": { "name": "variable.parameter" }
                   }
                 },
-
                 { 
                   "comment": "Intercept booleans that are not touching characters",
                   "match": "(?i)(?<!\\w)(null|true|false|and|or)(?<!\\w)",
                   "name": "constant.language.Chatscript"
                 },  
-
                 { 
                   "comment": "Intercepts ontologies",
-                  "match": "(~+[a-z,A-Z]\\w*\\b)|([a-z,A-Z]\\w*\\b~(\\d+))|([a-z,A-Z]\\w*\\b~(\\w+))",
+                  "match": "(~+[a-z,A-Z,-,_]\\w*\\b)|([a-z,A-Z,-,_]\\w*\\b~(\\d+))|([a-z,A-Z,-,_]\\w*\\b~(\\w+))",
                   "name": "entity.name.class"
                 },   
-
                 { 
                   "comment": "Intercept wildcards char and values",
                   "match": "(\\*~?\\d?)",
                   "name": "keyword.source.Chatscript"   
                 },
-
                 { 
                   "comment": "Intercept words with wildcards",
                   "match": "\\w+(\\*)\\w+",
                   "name": "string.Chatscript"
                 },
-
                 {   
                   "comment": "Intercept conditionals",
                   "match": "((!=)|(>=)|(<=)|(>)|(<)|(==)|(=))((\\d+)|(\\w+))",
@@ -155,35 +172,29 @@
                       "9": { "name": "constant.other.Chatscript" }
                     }
                 },
-
                 { 
                   "comment": "Intercept <,>,!,?,&,~",
                   "match": "(<)|(>)|(!)|(\\?)|(&)|(~\\s)|(_)|(\\\\)",
                   "name": "keyword.Chatscript"
                 },
-
                 { 
                 "comment": "Intercept digits",
                 "match": "\\s([\\d])+",
                 "name": "constant.other.Chatscript"
               },
-
               { "include": "$self" },
                {  
-                  "comment": "Everything unmatched at this point is likely words to intercepts. Match 'everything'.",
+                  "comment": "Everything unmatched at this point is likely words to intercepts so we match '.'",
                   "name": "string.Chatscript",
                   "match": "."
-                  
               }
            ],
-           "comment": "Define the very last element of a ChatScript rule definition. Everything below this line is not matched yet.",
+           "comment": "#####Define the last element of the meta-scope#####",
            "end": "(\\))\\s*+(?!=(<<)|(>>)|((\\[)(\\w*)(\\]))|(\\{)|(\\})|(\\()|(\\))|(\\*)|(_\\D))",
            "endCaptures": {
                "1": { "name": "keyword.Chatscript"}
            }
         },
-
-
 
 
         { 
@@ -213,7 +224,6 @@
                    }
         },
 
-
         { 
           "comment": "Intercept else statement and opening brackets separately",
           "match": "((else) (\\{))|(\\{)|(\\})|(\\[)|(\\])",
@@ -221,15 +231,13 @@
           "captures": {
               "2": { "name": "variable.parameter.source.Chatscript" }
           }
-        },      
-
+        },
 
         {   
          "comment": "Intercept variable assignements",
           "match": "(\\s?)((\\+=)|(-=)|(\\*=)|(/=)|(%=)|(\\|=)|(&=)|(\\^=)|((?<!=)=(?!=)))",  
           "name": "variable.parameter" 
         },
-
 
         { 
           "comment": "Intercept gambits without user input",
@@ -243,13 +251,11 @@
           "name": "constant.other.Chatscript"
         },
 
-
         { 
           "comment": "Intercept digits",
           "match": "\\s?(\\d)+|(?i)null",
           "name": "constant.other.Chatscript"
         },
-
 
         { 
           "comment": "Intercept user variables outside of rules",
@@ -260,8 +266,7 @@
               "2": { "name": "keyword.source.Chatscript" },
               "3": { "name": "support.function.Chatscript" }
           }
-        },        
-
+        }, 
 
         { 
           "comment": "Intercept match variables",
@@ -275,12 +280,12 @@
 
         { 
           "comment": "Intercepts ontologies outside of regular match rules",
-          "match": "((~+[a-z,A-Z]\\w*\\b)|([a-z,A-Z]\\w*\\b~(\\d+))|([a-z,A-Z]\\w*\\b~(\\w+)))(\\.?)([A-Z]*)",
+          "match": "((~+[a-z,A-Z,-,_]\\w*\\b)|([a-z,A-Z,-,_]\\w*\\b~(\\d+))|([a-z,A-Z,-,_]\\w*\\b~(\\w+)))(\\.?)([A-Z]*)",
           "name": "entity.name.class",
           "captures": {
               "7": { "name": "entity.name.class" }
           }
-        },   
+        },
 
         { 
           "comment": "Topic Functions",
@@ -303,7 +308,6 @@
                    }
         },
 
-
         { 
           "comment": "Marking Functions",
           "name": "rules.complex.Chatscript",
@@ -324,7 +328,6 @@
                        "1": { "name": "keyword.Chatscript"}
                    }
         },        
-
 
         { 
           "comment": "Input Functions",
@@ -347,7 +350,6 @@
                    }
         },        
 
-
         { 
           "comment": "Number Functions",
           "name": "rules.complex.Chatscript",
@@ -368,7 +370,6 @@
                        "1": { "name": "keyword.Chatscript"}
                    }
         },        
-
 
         { 
           "comment": "Output Functions",
@@ -391,7 +392,6 @@
                    }
         },        
 
-
         { 
           "comment": "Output Access",
           "name": "rules.complex.Chatscript",
@@ -412,7 +412,6 @@
                        "1": { "name": "keyword.Chatscript"}
                    }
         },        
-
 
         { 
           "comment": "PostProcessing Functions",
@@ -435,11 +434,10 @@
                    }
         },        
 
-
         { 
           "comment": "Control Flow Functions",
           "name": "rules.complex.Chatscript",
-          "begin": "(?i)(\\^?)(argument|command|end|eval|fail|match|nofail|notnull|addcontext|incontext)(\\()",
+          "begin": "(?i)(\\^?)(argument|command|end|eval|fail|loop|match|nofail|notnull|addcontext|incontext)(\\()",
           "beginCaptures": {
                "1": { "name": "keyword.Chatscript" },
                "2": { "name": "variable.parameter.source.Chatscript" },
@@ -456,7 +454,6 @@
                        "1": { "name": "keyword.Chatscript"}
                    }
         },
-
 
         { 
           "comment": "Word Manipulation Functions",
@@ -478,7 +475,6 @@
                        "1": { "name": "keyword.Chatscript"}
                    }
         },        
-
 
         { 
           "comment": "Multipurpose Functions",
@@ -521,7 +517,6 @@
                        "1": { "name": "keyword.Chatscript"}
                    }
         }
-
   ],
   "uuid": "217a687b-ce56-4078-8034-5b1303f17a77"
 }
