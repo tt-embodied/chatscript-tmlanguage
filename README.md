@@ -5,7 +5,7 @@
 A [ChatScript 5.31](http://chatscript.sourceforge.net) language definition. :cake: 
 
 **_May 2015_**  
-**_v0.8.4_**  
+**_v0.9_**  
 
 I use Monokai as my ST color scheme, but it should look fine with others as well. It is purposefully very colorful.
 
