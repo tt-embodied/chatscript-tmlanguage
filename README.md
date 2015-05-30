@@ -2,33 +2,31 @@
 
 ### Summary ###
 
-A [ChatScript 5.31](http://chatscript.sourceforge.net) language definition. :cake: 
+A [ChatScript 5.31](http://chatscript.sourceforge.net) syntax definition. :cake: 
 
 **_May 2015_**  
-**_v0.9_**  
+**_v0.9.0_**  
 
 I use Monokai as my ST color scheme, but it should look fine with others as well. It is purposefully very colorful.
 
 ![alt tag](http://i.imgur.com/SUYO0jn.png)
 
-### Install ###
-* Put the *Chatscript.tmLanguage* file in your Package/User folder
-  * Windows: %APPDATA%\Sublime Text
-  * OSX: ~/Library/Application Support/Sublime Text
-  * Linux: ~/.config/sublime-text
-* Restart Sublime Text
-* You can now select View->Syntax/Chatscript from the menu
+### Install
+**Install with wbond's [Sublime Text Package Control](https://packagecontrol.io/installation):**  
+  * ```CTRL+SHIFT+P```, Install..., ```ENTER```  
+  * Search for Chatscript syntax, ```ENTER```  
+  * That' it. And you'll get the updates too!  
 
-### Contribute ###
+### Contribute
 * Install the AAAPackageDev in Sublime Text 
 * Edit the regex rules in the JSON-tmLanguage file 
 * Compile the file into a property list by doing ```CTRL+B``` 
-* Please be consistent with the color scheme if you contribute 
+* Pull request!  
 
-### Refs ###
-http://www.lablablab.net/en/about/  
+### Refs
 http://docs.sublimetext.info/en/latest/extensibility/syntaxdefs.html  
 http://manual.macromates.com/en/language_grammars  
 http://www.geocities.jp/kosako3/oniguruma/doc/RE.txt  
 http://chatscript.sourceforge.net/Documentation/  
 http://tmtheme-editor.herokuapp.com/#/theme/Monokai  
+http://www.lablablab.net/en/about/ 
