@@ -12,18 +12,19 @@ I use Monokai as my ST color scheme, but it should look fine with others as well
 ![alt tag](http://i.imgur.com/SUYO0jn.png)
 
 ### Install
-**Install with wbond's [Sublime Text Package Control](https://packagecontrol.io/installation):**  
-  * ```CTRL+SHIFT+P```, Install..., ```ENTER```  
-  * Search for Chatscript syntax, ```ENTER```  
+**Install through [Package Control](https://packagecontrol.io/installation):**  
+  * ```CTRL+SHIFT+P```, _Install..._, ```ENTER```  
+  * Search for _Chatscript syntax_, ```ENTER```  
   * That' it. And you'll get the updates too!  
 
 ### Contribute
 * Install the AAAPackageDev in Sublime Text 
 * Edit the regex rules in the JSON-tmLanguage file 
-* Compile the file into a property list by doing ```CTRL+B``` 
+* Compile the file into a property list with ```CTRL+B``` 
 * Pull request!  
 
 ### Refs
+http://www.apeth.com/nonblog/stories/textmatebundle.html
 http://docs.sublimetext.info/en/latest/extensibility/syntaxdefs.html  
 http://manual.macromates.com/en/language_grammars  
 http://www.geocities.jp/kosako3/oniguruma/doc/RE.txt  
