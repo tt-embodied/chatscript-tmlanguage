@@ -1,358 +1,647 @@
 # [PackageDev] target_format: plist, ext: tmLanguage
-name: Chatscript
+name: chatscript
 scopeName: source.top
-fileTypes: [top, tbl]
+fileTypes: [top, tbl, tst]
 uuid: 217a687b-ce56-4078-8034-5b1303f17a77
 
 patterns:
+
+
+#############
+# Variables #
+#############
+
+- comment: System variables (date & time & numbers)
+  name: keyword.source.chatscript
+  match: '(\%)(date|day|daynumber|fulltime|timenumbers|leapyear|
+            daylightsavings|minute|month|monthname|second|
+            volleytime|time|week|year|rand)'
+
+- comment: System variables (user input)
+  name: keyword.source.chatscript
+  match: '(\%)(bot|revisedinput|command|foreign|impliedyou|
+            input|ip|length|more|morequestion|originalinput|
+            originalsentence|parsed|question|quotation|
+            sentence|tense|user|userfirstline|userinput|
+            voice)'
+
+- comment: System variables (chatbot output)
+  name: keyword.source.chatscript
+  match: '(\%)(all|document|fact|freetext|freedict|freefact|
+            maxmatchvariables|maxfactsets|host|regression|
+            server|rule|topic|actualtopic|trace)'
+
+- comment: System variables (build data)
+  name: keyword.source.chatscript
+  match: '(\%)(dict|engine|os|script|version)'
+
+- comment: Interchange variables
+  name: keyword.source.chatscript
+  match: '(\$)(cs_token|cs_response|cs_jsontimeout|cs_crashmsg|
+            cs_abstract|cs_looplimit|cs_trace|cs_control_pre|
+            cs_prepass|cs_control_main|cs_control_post|botprompt|
+            userprompt|cs_crashmsg|cs_language|cs_token|
+            cs_abstract|cs_prepass|cs_wildcardseparator|
+            cs_userfactlimit|cs_response|cs_randindex|
+            cs_utcoffset|cs_randindex|_bot|
+            cs_login|\$db_error|\$findtext_start|
+            \$tcpopen_error|\$document)'
+
+- comment: Input capture variables
+  name: variable.parameter.chatscript
+  match: '_(\**)[0-9]+'
+
+- comment: User transient variables
+  name: variable.parameter.chatscript
+  match: '\$\$\w+'
+
+- comment: User variables
+  name: variable.parameter.chatscript
+  match: '\$[\w, \-, _]+'
+
+- comment: Onthologies are variables
+  name: variable.parameter.chatscript
+  match: '~[\w, \-, _]*'
+
+
+###############################
+# Types & operators & control #
+###############################
+
+# - comment: Execution flow
+#   contentName: none.chatscript
+#   begin: '(if|else)'
+#   beginCaptures:
+#     '1': {name: keyword.chatscript}
+#     '2': {name: keyword.chatscript}
+#   end: '\}'
+#   patterns:
+#   - include: $self
+#   - name: variable.chatscript
+#     match: . 
+
+- comment: Integers
+  name: constant.numeric.chatscript
+  match: '(?:\s+)[0-9]+'
+
+- comment: Strings
+  name: string.source.chatscript
+  match: '(\^\".+\")'
+
+- comment: Boolean & state
+  name: constant.numeric.chatscript
+  match: '(?:\s*)(null|true|false)'
+
+- comment: Euquality
+  name: keyword.chatscript
+  match: '((?:\s*)(AND|OR)(?:\s+))|==|\!=|>|<'
+
+- comment: Assigment
+  name: keyword.chatscript
+  match: '(?:\s*)(=|\+=|-=|\+|-|\*|!|\?(?!:))'
+
+- comment: CS special charaters
+  name: keyword.chatscript
+  # match: '\*|\!|\?|\[|\]|\{|\}|\"|\"'
+
+
+#############
+# Functions #
+#############
+
+- comment: Built-in functions (topics)
+  contentName: variable.chatscript
+  begin: '(\^(addtopic|available|cleartopics|counttopics|gambit|
+           getrule|hasgambit|keep|lastused|next|poptopic|refine|
+           rejoinder|respond|retry|reuse|sequence|setrejoinder|
+           topicflags))(\()'
+  beginCaptures:
+    '1': {name: support.function.chatscript}
+  end: '\)'
+  patterns:
+  - include: $self
+  - name: variable.chatscript
+    match: .
+
+- comment: Built-in functions (marking)
+  contentName: variable.chatscript
+  begin: '(\^(mark|unmark|position|setposition|marked))(\()'
+  beginCaptures:
+    '1': {name: support.function.chatscript}
+  end: '\)'
+  patterns:
+  - include: $self
+  - name: variable.chatscript
+    match: .
+
+- comment: Built-in functions (input)
+  contentName: variable.chatscript
+  begin: '(\^(analyze|capitalized|input|original|position|removetokenflags|
+           settokenflags|setwildcardindex))(\()'
+  beginCaptures:
+    '1': {name: support.function.chatscript}
+  end: '\)'
+  patterns:
+  - include: $self
+  - name: variable.chatscript
+    match: .
+
+- comment: Built-in functions (number)
+  contentName: variable.chatscript
+  begin: '(\^(compute|timefromseconds|timeinfofromseconds|timetoeconds))(\()'
+  beginCaptures:
+    '1': {name: support.function.chatscript}
+  end: '\)'
+  patterns:
+  - include: $self
+  - name: variable.chatscript
+    match: .
+
+- comment: Built-in functions (output)
+  contentName: variable.chatscript
+  begin: '(\^(flushoutput|insertprint|keephistory|lastsaid|print|
+           preprint|repeat|reviseOutput))(\()'
+  beginCaptures:
+    '1': {name: support.function.chatscript}
+  end: '\)'
+  patterns:
+  - include: $self
+  - name: variable.chatscript
+    match: .
+
+- comment: Built-in functions (output access)
+  contentName: variable.chatscript
+  begin: '(\^(response|responsequestion|responseruleid))(\()'
+  beginCaptures:
+    '1': {name: support.function.chatscript}
+  end: '\)'
+  patterns:
+  - include: $self
+  - name: variable.chatscript
+    match: .
+
+- comment: Built-in functions (output access)
+  contentName: variable.chatscript
+  begin: '(\^(postprintbefore|postprintafter))(\()'
+  beginCaptures:
+    '1': {name: support.function.chatscript}
+  end: '\)'
+  patterns:
+  - include: $self
+  - name: variable.chatscript
+    match: .    
+
+- comment: Built-in functions (control flow)
+  contentName: variable.chatscript
+  begin: '(\^(argument|command|end|eval|fail|load|match|nofail|
+           notnull|norejoinder|nottrace|return|addcontext|
+           incontext))(\()'
+  beginCaptures:
+    '1': {name: support.function.chatscript}
+  end: '\)'
+  patterns:
+  - include: $self
+  - name: variable.chatscript
+    match: .    
+
+- comment: Built-in functions (external access)
+  contentName: variable.chatscript
+  begin: '(\^(system|popen|tcpopen|export|import|debug|log))(\()'
+  beginCaptures:
+    '1': {name: support.function.chatscript}
+  end: '\)'
+  patterns:
+  - include: $self
+  - name: variable.chatscript
+    match: .    
+
+- comment: Built-in functions (json)
+  contentName: variable.chatscript
+  begin: '(\^(jsonarrayinsert|jsonarraydelete|jsoncreate|
+           jsondelete|jsongather|jsonobjectinsert|jsonopen|
+           jsonprint|jsonwrite|jsonparse|jsonpath|jsonarraysize))(\()'
+  beginCaptures:
+    '1': {name: support.function.chatscript}
+  end: '\)'
+  patterns:
+  - include: $self
+  - name: none.chatscript
+    match: . 
+
+- comment: Built-in functions (word manipulation)
+  contentName: variable.chatscript
+  begin: '(\^(burst|words|canon|explode|extract|findtext|flags|
+           intersectwords|join|properties|pos|decodeinputtoken|
+           decodepos|partofspeech|role|tally|rhyme|substitute|
+           spell|sexed|uppercase|addproperty|define|hasanyproperty|
+           hasallproperty|removeinternalflag|removeproperty|walkdictionary|
+           iterator))(\()'
+  beginCaptures:
+    '1': {name: support.function.chatscript}
+  end: '\)'
+  patterns:
+  - include: $self
+  - name: variable.chatscript
+    match: .     
+
+- comment: Built-in functions (multipurpose)
+  contentName: variable.chatscript
+  begin: '(\^(disable|enable|length|pick|reset))(\()'
+  beginCaptures:
+    '1': {name: support.function.chatscript}
+  end: '\)'
+  patterns:
+  - include: $self
+  - name: variable.chatscript
+    match: .     
+
+- comment: Built-in functions (facts)
+  contentName: variable.chatscript
+  begin: '(\^
+          (findfact|query|first|last|pick|sort|delete|length|
+           nth|unpackfactref|save|addproperty|conceptlist|createattribute|
+           createfact|writefact|revisefact|field|find|findmarkedfact|
+           flushfacts|gambittopics|intersectfacts|keywordtopics|last|
+           makereal|next|pendingtopics|pick|querytopics|removeproperty|
+           reset|query|save|unduplicate|uniquefacts|unpackfactref))(\()'
+  beginCaptures:
+    '1': {name: support.function.chatscript}
+  end: '\)'
+  patterns:
+  - include: $self
+  - name: variable.chatscript
+    match: .     
+
+- comment: User defined function
+  contentName: variable.chatscript
+  begin: '(\^(\w+))(\()'
+  beginCaptures:
+    '1': {name: support.function.chatscript}
+  end: '\)'
+  patterns:
+  - include: $self
+  - name: variable.chatscript
+    match: .     
+
+
+############
+# Comments #
+############
+
+- comment: Multiline comments
+  name: comment.line.number-sign.chatscript
+  begin: (\#\#<<)
+  end: (\#\#>>)
+
 - comment: Comments
-  name: comment.line.number-sign.Chatscript
-  match: (\#\s+.*)|(\#!\s+.*)|(\#!x\s+.*)
+  name: comment.line.number-sign.chatscript
+  match: (\#\s?.*)|(\#!\s?.*)|(\#!x\s?.*)
 
-- comment: Control tokens
-  name: keyword.source.Chatscript
-  match: '#DO_DATE_MERGE|#DO_POSTAG|#DO_PARSE|#DO_CONDITIONAL_POSTAG|#NO_ERASE|#STRICT_CASING|#NO_INFER_QUESTION|#DO_SPELLCHECK|#ONLY_LOWERCASE|#NO_IMPERATIVE|#NO_WITHIN|#NO_SENTENCE_END|#NO_HYPHEN_END|#NO_COLON_END|#NO_SEMICOLON_END|#DO_ESSENTIALS|#DO_SUBSTITUTES|#DO_CONTRACTIONS|#DO_INTERJECTIONS|#DO_BRITISH|#DO_SPELLING|#DO_TEXTING|#DO_SUBSTITUTE_SYSTEM|#DO_INTERJECTION_SPLITTING|#DO_NUMBER_MERGE|#DO_PROPERNAME_MERGE'
+# - comment: Comments
+#   name: comment.line.number-sign.chatscript
+#   match: (\#\s+.*)|(\#!\s+.*)|(\#!x\s+.*)
 
-- comment: Close parenteses
-  begin: (?i)(outputmacro:|table:)
-  end: (\))
-  endCaptures:
-    '1': {name: support.function.Chatscript}
-  captures:
-    '1': {name: support.function.Chatscript}
-  patterns:
-  - include: $self
-  - comment: Open parenteses
-    name: support.function.Chatscript
-    match: (\()
-  - comment: Intercepts ontologies
-    name: entity.other.attribute-name
-    match: (~+[a-z,A-Z,-,_]\w*\b)|([a-z,A-Z,-,_]\w*\b~(\d+))|([a-z,A-Z,-,_]\w*\b~(\w+))
-  - comment: Intercepts variables
-    match: (?i)(\^\w*)
 
-- comment: Close parenteses
-  name: string
-  begin: '(?i)concept:|topic:'
-  end: (\))
-  endCaptures:
-    '1': {name: entity.other.attribute-name}
-  patterns:
-  - include: $self
-  - comment: Open parenteses
-    name: entity.other.attribute-name
-    match: (\()
-  - comment: Topic Control Flags
-    name: keyword.source.Chatscript
-    match: (?i)(Random|NoRandom|Keep|Erase|NoStay|Stay|Repeat|NoRepeat|Priority|Normal|Deprioritize|System|User|NoBlocking|NoPatterns|NoSamples|NoKeys|More|Bot=|bot:|Share)(\s)
-  - comment: Intercepts ontologies
-    name: entity.other.attribute-name
-    match: (~+[a-z,A-Z,-,_]\w*\b)|([a-z,A-Z,-,_]\w*\b~(\d+))|([a-z,A-Z,-,_]\w*\b~(\w+))
+# - comment: Close parenteses
+#   begin: (?i)(outputmacro:|table:)
+#   end: (\))
+#   endCaptures:
+#     '1': {name: support.function.chatscript}
+#   captures:
+#     '1': {name: support.function.chatscript}
+#   patterns:
+#   - include: $self
+#   - comment: Open parenteses
+#     name: support.function.chatscript
+#     match: (\()
+#   - comment: Intercepts ontologies
+#     name: entity.other.attribute-name
+#     match: (~+[a-z,A-Z,-,_]\w*\b)|([a-z,A-Z,-,_]\w*\b~(\d+))|([a-z,A-Z,-,_]\w*\b~(\w+))
+#   - comment: Intercepts variables
+#     match: (?i)(\^\w*)
 
-- comment: Data
-  name: support.function.Chatscript
-  match: '(?i)data:'
+# - comment: Close parenteses
+#   name: string
+#   begin: '(?i)concept:|topic:'
+#   end: (\))
+#   endCaptures:
+#     '1': {name: entity.other.attribute-name}
+#   patterns:
+#   - include: $self
+#   - comment: Open parenteses
+#     name: entity.other.attribute-name
+#     match: (\()
+#   - comment: Topic Control Flags
+#     name: keyword.source.chatscript
+#     match: (?i)(Random|NoRandom|Keep|Erase|NoStay|Stay|Repeat|NoRepeat|Priority|Normal|Deprioritize|System|User|NoBlocking|NoPatterns|NoSamples|NoKeys|More|Bot=|bot:|Share)(\s)
+#   - comment: Intercepts ontologies
+#     name: entity.other.attribute-name
+#     match: (~+[a-z,A-Z,-,_]\w*\b)|([a-z,A-Z,-,_]\w*\b~(\d+))|([a-z,A-Z,-,_]\w*\b~(\w+))
 
-- comment: Read/Set System Variables
-  name: string.single.Chatscript
-  match: (?i)(\$)(control_pre|control_main|control_post|botprompt|userprompt|crashmsg|token|abstract|prepass|bot|login|randindex)
-  captures:
-    '1': {name: keyword.source.Chatscript}
-    '2': {name: variable.parameter.source.Chatscript}
+# - comment: Data
+#   name: support.function.chatscript
+#   match: '(?i)data:'
 
-- comment: Read/Set System Variables 5.31
-  name: string.single.Chatscript
-  match: (?i)(\$)(cs_prepass|cs_control_pre|cs_control_main|cs_control_post|cs_token|cs_response|cs_crashmsg|cs_abstract|cs_userfactlimit|cs_randindex|db_error|findtext_start|tcpopen_error|document|cs_randindex|bot|login)
-  captures:
-    '1': {name: keyword.source.Chatscript}
-    '2': {name: variable.parameter.source.Chatscript}
+# - comment: Read/Set System Variables
+#   name: string.single.chatscript
+#   match: (?i)(\$)(control_pre|control_main|control_post|botprompt|userprompt|crashmsg|token|abstract|prepass|bot|login|randindex)
+#   captures:
+#     '1': {name: keyword.source.chatscript}
+#     '2': {name: variable.parameter.source.chatscript}
 
-- comment: System Variables
-  name: string.single.Chatscript
-  match: (?i)(%)(date|day|daynumber|fulltime|hour|leapyear|daylightsavings|minute|month|monthname|second|volleytime|time|week|year|rand|bot|revisedinput|command|foreign|impliedyou|input|ip|length|more|morequestion|parsed|question|quotation|sentence|tense|user|userfirstline|userinput|voice|inputrejoinde|lastoutput|lastquestion|outputrejoinder|response|all|document|fact|freetext|freedict|freefact|regression|server|rule|topic|actualtopic|trace|dict|engine|os|script|version)
-  captures:
-    '1': {name: keyword.source.Chatscript}
-    '2': {name: variable.parameter.source.Chatscript}
+# - comment: Read/Set System Variables 5.31
+#   name: string.single.chatscript
+#   match: (?i)(\$)(cs_prepass|cs_control_pre|cs_control_main|cs_control_post|cs_token|cs_response|cs_crashmsg|cs_abstract|cs_userfactlimit|cs_randindex|db_error|findtext_start|tcpopen_error|document|cs_randindex|bot|login)
+#   captures:
+#     '1': {name: keyword.source.chatscript}
+#     '2': {name: variable.parameter.source.chatscript}
 
-- comment: '#####Define the last element of the meta-scope#####'
-  name: rules.complex.Chatscript
-  begin: (([u,s,t,r,\?]:\s*)|([a-q\?]:\s*))(\w*+)(\s*)(\()
-  beginCaptures:
-    '2': {name: keyword.Chatscript}
-    '3': {name: variable.parameter}
-    '4': {name: entity.other.attribute-name}
-    '6': {name: keyword.Chatscript}
-    '7': {name: keyword.Chatscript}
-  end: (\))\s*+(?!=(<<)|(>>)|((\[)(\w*)(\]))|(\{)|(\})|(\()|(\))|(\*)|(_\D))
-  endCaptures:
-    '1': {name: keyword.Chatscript}
-  patterns:
-  - include: $self
-  - comment: Intercept brackets and << >>)
-    name: string.Chatscript
-    match: ((<<)|(>>))|((\[)|(\]))|((\{)|(\}))|((\()|(\)))
-    captures:
-      '1': {name: keyword.Chatscript}
-      '4': {name: keyword.Chatscript}
-      '7': {name: keyword.Chatscript}
-      '10': {name: keyword.Chatscript}
-  - comment: Intercept user variables
-    name: string.single.Chatscript
-    match: (\$)(\w+)
-    captures:
-      '1': {name: keyword.source.Chatscript}
-      '2': {name: variable.parameter}
-  - comment: Intercept booleans that are not touching characters
-    name: constant.language.Chatscript
-    match: (?i)(?<!\w)(null|true|false|and|or)(?<!\w)
-  - comment: Intercepts ontologies
-    name: entity.name.class
-    match: (~+[a-z,A-Z,-,_]\w*\b)|([a-z,A-Z,-,_]\w*\b~(\d+))|([a-z,A-Z,-,_]\w*\b~(\w+))
-  - comment: Intercept wildcards char and values
-    name: keyword.source.Chatscript
-    match: (\*~?\d?)
-  - comment: Intercept words with wildcards
-    name: string.Chatscript
-    match: \w+(\*)\w+
-  - comment: Intercept conditionals
-    match: ((!=)|(>=)|(<=)|(>)|(<)|(==)|(=))((\d+)|(\w+))
-    captures:
-      '1': {name: keyword.source.Chatscript}
-      '9': {name: constant.other.Chatscript}
-  - comment: Intercept <,>,!,?,&,~
-    name: keyword.Chatscript
-    match: (<)|(>)|(!)|(\?)|(&)|(~\s)|(_)|(\\)
-  - comment: Intercept digits
-    name: constant.other.Chatscript
-    match: \s([\d])+
-  - include: $self
-  - comment: Everything unmatched at this point is likely words to intercepts so we
-      match '.'
-    name: string.Chatscript
-    match: .
+# - comment: System Variables
+#   name: string.single.chatscript
+#   match: (?i)(%)(date|day|daynumber|fulltime|hour|leapyear|daylightsavings|minute|month|monthname|second|volleytime|time|week|year|rand|bot|revisedinput|command|foreign|impliedyou|input|ip|length|more|morequestion|parsed|question|quotation|sentence|tense|user|userfirstline|userinput|voice|inputrejoinde|lastoutput|lastquestion|outputrejoinder|response|all|document|fact|freetext|freedict|freefact|regression|server|rule|topic|actualtopic|trace|dict|engine|os|script|version)
+#   captures:
+#     '1': {name: keyword.source.chatscript}
+#     '2': {name: variable.parameter.source.chatscript}
 
-- comment: Intercept if/else if statement
-  name: rules.complex.Chatscript
-  begin: ((if)|(else if))\s?(\()
-  beginCaptures:
-    '1': {name: variable.parameter.source.Chatscript}
-    '4': {name: keyword.Chatscript}
-  end: (\))
-  endCaptures:
-    '1': {name: keyword.Chatscript}
-  patterns:
-  - include: $self
-  - comment: Conditions and operators
-    match: (?i)(!=|>=|<=|>|<|==)|(and|or)|(!)
-    captures:
-      '1': {name: keyword.source.Chatscript}
-      '2': {name: string}
-      '3': {name: constant.other.Chatscript}
+# - comment: '#####Define the last element of the meta-scope#####'
+#   name: rules.complex.chatscript
+#   begin: (([u,s,t,r,\?]:\s*)|([a-q\?]:\s*))(\w*+)(\s*)(\()
+#   beginCaptures:
+#     '2': {name: keyword.chatscript}
+#     '3': {name: variable.parameter}
+#     '4': {name: entity.other.attribute-name}
+#     '6': {name: keyword.chatscript}
+#     '7': {name: keyword.chatscript}
+#   end: (\))\s*+(?!=(<<)|(>>)|((\[)(\w*)(\]))|(\{)|(\})|(\()|(\))|(\*)|(_\D))
+#   endCaptures:
+#     '1': {name: keyword.chatscript}
+#   patterns:
+#   - include: $self
+#   - comment: Intercept brackets and << >>)
+#     name: string.chatscript
+#     match: ((<<)|(>>))|((\[)|(\]))|((\{)|(\}))|((\()|(\)))
+#     captures:
+#       '1': {name: keyword.chatscript}
+#       '4': {name: keyword.chatscript}
+#       '7': {name: keyword.chatscript}
+#       '10': {name: keyword.chatscript}
+#   - comment: Intercept user variables
+#     name: string.single.chatscript
+#     match: (\$)(\w+)
+#     captures:
+#       '1': {name: keyword.source.chatscript}
+#       '2': {name: variable.parameter}
+#   - comment: Intercept booleans that are not touching characters
+#     name: constant.language.chatscript
+#     match: (?i)(?<!\w)(null|true|false|and|or)(?<!\w)
+#   - comment: Intercepts ontologies
+#     name: entity.name.class
+#     match: (~+[a-z,A-Z,-,_]\w*\b)|([a-z,A-Z,-,_]\w*\b~(\d+))|([a-z,A-Z,-,_]\w*\b~(\w+))
+#   - comment: Intercept wildcards char and values
+#     name: keyword.source.chatscript
+#     match: (\*~?\d?)
+#   - comment: Intercept words with wildcards
+#     name: string.chatscript
+#     match: \w+(\*)\w+
+#   - comment: Intercept conditionals
+#     match: ((!=)|(>=)|(<=)|(>)|(<)|(==)|(=))((\d+)|(\w+))
+#     captures:
+#       '1': {name: keyword.source.chatscript}
+#       '9': {name: constant.other.chatscript}
+#   - comment: Intercept <,>,!,?,&,~
+#     name: keyword.chatscript
+#     match: (<)|(>)|(!)|(\?)|(&)|(~\s)|(_)|(\\)
+#   - comment: Intercept digits
+#     name: constant.other.chatscript
+#     match: \s([\d])+
+#   - include: $self
+#   - comment: Everything unmatched at this point is likely words to intercepts so we
+#       match '.'
+#     name: string.chatscript
+#     match: .
 
-- comment: Intercept else statement and opening brackets separately
-  name: keyword.Chatscript
-  match: ((else) (\{))|(\{)|(\})|(\[)|(\])
-  captures:
-    '2': {name: variable.parameter.source.Chatscript}
+# - comment: Intercept if/else if statement
+#   name: rules.complex.chatscript
+#   begin: ((if)|(else if))\s?(\()
+#   beginCaptures:
+#     '1': {name: variable.parameter.source.chatscript}
+#     '4': {name: keyword.chatscript}
+#   end: (\))
+#   endCaptures:
+#     '1': {name: keyword.chatscript}
+#   patterns:
+#   - include: $self
+#   - comment: Conditions and operators
+#     match: (?i)(!=|>=|<=|>|<|==)|(and|or)|(!)
+#     captures:
+#       '1': {name: keyword.source.chatscript}
+#       '2': {name: string}
+#       '3': {name: constant.other.chatscript}
 
-- comment: Intercept variable assignements
-  name: variable.parameter
-  match: (\s?)((\+=)|(-=)|(\*=)|(/=)|(%=)|(\|=)|(&=)|(\^=)|((?<!=)=(?!=)))
+# - comment: Intercept else statement and opening brackets separately
+#   name: keyword.chatscript
+#   match: ((else) (\{))|(\{)|(\})|(\[)|(\])
+#   captures:
+#     '2': {name: variable.parameter.source.chatscript}
 
-- comment: Intercept gambits without user input
-  name: keyword.source.parameter
-  match: (^([t,r,\?]:)\s*)
+# - comment: Intercept variable assignements
+#   name: variable.parameter
+#   match: (\s?)((\+=)|(-=)|(\*=)|(/=)|(%=)|(\|=)|(&=)|(\^=)|((?<!=)=(?!=)))
 
-- comment: Intercept @digit
-  name: constant.other.Chatscript
-  match: '@(\d+)'
+# - comment: Intercept gambits without user input
+#   name: keyword.source.parameter
+#   match: (^([t,r,\?]:)\s*)
 
-- comment: Intercept digits
-  name: constant.other.Chatscript
-  match: \s?(\d)+|(?i)null
+# - comment: Intercept @digit
+#   name: constant.other.chatscript
+#   match: '@(\d+)'
 
-- comment: Intercept user variables outside of rules
-  name: string.single.Chatscript
-  match: (_?)(\${1,2})(\w+)
-  captures:
-    '1': {name: keyword.source.Chatscript}
-    '2': {name: keyword.source.Chatscript}
-    '3': {name: support.function.Chatscript}
+# - comment: Intercept digits
+#   name: constant.other.chatscript
+#   match: \s?(\d)+|(?i)null
 
-- comment: Intercept match variables
-  name: string.single.Chatscript
-  match: ('?_)(\d+)
-  captures:
-    '1': {name: keyword.source.Chatscript}
-    '2': {name: support.function.Chatscript}
+# - comment: Intercept user variables outside of rules
+#   name: string.single.chatscript
+#   match: (_?)(\${1,2})(\w+)
+#   captures:
+#     '1': {name: keyword.source.chatscript}
+#     '2': {name: keyword.source.chatscript}
+#     '3': {name: support.function.chatscript}
 
-- comment: Intercepts ontologies outside of regular match rules
-  name: entity.name.class
-  match: ((~+[a-z,A-Z,-,_]\w*\b)|([a-z,A-Z,-,_]\w*\b~(\d+))|([a-z,A-Z,-,_]\w*\b~(\w+)))(\.?)([A-Z]*)
-  captures:
-    '7': {name: entity.name.class}
+# - comment: Intercept match variables
+#   name: string.single.chatscript
+#   match: ('?_)(\d+)
+#   captures:
+#     '1': {name: keyword.source.chatscript}
+#     '2': {name: support.function.chatscript}
 
-- comment: Topic Functions
-  name: rules.complex.Chatscript
-  begin: (?i)(\^?)(addtopic|available|cleartopics|counttopic|gambit|getrule|hasgambit|keep|lastused|next|poptopic|refine|rejoinder|respond|retry|reuse|setrejoinder|topicflags)(\s?\()
-  beginCaptures:
-    '1': {name: keyword.Chatscript}
-    '2': {name: variable.parameter.source.Chatscript}
-    '3': {name: keyword.Chatscript}
-  end: (\))
-  endCaptures:
-    '1': {name: keyword.Chatscript}
-  patterns:
-  - include: $self
-  - name: support.other.variable
-    match: .
+# - comment: Intercepts ontologies outside of regular match rules
+#   name: entity.name.class
+#   match: ((~+[a-z,A-Z,-,_]\w*\b)|([a-z,A-Z,-,_]\w*\b~(\d+))|([a-z,A-Z,-,_]\w*\b~(\w+)))(\.?)([A-Z]*)
+#   captures:
+#     '7': {name: entity.name.class}
 
-- comment: Marking Functions
-  name: rules.complex.Chatscript
-  begin: (?i)(\^?)(mark|unmark|marked|position|setposition)(\()
-  beginCaptures:
-    '1': {name: keyword.Chatscript}
-    '2': {name: variable.parameter.source.Chatscript}
-    '3': {name: keyword.Chatscript}
-  end: (\))
-  endCaptures:
-    '1': {name: keyword.Chatscript}
-  patterns:
-  - include: $self
-  - match: .
-    name: support.other.variable
+# - comment: Topic Functions
+#   name: rules.complex.chatscript
+#   begin: (?i)(\^?)(addtopic|available|cleartopics|counttopic|gambit|getrule|hasgambit|keep|lastused|next|poptopic|refine|rejoinder|respond|retry|reuse|setrejoinder|topicflags)(\s?\()
+#   beginCaptures:
+#     '1': {name: keyword.chatscript}
+#     '2': {name: variable.parameter.source.chatscript}
+#     '3': {name: keyword.chatscript}
+#   end: (\))
+#   endCaptures:
+#     '1': {name: keyword.chatscript}
+#   patterns:
+#   - include: $self
+#   - name: support.other.variable
+#     match: .
 
-- comment: Input Functions
-  name: rules.complex.Chatscript
-  begin: (?i)(\^?)(analyze|capitalized|input|position|removetokenflags|settokenflags|setwildcardindex)(\()
-  beginCaptures:
-    '1': {name: keyword.Chatscript}
-    '2': {name: variable.parameter.source.Chatscript}
-    '3': {name: keyword.Chatscript}
-  end: (\))
-  endCaptures:
-    '1': {name: keyword.Chatscript}
-  patterns:
-  - include: $self
-  - match: .
-    name: support.other.variable
+# - comment: Marking Functions
+#   name: rules.complex.chatscript
+#   begin: (?i)(\^?)(mark|unmark|marked|position|setposition)(\()
+#   beginCaptures:
+#     '1': {name: keyword.chatscript}
+#     '2': {name: variable.parameter.source.chatscript}
+#     '3': {name: keyword.chatscript}
+#   end: (\))
+#   endCaptures:
+#     '1': {name: keyword.chatscript}
+#   patterns:
+#   - include: $self
+#   - match: .
+#     name: support.other.variable
 
-- comment: Number Functions
-  name: rules.complex.Chatscript
-  begin: (?i)(\^?)(compute|timefromseconds|timeinfofromseconds|timetoeconds)(\()
-  beginCaptures:
-    '1': {name: keyword.Chatscript}
-    '2': {name: variable.parameter.source.Chatscript}
-    '3': {name: keyword.Chatscript}
-  end: (\))
-  endCaptures:
-    '1': {name: keyword.Chatscript}
-  patterns:
-  - include: $self
-  - match: .
-    name: support.other.variable
+# - comment: Input Functions
+#   name: rules.complex.chatscript
+#   begin: (?i)(\^?)(analyze|capitalized|input|position|removetokenflags|settokenflags|setwildcardindex)(\()
+#   beginCaptures:
+#     '1': {name: keyword.chatscript}
+#     '2': {name: variable.parameter.source.chatscript}
+#     '3': {name: keyword.chatscript}
+#   end: (\))
+#   endCaptures:
+#     '1': {name: keyword.chatscript}
+#   patterns:
+#   - include: $self
+#   - match: .
+#     name: support.other.variable
 
-- comment: Output Functions
-  name: rules.complex.Chatscript
-  begin: (?i)(\^?)(flushoutput|insertprint|keephistory|lastsaid|print|preprint|repeat|reviseOutput)(\()
-  beginCaptures:
-    '1': {name: keyword.Chatscript}
-    '2': {name: variable.parameter.source.Chatscript}
-    '3': {name: keyword.Chatscript}
-  end: (\))
-  endCaptures:
-    '1': {name: keyword.Chatscript}
-  patterns:
-  - include: $self
-  - match: .
-    name: support.other.variable
+# - comment: Number Functions
+#   name: rules.complex.chatscript
+#   begin: (?i)(\^?)(compute|timefromseconds|timeinfofromseconds|timetoeconds)(\()
+#   beginCaptures:
+#     '1': {name: keyword.chatscript}
+#     '2': {name: variable.parameter.source.chatscript}
+#     '3': {name: keyword.chatscript}
+#   end: (\))
+#   endCaptures:
+#     '1': {name: keyword.chatscript}
+#   patterns:
+#   - include: $self
+#   - match: .
+#     name: support.other.variable
 
-- comment: Output Access
-  name: rules.complex.Chatscript
-  begin: (?i)(\^?)(response|responsequestion|responseruleid)(\()
-  beginCaptures:
-    '1': {name: keyword.Chatscript}
-    '2': {name: variable.parameter.source.Chatscript}
-    '3': {name: keyword.Chatscript}
-  end: (\))
-  endCaptures:
-    '1': {name: keyword.Chatscript}
-  patterns:
-  - include: $self
-  - match: .
-    name: support.other.variable
+# - comment: Output Functions
+#   name: rules.complex.chatscript
+#   begin: (?i)(\^?)(flushoutput|insertprint|keephistory|lastsaid|print|preprint|repeat|reviseOutput)(\()
+#   beginCaptures:
+#     '1': {name: keyword.chatscript}
+#     '2': {name: variable.parameter.source.chatscript}
+#     '3': {name: keyword.chatscript}
+#   end: (\))
+#   endCaptures:
+#     '1': {name: keyword.chatscript}
+#   patterns:
+#   - include: $self
+#   - match: .
+#     name: support.other.variable
 
-- comment: PostProcessing Functions
-  name: rules.complex.Chatscript
-  begin: (?i)(\^?)(postprintbefore|postprintafter)(\()
-  beginCaptures:
-    '1': {name: keyword.Chatscript}
-    '2': {name: variable.parameter.source.Chatscript}
-    '3': {name: keyword.Chatscript}
-  end: (\))
-  endCaptures:
-    '1': {name: keyword.Chatscript}
-  patterns:
-  - include: $self
-  - match: .
-    name: support.other.variable
+# - comment: Output Access
+#   name: rules.complex.chatscript
+#   begin: (?i)(\^?)(response|responsequestion|responseruleid)(\()
+#   beginCaptures:
+#     '1': {name: keyword.chatscript}
+#     '2': {name: variable.parameter.source.chatscript}
+#     '3': {name: keyword.chatscript}
+#   end: (\))
+#   endCaptures:
+#     '1': {name: keyword.chatscript}
+#   patterns:
+#   - include: $self
+#   - match: .
+#     name: support.other.variable
 
-- comment: Control Flow Functions
-  name: rules.complex.Chatscript
-  begin: (?i)(\^?)(argument|command|end|eval|fail|loop|match|nofail|notnull|addcontext|incontext)(\()
-  beginCaptures:
-    '1': {name: keyword.Chatscript}
-    '2': {name: variable.parameter.source.Chatscript}
-    '3': {name: keyword.Chatscript}
-  end: (\))
-  endCaptures:
-    '1': {name: keyword.Chatscript}
-  patterns:
-  - include: $self
-  - match: .
-    name: support.other.variable
+# - comment: PostProcessing Functions
+#   name: rules.complex.chatscript
+#   begin: (?i)(\^?)(postprintbefore|postprintafter)(\()
+#   beginCaptures:
+#     '1': {name: keyword.chatscript}
+#     '2': {name: variable.parameter.source.chatscript}
+#     '3': {name: keyword.chatscript}
+#   end: (\))
+#   endCaptures:
+#     '1': {name: keyword.chatscript}
+#   patterns:
+#   - include: $self
+#   - match: .
+#     name: support.other.variable
 
-- comment: Word Manipulation Functions
-  name: rules.complex.Chatscript
-  begin: (?i)(\^?)(burst|explode|extract|findtext|flags|intersectwords|join|properties|pos|decodepos|partofspeech|role|tally|rhyme|substitute|spell|sexed|uppercase|addproperty|define|hasproperty|hasallproperty|hasanyproperty|properties|removeinternalflag|removeproperty|walkdictionary|Iterator)(\()
-  beginCaptures:
-    '1': {name: keyword.Chatscript}
-    '2': {name: variable.parameter.source.Chatscript}
-    '3': {name: keyword.Chatscript}
-  end: (\))
-  endCaptures:
-    '1': {name: keyword.Chatscript}
-  patterns:
-  - include: $self
-  - match: .
-    name: support.other.variable
+# - comment: Control Flow Functions
+#   name: rules.complex.chatscript
+#   begin: (?i)(\^?)(argument|command|end|eval|fail|loop|match|nofail|notnull|addcontext|incontext)(\()
+#   beginCaptures:
+#     '1': {name: keyword.chatscript}
+#     '2': {name: variable.parameter.source.chatscript}
+#     '3': {name: keyword.chatscript}
+#   end: (\))
+#   endCaptures:
+#     '1': {name: keyword.chatscript}
+#   patterns:
+#   - include: $self
+#   - match: .
+#     name: support.other.variable
 
-- comment: Multipurpose Functions
-  name: rules.complex.Chatscript
-  begin: (?i)(\^?)(disable|enable|length|pick|reset)(\()
-  beginCaptures:
-    '1': {name: keyword.Chatscript}
-    '2': {name: variable.parameter.source.Chatscript}
-    '3': {name: keyword.Chatscript}
-  end: (\))
-  endCaptures:
-    '1': {name: keyword.Chatscript}
-  patterns:
-  - include: $self
-  - match: .
-    name: support.other.variable
+# - comment: Word Manipulation Functions
+#   name: rules.complex.chatscript
+#   begin: (?i)(\^?)(burst|explode|extract|findtext|flags|intersectwords|join|properties|pos|decodepos|partofspeech|role|tally|rhyme|substitute|spell|sexed|uppercase|addproperty|define|hasproperty|hasallproperty|hasanyproperty|properties|removeinternalflag|removeproperty|walkdictionary|Iterator)(\()
+#   beginCaptures:
+#     '1': {name: keyword.chatscript}
+#     '2': {name: variable.parameter.source.chatscript}
+#     '3': {name: keyword.chatscript}
+#   end: (\))
+#   endCaptures:
+#     '1': {name: keyword.chatscript}
+#   patterns:
+#   - include: $self
+#   - match: .
+#     name: support.other.variable
 
-- comment: Facts Functions (see ChatScript Fact Manual)
-  name: rules.complex.Chatscript
-  begin: (?i)(\^?)(FindFact|query|first|last|pick|sort|nth|Unpackfactref |AddProperty|conceptlist|Createattribute|createfact|revisefact|delete|field|find|Output|findmarkedfact|first|flushfacts|gambittopics|intersectfacts|keywordtopics|last|length|makereal|next|pendingtopics|pick|queryTopics|RemoveProperty|reset|query|save|sort|unduplicate|uniquefacts|unpackfactref)(\()
-  beginCaptures:
-    '1': {name: keyword.Chatscript}
-    '2': {name: variable.parameter.source.Chatscript}
-    '3': {name: keyword.Chatscript}
-  end: (\))
-  endCaptures:
-    '1': {name: keyword.Chatscript}
-  patterns:
-  - include: $self
-  - match: .
-    name: support.other.variable
+# - comment: Multipurpose Functions
+#   name: rules.complex.chatscript
+#   begin: (?i)(\^?)(disable|enable|length|pick|reset)(\()
+#   beginCaptures:
+#     '1': {name: keyword.chatscript}
+#     '2': {name: variable.parameter.source.chatscript}
+#     '3': {name: keyword.chatscript}
+#   end: (\))
+#   endCaptures:
+#     '1': {name: keyword.chatscript}
+#   patterns:
+#   - include: $self
+#   - match: .
+#     name: support.other.variable
+
+# - comment: Facts Functions (see chatScript Fact Manual)
+#   name: rules.complex.chatscript
+#   begin: (?i)(\^?)(FindFact|query|first|last|pick|sort|nth|Unpackfactref |AddProperty|conceptlist|Createattribute|createfact|revisefact|delete|field|find|Output|findmarkedfact|first|flushfacts|gambittopics|intersectfacts|keywordtopics|last|length|makereal|next|pendingtopics|pick|queryTopics|RemoveProperty|reset|query|save|sort|unduplicate|uniquefacts|unpackfactref)(\()
+#   beginCaptures:
+#     '1': {name: keyword.chatscript}
+#     '2': {name: variable.parameter.source.chatscript}
+#     '3': {name: keyword.chatscript}
+#   end: (\))
+#   endCaptures:
+#     '1': {name: keyword.chatscript}
+#   patterns:
+#   - include: $self
+#   - match: .
+#     name: support.other.variable
