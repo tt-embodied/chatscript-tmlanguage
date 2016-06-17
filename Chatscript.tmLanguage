@@ -9,7 +9,7 @@
 		<string>tst</string>
 	</array>
 	<key>name</key>
-	<string>Chatscript</string>
+	<string>ChatScript</string>
 	<key>patterns</key>
 	<array>
 		<dict>
@@ -18,7 +18,7 @@
 			<key>match</key>
 			<string>(\%)(date|day|daynumber|fulltime|timenumbers|leapyear|daylightsavings|minute|month|monthname|second|volleytime|time|week|year|rand)</string>
 			<key>name</key>
-			<string>constant.numeric.Chatscript</string>
+			<string>constant.numeric.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -26,7 +26,7 @@
 			<key>match</key>
 			<string>(\%)(bot|revisedinput|command|foreign|impliedyou|input|ip|length|more|morequestion|originalinput|originalsentence|parsed|question|quotation|sentence|tense|userfirstline|user|userinput|voice)</string>
 			<key>name</key>
-			<string>constant.numeric.Chatscript</string>
+			<string>constant.numeric.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -34,7 +34,7 @@
 			<key>match</key>
 			<string>(\%)(response|all|document|fact|freetext|freedict|freefact|maxmatchvariables|maxfactsets|host|regression|server|rule|topic|actualtopic|trace|outputrejoinder|lastquestion)</string>
 			<key>name</key>
-			<string>constant.numeric.Chatscript</string>
+			<string>constant.numeric.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -42,7 +42,7 @@
 			<key>match</key>
 			<string>(\%)(dict|engine|os|script|version)</string>
 			<key>name</key>
-			<string>constant.numeric.Chatscript</string>
+			<string>constant.numeric.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -50,7 +50,7 @@
 			<key>match</key>
 			<string>(\$)(cs_afterreset|cs_beforereset|cs_token|cs_response|cs_jsontimeout|cs_crashmsg|cs_abstract|cs_looplimit|cs_trace|cs_control_pre|cs_prepass|cs_control_main|cs_control_post|botprompt|userprompt|cs_crashmsg|cs_language|cs_token|cs_abstract|cs_prepass|cs_wildcardseparator|cs_userfactlimit|cs_response|cs_randindex|cs_utcoffset|cs_randindex|cs_bot|cs_login|\$db_error|\$findtext_start|\$tcpopen_error|\$document)</string>
 			<key>name</key>
-			<string>constant.numeric.Chatscript</string>
+			<string>constant.numeric.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -58,7 +58,7 @@
 			<key>match</key>
 			<string>(\s*)(\'?)(_)\d+</string>
 			<key>name</key>
-			<string>constant.language.Chatscript</string>
+			<string>constant.language.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -66,7 +66,7 @@
 			<key>match</key>
 			<string>@[\w,\-,_]+</string>
 			<key>name</key>
-			<string>constant.language.Chatscript</string>
+			<string>constant.language.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -74,7 +74,7 @@
 			<key>match</key>
 			<string>\$\$\w+</string>
 			<key>name</key>
-			<string>variable.parameter.Chatscript</string>
+			<string>variable.parameter.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -82,7 +82,7 @@
 			<key>match</key>
 			<string>\$[a-z,A-Z,\d,\-,_]+</string>
 			<key>name</key>
-			<string>variable.parameter.Chatscript∫∫</string>
+			<string>variable.parameter.ChatScript∫∫</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -92,17 +92,17 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.numeric.Chatscript</string>
+					<string>keyword.numeric.ChatScript</string>
 				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.numeric.Chatscript</string>
+					<string>keyword.numeric.ChatScript</string>
 				</dict>
 				<key>5</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.numeric.Chatscript</string>
+					<string>keyword.numeric.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
@@ -110,7 +110,7 @@
 			<key>end</key>
 			<string>\)</string>
 			<key>name</key>
-			<string>none.Chatscript</string>
+			<string>none.ChatScript</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -121,7 +121,7 @@
 					<key>match</key>
 					<string>(\!|=|AND|OR|&gt;=|&lt;=|\!=|&gt;|&lt;)</string>
 					<key>name</key>
-					<string>keyword.numeric.Chatscript</string>
+					<string>keyword.numeric.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -131,7 +131,7 @@
 			<key>match</key>
 			<string>(?!\(|\s+)\d+(?![\w,.])</string>
 			<key>name</key>
-			<string>constant.numeric.Chatscript</string>
+			<string>constant.numeric.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -139,7 +139,7 @@
 			<key>match</key>
 			<string>(?:\(|\s*)(null|true|false)</string>
 			<key>name</key>
-			<string>constant.numeric.Chatscript</string>
+			<string>constant.numeric.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -147,7 +147,7 @@
 			<key>match</key>
 			<string>(?:\s)(=|\+=|-=|\*=|/=|\%=|\*\*=|&lt;&lt;=|&gt;&gt;=|&gt;&gt;&gt;=|&lt;&lt;|&gt;&gt;|&amp;=|\^=|\|=)</string>
 			<key>name</key>
-			<string>keyword.numeric.Chatscript</string>
+			<string>keyword.numeric.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -155,7 +155,7 @@
 			<key>match</key>
 			<string>(?:\(|\s+)(\-|\+|/|\*|%)</string>
 			<key>name</key>
-			<string>keyword.numeric.Chatscript</string>
+			<string>keyword.numeric.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -163,7 +163,7 @@
 			<key>match</key>
 			<string>#(RESPONSE_UPPERSTART|RESPONSE_REMOVESPACEBEFORECOMMA|RESPONSE_ALTERUNDERSCORES|ALL_RESPONSES|RESPONSE_REMOVETILDE)</string>
 			<key>name</key>
-			<string>constant.language.Chatscript</string>
+			<string>constant.language.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -171,7 +171,7 @@
 			<key>match</key>
 			<string>#(DO_SUBSTITUTE_SYSTEM|DO_ESSENTIALS|DO_SUBSTITUTES|DO_CONTRACTIONS|DO_INTERJECTIONS|DO_BRITISH|DO_SPELLING|DO_TEXTING|DO_NOISE|DO_PRIVATE|DO_NUMBER_MERGE|DO_PROPERNAME_MERGE|DO_DATE_MERGE|NO_PROPER_SPELLCHECK|NO_LOWERCASE_PROPER_MERGE|DO_SPELLCHECK|DO_INTERJECTION_SPLITTING|DO_PARSE|DO_POSTAG|NO_IMPERATIVE|NO_WITHIN|NO_SENTENCE_END|NO_HYPHEN_END|NO_COLON_END|NO_SEMICOLON_END|STRICT_CASING|ONLY_LOWERCASE|TOKEN_AS_IS|SPLIT_QUOTE|UNTOUCHED_INPUT)</string>
 			<key>name</key>
-			<string>constant.language.Chatscript</string>
+			<string>constant.language.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -179,7 +179,7 @@
 			<key>match</key>
 			<string>(?!\w)(#*)(OUTPUT_RAW|OUTPUT_RETURNVALUE_ONLY|OUTPUT_NOCOMMANUMBER|OUTPUT_NOQUOTES|OUTPUT_NOUNDERSCORE)</string>
 			<key>name</key>
-			<string>constant.language.Chatscript</string>
+			<string>constant.language.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -187,7 +187,7 @@
 			<key>match</key>
 			<string>(?!\w)(#*)(NOFAIL|FAIL|CALL|RULE|LOOP|TOPIC|SENTENCE|INPUT|PLAN)</string>
 			<key>name</key>
-			<string>constant.language.Chatscript</string>
+			<string>constant.language.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -195,7 +195,7 @@
 			<key>match</key>
 			<string>(?!\w)(#*)(POST|GET|TRACE_TCP|POSTU|GETU)</string>
 			<key>name</key>
-			<string>constant.language.Chatscript</string>
+			<string>constant.language.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -203,7 +203,7 @@
 			<key>match</key>
 			<string>(?!\w)(#*)(FILE|OPEN|CLOSE)</string>
 			<key>name</key>
-			<string>constant.language.Chatscript</string>
+			<string>constant.language.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -211,7 +211,7 @@
 			<key>match</key>
 			<string>(?!\w)(#*)(INDEX|VALUE)</string>
 			<key>name</key>
-			<string>constant.language.Chatscript</string>
+			<string>constant.language.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -219,7 +219,7 @@
 			<key>match</key>
 			<string>(?!\w)(#*)(NOUN|VERB|ADJECTIVE|ADVERB|PREPOSITION)</string>
 			<key>name</key>
-			<string>constant.language.Chatscript</string>
+			<string>constant.language.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -227,7 +227,7 @@
 			<key>match</key>
 			<string>(?!\w)(#*)(direct_s|direct_v|direct_o|direct_sv|direct_so|direct_vo|direct_svo|Unipropogate|FACTDEAD)</string>
 			<key>name</key>
-			<string>constant.language.Chatscript</string>
+			<string>constant.language.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -235,7 +235,7 @@
 			<key>match</key>
 			<string>(?!\w)(#*)(NOUN|VERB|ESSENTIAL_POS|ADJECTIVE|ADVERB|BASIC_POS|PREPOSITION|ESSENTIAL_FLAGS|CONJUNCTION_COORDINATE|CONJUNCTION_SUBORDINATE|CONJUNCTION|PREDETERMINER|DETERMINER|POSSESSIVE|PRONOUN_POSSESSIVE|POSSESSIVE_BITS|DETERMINER_BITS|COMMA|REQUIRE_CONCEPT|PAREN|PUNCTUATION|QUOTE|CURRENCY|ADJECTIVE_NORMAL|ADJECTIVE_NUMBER|ADJECTIVE_NOUN|ADJECTIVE_PARTICIPLE|ADJECTIVE_BITS|INTERJECTION|THERE_EXISTENTIAL|FOREIGN_WORD|TO_INFINITIVE|NOUN_ADJECTIVE|NOUN_SINGULAR|NOUN_PLURAL|NOUN_PROPER_SINGULAR|NOUN_PROPER_PLURAL|NOUN_GERUND|NOUN_NUMBER|NOUN_INFINITIVE|NOUN_PROPER|NORMAL_NOUN_BITS|NOUN_BITS|VERB_PRESENT|VERB_PRESENT_3PS|VERB_PRESENT_PARTICIPLE|VERB_PAST|VERB_PAST_PARTICIPLE|VERB_INFINITIVE|PARTICLE|VERB_BITS|PRONOUN_SUBJECT|PRONOUN_OBJECT|PRONOUN_BITS|AUX_DO|AUX_HAVE|AUX_BE|AUX_VERB_PRESENT|AUX_VERB_FUTURE|AUX_VERB_PAST|AUX_VERB_TENSES|AUX_VERB|STARTTAGS|AS_IS)</string>
 			<key>name</key>
-			<string>constant.language.Chatscript</string>
+			<string>constant.language.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -243,7 +243,7 @@
 			<key>match</key>
 			<string>(?!\w)(#*)(TOPRULES|PENDING|START|END|BOTH|BOT|USER|AUTOSPACE|HAS_SUBSTITUTE|CONCEPT|TOPIC)</string>
 			<key>name</key>
-			<string>constant.language.Chatscript</string>
+			<string>constant.language.ChatScript</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -253,13 +253,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.Chatscript</string>
+					<string>support.function.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Built-in functions (topics)</string>
 			<key>contentName</key>
-			<string>variable.Chatscript</string>
+			<string>variable.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -272,7 +272,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>variable.Chatscript</string>
+					<string>variable.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -284,13 +284,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.Chatscript</string>
+					<string>support.function.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Built-in functions (marking)</string>
 			<key>contentName</key>
-			<string>variable.Chatscript</string>
+			<string>variable.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -303,7 +303,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>variable.Chatscript</string>
+					<string>variable.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -315,13 +315,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.Chatscript</string>
+					<string>support.function.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Built-in functions (input)</string>
 			<key>contentName</key>
-			<string>variable.Chatscript</string>
+			<string>variable.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -334,7 +334,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>variable.Chatscript</string>
+					<string>variable.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -346,13 +346,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.Chatscript</string>
+					<string>support.function.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Built-in functions (number)</string>
 			<key>contentName</key>
-			<string>variable.Chatscript</string>
+			<string>variable.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -365,7 +365,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>variable.Chatscript</string>
+					<string>variable.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -377,13 +377,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.Chatscript</string>
+					<string>support.function.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Built-in functions (output)</string>
 			<key>contentName</key>
-			<string>variable.Chatscript</string>
+			<string>variable.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -396,7 +396,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>variable.Chatscript</string>
+					<string>variable.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -408,13 +408,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.Chatscript</string>
+					<string>support.function.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Built-in functions (output access)</string>
 			<key>contentName</key>
-			<string>variable.Chatscript</string>
+			<string>variable.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -427,7 +427,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>variable.Chatscript</string>
+					<string>variable.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -439,13 +439,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.Chatscript</string>
+					<string>support.function.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Built-in functions (print)</string>
 			<key>contentName</key>
-			<string>variable.Chatscript</string>
+			<string>variable.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -458,7 +458,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>variable.Chatscript</string>
+					<string>variable.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -470,13 +470,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.Chatscript</string>
+					<string>support.function.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Built-in functions (control flow)</string>
 			<key>contentName</key>
-			<string>variable.Chatscript</string>
+			<string>variable.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -489,7 +489,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>variable.Chatscript</string>
+					<string>variable.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -501,13 +501,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.Chatscript</string>
+					<string>support.function.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Built-in functions (external access)</string>
 			<key>contentName</key>
-			<string>variable.Chatscript</string>
+			<string>variable.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -520,7 +520,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>variable.Chatscript</string>
+					<string>variable.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -532,13 +532,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.Chatscript</string>
+					<string>support.function.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Built-in functions (json)</string>
 			<key>contentName</key>
-			<string>variable.Chatscript</string>
+			<string>variable.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -551,7 +551,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>none.Chatscript</string>
+					<string>none.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -563,13 +563,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.Chatscript</string>
+					<string>support.function.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Built-in functions (word manipulation)</string>
 			<key>contentName</key>
-			<string>variable.Chatscript</string>
+			<string>variable.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -582,7 +582,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>variable.Chatscript</string>
+					<string>variable.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -594,13 +594,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.Chatscript</string>
+					<string>support.function.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Built-in functions (multipurpose)</string>
 			<key>contentName</key>
-			<string>variable.Chatscript</string>
+			<string>variable.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -613,7 +613,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>variable.Chatscript</string>
+					<string>variable.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -625,13 +625,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.Chatscript</string>
+					<string>support.function.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Built-in functions (facts)</string>
 			<key>contentName</key>
-			<string>variable.Chatscript</string>
+			<string>variable.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -644,7 +644,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>variable.Chatscript</string>
+					<string>variable.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -656,13 +656,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>none.Chatscript</string>
+					<string>none.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>User defined functions</string>
 			<key>contentName</key>
-			<string>none.Chatscript</string>
+			<string>none.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -675,7 +675,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>variable.Chatscript</string>
+					<string>variable.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -685,7 +685,7 @@
 			<key>match</key>
 			<string>(\\[\w,\d,\[,\],\(,$,\-,_]+)|(\\([n,r,t]?))</string>
 			<key>name</key>
-			<string>string.source.Chatscript</string>
+			<string>string.source.ChatScript</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -695,18 +695,18 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.Chatscript</string>
+					<string>entity.name.function.ChatScript</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.other.inherited-class.Chatscript</string>
+					<string>entity.other.inherited-class.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Matching rules</string>
 			<key>contentName</key>
-			<string>none.Chatscript</string>
+			<string>none.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -721,18 +721,18 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.numeric.Chatscript</string>
+							<string>keyword.numeric.ChatScript</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>string.source.Chatscript</string>
+							<string>string.source.ChatScript</string>
 						</dict>
 					</dict>
 					<key>match</key>
 					<string>(\*|&lt;&lt;|&gt;&gt;|\!\=|\!|\?|\[|\]|\{|\}|\"|&lt;|&gt;|~|\s\_)|(\w|\-+)</string>
 					<key>name</key>
-					<string>keyword.numeric.Chatscript</string>
+					<string>keyword.numeric.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -742,7 +742,7 @@
 			<key>match</key>
 			<string>^t:\s</string>
 			<key>name</key>
-			<string>entity.name.function.Chatscript</string>
+			<string>entity.name.function.ChatScript</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -752,18 +752,18 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.Chatscript</string>
+					<string>entity.name.function.ChatScript</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.other.inherited-class.Chatscript</string>
+					<string>entity.other.inherited-class.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Rejoinder rules</string>
 			<key>contentName</key>
-			<string>none.Chatscript</string>
+			<string>none.ChatScript</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>patterns</key>
@@ -778,18 +778,18 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.numeric.Chatscript</string>
+							<string>keyword.numeric.ChatScript</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>string.source.Chatscript</string>
+							<string>string.source.ChatScript</string>
 						</dict>
 					</dict>
 					<key>match</key>
 					<string>(\*|&lt;&lt;|&gt;&gt;|\!|\?|\[|\]|\{|\}|\"|~|\s\_)|(\w|\-+)</string>
 					<key>name</key>
-					<string>keyword.numeric.Chatscript</string>
+					<string>keyword.numeric.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -799,7 +799,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.other.inherited-class.Chatscript</string>
+					<string>entity.other.inherited-class.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
@@ -807,7 +807,7 @@
 			<key>match</key>
 			<string>(~[\w,\-,\_]+)\.([A-Z,\-,\_,\d]*)</string>
 			<key>name</key>
-			<string>none.Chatscript</string>
+			<string>none.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -815,7 +815,7 @@
 			<key>match</key>
 			<string>(\^\".*\")|(\^\$+\w+)</string>
 			<key>name</key>
-			<string>string.source.Chatscript</string>
+			<string>string.source.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -823,7 +823,7 @@
 			<key>match</key>
 			<string>\*\d</string>
 			<key>name</key>
-			<string>keyword.numeric.Chatscript</string>
+			<string>keyword.numeric.ChatScript</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -833,7 +833,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.Chatscript</string>
+					<string>entity.name.function.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
@@ -841,7 +841,7 @@
 			<key>end</key>
 			<string>\)</string>
 			<key>name</key>
-			<string>none.Chatscript</string>
+			<string>none.ChatScript</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -852,7 +852,7 @@
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
-					<string>none.Chatscript</string>
+					<string>none.ChatScript</string>
 				</dict>
 			</array>
 		</dict>
@@ -862,7 +862,7 @@
 			<key>match</key>
 			<string>(^describe:)</string>
 			<key>name</key>
-			<string>entity.name.function.Chatscript</string>
+			<string>entity.name.function.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -870,7 +870,7 @@
 			<key>match</key>
 			<string>(^outputmacro:)</string>
 			<key>name</key>
-			<string>entity.name.function.Chatscript</string>
+			<string>entity.name.function.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -878,7 +878,7 @@
 			<key>match</key>
 			<string>(^table:)</string>
 			<key>name</key>
-			<string>entity.name.function.Chatscript</string>
+			<string>entity.name.function.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -886,7 +886,7 @@
 			<key>match</key>
 			<string>(^topic:)</string>
 			<key>name</key>
-			<string>entity.name.function.Chatscript</string>
+			<string>entity.name.function.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -894,7 +894,7 @@
 			<key>match</key>
 			<string>(^DATA:)</string>
 			<key>name</key>
-			<string>entity.name.function.Chatscript</string>
+			<string>entity.name.function.ChatScript</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -904,7 +904,7 @@
 			<key>end</key>
 			<string>(\#\#&gt;&gt;)</string>
 			<key>name</key>
-			<string>comment.line.number-sign.Chatscript</string>
+			<string>comment.line.number-sign.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -912,7 +912,7 @@
 			<key>match</key>
 			<string>(\#\s?.*)|(\#!\s?.*)|(\#!x\s?.*)</string>
 			<key>name</key>
-			<string>comment.line.number-sign.Chatscript</string>
+			<string>comment.line.number-sign.ChatScript</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
