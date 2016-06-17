@@ -74,7 +74,7 @@ patterns:
   patterns:
   - include: $self
   - name: keyword.numeric.Chatscript
-    match: (\*|<<|>>|\!\=|\!|\?|\[|\]|\{|\}|\"|<|>|~|\s\_)|(\w+)
+    match: (\*|<<|>>|\!\=|\!|\?|\[|\]|\{|\}|\"|<|>|~|\s\_)|(\w|\-+)
     captures:
       '1': {name: keyword.numeric.Chatscript}
       '2': {name: string.source.Chatscript}
@@ -93,7 +93,7 @@ patterns:
   patterns:
   - include: $self
   - name: keyword.numeric.Chatscript
-    match: (\*|<<|>>|\!|\?|\[|\]|\{|\}|\"|~|\s\_)|(\w+)
+    match: (\*|<<|>>|\!|\?|\[|\]|\{|\}|\"|~|\s\_)|(\w|\-+)
     captures:
       '1': {name: keyword.numeric.Chatscript}
       '2': {name: string.source.Chatscript}
@@ -103,12 +103,6 @@ patterns:
   match: (~[\w,\-,\_]+)\.([A-Z,\-,\_,\d]*)
   captures:
     '2': {name: entity.other.inherited-class.Chatscript}  
-
-- comment: Invoked rules by reuse
-  name: none.Chatscript
-  match: (\()([A-Z,\d]+)(\))
-  captures:
-    '2': {name: entity.other.inherited-class.Chatscript}
 
 - comment: Indirect returns/sets
   name: string.source.Chatscript

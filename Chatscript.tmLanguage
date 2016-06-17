@@ -135,7 +135,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(\*|&lt;&lt;|&gt;&gt;|\!\=|\!|\?|\[|\]|\{|\}|\"|&lt;|&gt;|~|\s\_)|(\w+)</string>
+					<string>(\*|&lt;&lt;|&gt;&gt;|\!\=|\!|\?|\[|\]|\{|\}|\"|&lt;|&gt;|~|\s\_)|(\w|\-+)</string>
 					<key>name</key>
 					<string>keyword.numeric.Chatscript</string>
 				</dict>
@@ -192,7 +192,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(\*|&lt;&lt;|&gt;&gt;|\!|\?|\[|\]|\{|\}|\"|~|\s\_)|(\w+)</string>
+					<string>(\*|&lt;&lt;|&gt;&gt;|\!|\?|\[|\]|\{|\}|\"|~|\s\_)|(\w|\-+)</string>
 					<key>name</key>
 					<string>keyword.numeric.Chatscript</string>
 				</dict>
@@ -211,22 +211,6 @@
 			<string>Invoked rules</string>
 			<key>match</key>
 			<string>(~[\w,\-,\_]+)\.([A-Z,\-,\_,\d]*)</string>
-			<key>name</key>
-			<string>none.Chatscript</string>
-		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.other.inherited-class.Chatscript</string>
-				</dict>
-			</dict>
-			<key>comment</key>
-			<string>Invoked rules by reuse</string>
-			<key>match</key>
-			<string>(\()([A-Z,\d]+)(\))</string>
 			<key>name</key>
 			<string>none.Chatscript</string>
 		</dict>
