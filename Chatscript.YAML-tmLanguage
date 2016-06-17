@@ -8,6 +8,21 @@ patterns:
 
 
 
+############
+# Comments #
+############
+
+- comment: Multiline comments
+  name: comment.line.number-sign.ChatScript
+  begin: (\#\#<<)
+  end: (\#\#>>)
+
+- comment: Comments
+  name: comment.line.number-sign.ChatScript
+  match: (\#\s?.*)|(\#!\s?.*)|(\#!x\s?.*)
+
+
+
 ####################
 # System variables #
 ####################
@@ -387,19 +402,3 @@ patterns:
 - comment: Topic
   name: entity.name.function.ChatScript
   match: '(^DATA:)'
-
-
-
-############
-# Comments #
-############
-
-- comment: Multiline comments
-  name: comment.line.number-sign.ChatScript
-  begin: (\#\#<<)
-  end: (\#\#>>)
-
-- comment: Comments
-  name: comment.line.number-sign.ChatScript
-  match: (\#\s?.*)|(\#!\s?.*)|(\#!x\s?.*)
-

@@ -13,6 +13,24 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>begin</key>
+			<string>(\#\#&lt;&lt;)</string>
+			<key>comment</key>
+			<string>Multiline comments</string>
+			<key>end</key>
+			<string>(\#\#&gt;&gt;)</string>
+			<key>name</key>
+			<string>comment.line.number-sign.ChatScript</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Comments</string>
+			<key>match</key>
+			<string>(\#\s?.*)|(\#!\s?.*)|(\#!x\s?.*)</string>
+			<key>name</key>
+			<string>comment.line.number-sign.ChatScript</string>
+		</dict>
+		<dict>
 			<key>comment</key>
 			<string>System variables (date &amp; time &amp; numbers)</string>
 			<key>match</key>
@@ -895,24 +913,6 @@
 			<string>(^DATA:)</string>
 			<key>name</key>
 			<string>entity.name.function.ChatScript</string>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>(\#\#&lt;&lt;)</string>
-			<key>comment</key>
-			<string>Multiline comments</string>
-			<key>end</key>
-			<string>(\#\#&gt;&gt;)</string>
-			<key>name</key>
-			<string>comment.line.number-sign.ChatScript</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Comments</string>
-			<key>match</key>
-			<string>(\#\s?.*)|(\#!\s?.*)|(\#!x\s?.*)</string>
-			<key>name</key>
-			<string>comment.line.number-sign.ChatScript</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
