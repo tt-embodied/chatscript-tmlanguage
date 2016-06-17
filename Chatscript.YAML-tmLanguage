@@ -75,7 +75,7 @@ patterns:
 
 - comment: Integers
   name: constant.numeric.Chatscript
-  match: '(?:\(|\s+)\d+(?![\w,.])'
+  match: '(?!\(|\s+)\d+(?![\w,.])'
 
 - comment: Boolean & state
   name: constant.numeric.Chatscript
@@ -83,11 +83,11 @@ patterns:
 
 - comment: Assigment
   name: keyword.numeric.Chatscript
-  match: '(?:\s)(=|\+=|-=|\*=|/=|\%=|\*\*=|<<=|>>=|>>>=|&=|\^=|\|=)'
+  match: '(?:\s)(=|\+=|-=|\*=|/=|\%=|\*\*=|<<=|>>=|>>>=|<<|>>|&=|\^=|\|=)'
 
 - comment: Operators
   name: keyword.numeric.Chatscript
-  match: '(?:\(|\s+)(\-|\+|/|\*)'
+  match: '(?:\(|\s+)(\-|\+|/|\*|%)'
 
 
 

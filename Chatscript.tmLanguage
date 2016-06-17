@@ -129,7 +129,7 @@
 			<key>comment</key>
 			<string>Integers</string>
 			<key>match</key>
-			<string>(?:\(|\s+)\d+(?![\w,.])</string>
+			<string>(?!\(|\s+)\d+(?![\w,.])</string>
 			<key>name</key>
 			<string>constant.numeric.Chatscript</string>
 		</dict>
@@ -145,7 +145,7 @@
 			<key>comment</key>
 			<string>Assigment</string>
 			<key>match</key>
-			<string>(?:\s)(=|\+=|-=|\*=|/=|\%=|\*\*=|&lt;&lt;=|&gt;&gt;=|&gt;&gt;&gt;=|&amp;=|\^=|\|=)</string>
+			<string>(?:\s)(=|\+=|-=|\*=|/=|\%=|\*\*=|&lt;&lt;=|&gt;&gt;=|&gt;&gt;&gt;=|&lt;&lt;|&gt;&gt;|&amp;=|\^=|\|=)</string>
 			<key>name</key>
 			<string>keyword.numeric.Chatscript</string>
 		</dict>
@@ -153,7 +153,7 @@
 			<key>comment</key>
 			<string>Operators</string>
 			<key>match</key>
-			<string>(?:\(|\s+)(\-|\+)</string>
+			<string>(?:\(|\s+)(\-|\+|/|\*|%)</string>
 			<key>name</key>
 			<string>keyword.numeric.Chatscript</string>
 		</dict>
