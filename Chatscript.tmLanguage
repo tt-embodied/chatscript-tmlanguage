@@ -13,24 +13,6 @@
 	<key>patterns</key>
 	<array>
 		<dict>
-			<key>begin</key>
-			<string>(\#\#&lt;&lt;)</string>
-			<key>comment</key>
-			<string>Multiline comments</string>
-			<key>end</key>
-			<string>(\#\#&gt;&gt;)</string>
-			<key>name</key>
-			<string>comment.line.number-sign.ChatScript</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Comments</string>
-			<key>match</key>
-			<string>(\#\s?.*)|(\#!\s?.*)|(\#!x\s?.*)</string>
-			<key>name</key>
-			<string>comment.line.number-sign.ChatScript</string>
-		</dict>
-		<dict>
 			<key>comment</key>
 			<string>System variables (date &amp; time &amp; numbers)</string>
 			<key>match</key>
@@ -50,7 +32,7 @@
 			<key>comment</key>
 			<string>System variables (chatbot output)</string>
 			<key>match</key>
-			<string>(\%)(response|all|document|fact|freetext|freedict|freefact|maxmatchvariables|maxfactsets|host|regression|server|rule|topic|actualtopic|trace|outputrejoinder|lastquestion)</string>
+			<string>(\%)(http_response|response|all|document|fact|freetext|freedict|freefact|maxmatchvariables|maxfactsets|host|regression|server|rule|topic|actualtopic|trace|outputrejoinder|lastquestion)</string>
 			<key>name</key>
 			<string>constant.numeric.ChatScript</string>
 		</dict>
@@ -82,7 +64,7 @@
 			<key>comment</key>
 			<string>Position variable</string>
 			<key>match</key>
-			<string>@[\w,\-,_]+</string>
+			<string>@[\w,\d,\-,_]+[\-,\+]?</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -137,7 +119,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(\!|=|AND|OR|&gt;=|&lt;=|\!=|&gt;|&lt;)</string>
+					<string>(\!|==|\s(AND|OR)\s|&gt;=|&lt;=|\!=|&gt;|&lt;)</string>
 					<key>name</key>
 					<string>keyword.numeric.ChatScript</string>
 				</dict>
@@ -155,7 +137,7 @@
 			<key>comment</key>
 			<string>Boolean &amp; state</string>
 			<key>match</key>
-			<string>(?:\(|\s*)(null|true|false)</string>
+			<string>\s(null|true|false)(?![\w,\d])</string>
 			<key>name</key>
 			<string>constant.numeric.ChatScript</string>
 		</dict>
@@ -163,7 +145,7 @@
 			<key>comment</key>
 			<string>Assigment</string>
 			<key>match</key>
-			<string>(?:\s)(=|\+=|-=|\*=|/=|\%=|\*\*=|&lt;&lt;=|&gt;&gt;=|&gt;&gt;&gt;=|&lt;&lt;|&gt;&gt;|&amp;=|\^=|\|=)</string>
+			<string>(?!\s)(=(?!=)|\+=|-=|\*=|/=|\%=|\*\*=|&lt;&lt;=|&gt;&gt;=|&gt;&gt;&gt;=|&lt;&lt;|&gt;&gt;|&amp;=|\^=|\|=)</string>
 			<key>name</key>
 			<string>keyword.numeric.ChatScript</string>
 		</dict>
@@ -171,7 +153,7 @@
 			<key>comment</key>
 			<string>Operators</string>
 			<key>match</key>
-			<string>(?:\(|\s+)(\-|\+|/|\*|%)</string>
+			<string>(?:\(|\s+)(\-|\+|/|\*|\s%\s)</string>
 			<key>name</key>
 			<string>keyword.numeric.ChatScript</string>
 		</dict>
@@ -637,7 +619,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^(findfact|query|first|last|pick|sort|delete|length|nth|unpackfactref|save|addproperty|conceptlist|createattribute|createfact|writefact|revisefact|field|find|findmarkedfact|flushfacts|gambittopics|intersectfacts|keywordtopics|last|makereal|next|pendingtopics|pick|querytopics|removeproperty|reset|query|save|unduplicate|uniquefacts|unpackfactref|importfacts))(\()</string>
+			<string>(\^(result|findfact|query|first|last|pick|sort|delete|length|nth|unpackfactref|save|addproperty|conceptlist|createattribute|createfact|writefact|revisefact|field|find|findmarkedfact|flushfacts|gambittopics|intersectfacts|keywordtopics|last|makereal|next|pendingtopics|pick|querytopics|removeproperty|reset|query|save|unduplicate|uniquefacts|unpackfactref|importfacts))(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -701,13 +683,13 @@
 			<key>comment</key>
 			<string>Print escapes</string>
 			<key>match</key>
-			<string>(\\[\w,\d,\[,\],\(,$,\-,_]+)|(\\([n,r,t]?))</string>
+			<string>(\\[\w,\d,\[,\],\(,$,\-,\+,_]+)|(\\([n,r,t]?))</string>
 			<key>name</key>
 			<string>string.source.ChatScript</string>
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(^s:|^u:|^t:|\?:)\s+([A-Z,\-,\_,\d]*)\s*\(</string>
+			<string>(^s:|^u:|^t:|\?:)\s+([A-Z,\-,\_,\d]*)\s*\((\_?)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -719,6 +701,11 @@
 				<dict>
 					<key>name</key>
 					<string>entity.other.inherited-class.ChatScript</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.numeric.ChatScript</string>
 				</dict>
 			</dict>
 			<key>comment</key>
@@ -748,7 +735,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(\*|&lt;&lt;|&gt;&gt;|\!\=|\!|\?|\[|\]|\{|\}|\"|&lt;|&gt;|~|\s\_)|(\w|\-+)</string>
+					<string>(\*|&lt;&lt;|&gt;&gt;|==|\!\=|\!|\?|\[|\]|\{|\}|\"|&lt;|&gt;|~|\_(?![a-z]))|(\w|\-+)</string>
 					<key>name</key>
 					<string>keyword.numeric.ChatScript</string>
 				</dict>
@@ -805,7 +792,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(\*|&lt;&lt;|&gt;&gt;|\!|\?|\[|\]|\{|\}|\"|~|\s\_)|(\w|\-+)</string>
+					<string>(\*|&lt;&lt;|&gt;&gt;|==|\!\=|\!|\?|\[|\]|\{|\}|\"|&lt;|&gt;|~|\_(?![a-z]))|(\w|\-+)</string>
 					<key>name</key>
 					<string>keyword.numeric.ChatScript</string>
 				</dict>
@@ -839,7 +826,7 @@
 			<key>comment</key>
 			<string>Wildcard operator</string>
 			<key>match</key>
-			<string>\*\d</string>
+			<string>\*\~?\d</string>
 			<key>name</key>
 			<string>keyword.numeric.ChatScript</string>
 		</dict>
@@ -913,6 +900,24 @@
 			<string>(^DATA:)</string>
 			<key>name</key>
 			<string>entity.name.function.ChatScript</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(\#\#&lt;&lt;)</string>
+			<key>comment</key>
+			<string>Multiline comments</string>
+			<key>end</key>
+			<string>(\#\#&gt;&gt;)</string>
+			<key>name</key>
+			<string>comment.line.number-sign.ChatScript</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Comments</string>
+			<key>match</key>
+			<string>(\#\s?.*)|(\#!\s?.*)|(\#!x\s?.*)</string>
+			<key>name</key>
+			<string>comment.line.number-sign.ChatScript</string>
 		</dict>
 	</array>
 	<key>scopeName</key>

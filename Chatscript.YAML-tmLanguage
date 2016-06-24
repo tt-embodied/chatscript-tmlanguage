@@ -8,21 +8,6 @@ patterns:
 
 
 
-############
-# Comments #
-############
-
-- comment: Multiline comments
-  name: comment.line.number-sign.ChatScript
-  begin: (\#\#<<)
-  end: (\#\#>>)
-
-- comment: Comments
-  name: comment.line.number-sign.ChatScript
-  match: (\#\s?.*)|(\#!\s?.*)|(\#!x\s?.*)
-
-
-
 ####################
 # System variables #
 ####################
@@ -37,7 +22,7 @@ patterns:
 
 - comment: System variables (chatbot output)
   name: constant.numeric.ChatScript
-  match: '(\%)(response|all|document|fact|freetext|freedict|freefact|maxmatchvariables|maxfactsets|host|regression|server|rule|topic|actualtopic|trace|outputrejoinder|lastquestion)'
+  match: '(\%)(http_response|response|all|document|fact|freetext|freedict|freefact|maxmatchvariables|maxfactsets|host|regression|server|rule|topic|actualtopic|trace|outputrejoinder|lastquestion)'
 
 - comment: System variables (build data)
   name: constant.numeric.ChatScript
@@ -53,7 +38,7 @@ patterns:
 
 - comment: Position variable
   name: constant.language.ChatScript
-  match: '@[\w,\-,_]+'
+  match: '@[\w,\d,\-,_]+[\-,\+]?'
 
 
 
@@ -86,7 +71,7 @@ patterns:
   patterns:
   - include: $self
   - name: keyword.numeric.ChatScript
-    match: '(\!|=|AND|OR|>=|<=|\!=|>|<)'
+    match: '(\!|==|\s(AND|OR)\s|>=|<=|\!=|>|<)'
 
 - comment: Integers
   name: constant.numeric.ChatScript
@@ -94,15 +79,15 @@ patterns:
 
 - comment: Boolean & state
   name: constant.numeric.ChatScript
-  match: '(?:\(|\s*)(null|true|false)'
+  match: '\s(null|true|false)(?![\w,\d])'
 
 - comment: Assigment
   name: keyword.numeric.ChatScript
-  match: '(?:\s)(=|\+=|-=|\*=|/=|\%=|\*\*=|<<=|>>=|>>>=|<<|>>|&=|\^=|\|=)'
+  match: '(?!\s)(=(?!=)|\+=|-=|\*=|/=|\%=|\*\*=|<<=|>>=|>>>=|<<|>>|&=|\^=|\|=)'
 
 - comment: Operators
   name: keyword.numeric.ChatScript
-  match: '(?:\(|\s+)(\-|\+|/|\*|%)'
+  match: '(?:\(|\s+)(\-|\+|/|\*|\s%\s)'
 
 
 
@@ -294,7 +279,7 @@ patterns:
 
 - comment: Built-in functions (facts)
   contentName: variable.ChatScript
-  begin: '(\^(findfact|query|first|last|pick|sort|delete|length|nth|unpackfactref|save|addproperty|conceptlist|createattribute|createfact|writefact|revisefact|field|find|findmarkedfact|flushfacts|gambittopics|intersectfacts|keywordtopics|last|makereal|next|pendingtopics|pick|querytopics|removeproperty|reset|query|save|unduplicate|uniquefacts|unpackfactref|importfacts))(\()'
+  begin: '(\^(result|findfact|query|first|last|pick|sort|delete|length|nth|unpackfactref|save|addproperty|conceptlist|createattribute|createfact|writefact|revisefact|field|find|findmarkedfact|flushfacts|gambittopics|intersectfacts|keywordtopics|last|makereal|next|pendingtopics|pick|querytopics|removeproperty|reset|query|save|unduplicate|uniquefacts|unpackfactref|importfacts))(\()'
   beginCaptures:
     '1': {name: support.function.ChatScript}
   end: '\)'
@@ -322,19 +307,20 @@ patterns:
 
 - comment: Print escapes
   name: string.source.ChatScript
-  match: '(\\[\w,\d,\[,\],\(,$,\-,_]+)|(\\([n,r,t]?))'
+  match: '(\\[\w,\d,\[,\],\(,$,\-,\+,_]+)|(\\([n,r,t]?))'
 
 - comment: Matching rules
   contentName: none.ChatScript
-  begin: '(^s:|^u:|^t:|\?:)\s+([A-Z,\-,\_,\d]*)\s*\('
+  begin: '(^s:|^u:|^t:|\?:)\s+([A-Z,\-,\_,\d]*)\s*\((\_?)'
   beginCaptures:
     '1': {name: entity.name.function.ChatScript}
     '2': {name: entity.other.inherited-class.ChatScript}
+    '3': {name: keyword.numeric.ChatScript}
   end: '\)'
   patterns:
   - include: $self
   - name: keyword.numeric.ChatScript
-    match: (\*|<<|>>|\!\=|\!|\?|\[|\]|\{|\}|\"|<|>|~|\s\_)|(\w|\-+)
+    match: (\*|<<|>>|==|\!\=|\!|\?|\[|\]|\{|\}|\"|<|>|~|\_(?![a-z]))|(\w|\-+)
     captures:
       '1': {name: keyword.numeric.ChatScript}
       '2': {name: string.source.ChatScript}
@@ -353,7 +339,7 @@ patterns:
   patterns:
   - include: $self
   - name: keyword.numeric.ChatScript
-    match: (\*|<<|>>|\!|\?|\[|\]|\{|\}|\"|~|\s\_)|(\w|\-+)
+    match: (\*|<<|>>|==|\!\=|\!|\?|\[|\]|\{|\}|\"|<|>|~|\_(?![a-z]))|(\w|\-+)
     captures:
       '1': {name: keyword.numeric.ChatScript}
       '2': {name: string.source.ChatScript}
@@ -370,7 +356,7 @@ patterns:
 
 - comment: Wildcard operator
   name: keyword.numeric.ChatScript
-  match: '\*\d'
+  match: '\*\~?\d'
 
 - comment: Concepts
   name: none.ChatScript
@@ -402,3 +388,19 @@ patterns:
 - comment: Topic
   name: entity.name.function.ChatScript
   match: '(^DATA:)'
+
+
+
+############
+# Comments #
+############
+
+- comment: Multiline comments
+  name: comment.line.number-sign.ChatScript
+  begin: (\#\#<<)
+  end: (\#\#>>)
+
+- comment: Comments
+  name: comment.line.number-sign.ChatScript
+  match: (\#\s?.*)|(\#!\s?.*)|(\#!x\s?.*)
+
