@@ -2,12 +2,11 @@
 
 ### Summary ###
 
-A [ChatScript 6.5b](https://github.com/bwilcox-1234/ChatScript) syntax definition. :cake:
+A [ChatScript](https://github.com/bwilcox-1234/ChatScript) syntax definition. :cake:
 
-**_June 2016_**
-**_v0.9.2_**
-
-I use Monokai as my ST color scheme, but it should look fine with others as well.
+**_June 2016_**  
+**_1.0.0_**  
+**ChatScript 6.5b**  
 
 ### Monokai
 ![alt tag](./monokai-screen.png)
@@ -19,17 +18,18 @@ I use Monokai as my ST color scheme, but it should look fine with others as well
 Install through [Package Control](https://packagecontrol.io/installation):
   * `CTRL+SHIFT+P`, _Install..._, `ENTER`
   * Search for _ChatScript syntax_, `ENTER`
-  * That' it. And you'll get the updates too!
+  * That's all, and you'll get the updates too.
 
 ### Contribute
-* Clone the repo into your `/Application Support/Sublime Text 3/Packages/User` for easy testing
-* Install the PackageDev in Sublime Text
-* Make your changes in the the JSON or YAML tmLanguage file
-* Compile the file into a property list with `CTRL+B`
-* Make sure that both JSON and YAML are identical by building both
-* Pull request!
+  * Install the [PackageDev](https://github.com/SublimeText/PackageDev#getting-started) package in Sublime Text
+  * Clone the repo into `/Application Support/Sublime Text 3/Packages/User` for easy live testing (you'll be able to select & test the syntax as you edit it)
+  * Make your changes either in the the JSON or YAML file
+  * Compile the file into an actual tmLanguage property list with `CTRL+B` or `Tools/Build With...`
+  * Make sure that both JSON and YAML are up-to-date
+  * Pull request!
 
 ### Refs
+http://docs.sublimetext.info/en/latest/reference/syntaxdefs.html
 http://www.apeth.com/nonblog/stories/textmatebundle.html
 http://docs.sublimetext.info/en/latest/extensibility/syntaxdefs.html  
 http://manual.macromates.com/en/language_grammars  
