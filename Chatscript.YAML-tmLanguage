@@ -34,7 +34,10 @@ patterns:
 
 - comment: Input capture variables
   name: constant.language.ChatScript
-  match: (\s*)(\'?)(_)\d+
+  match: (\s*)(\'?)(_\d+)
+  captures:
+    '2': {name: keyword.numeric.ChatScript}
+    '3': {name: constant.language.ChatScript}
 
 - comment: Position variable
   name: constant.language.ChatScript
@@ -71,11 +74,11 @@ patterns:
   patterns:
   - include: $self
   - name: keyword.numeric.ChatScript
-    match: '(\!|==|\s(AND|OR)\s|>=|<=|\!=|>|<)'
+    match: '(\!|==|\s(AND|OR)\s|>=|<=|\!=|>|<|\?)'
 
 - comment: Integers
   name: constant.numeric.ChatScript
-  match: '(?!\(|\s+)\d+(?![\w,.])'
+  match: '\d+'
 
 - comment: Boolean & state
   name: constant.numeric.ChatScript
@@ -83,7 +86,7 @@ patterns:
 
 - comment: Assigment
   name: keyword.numeric.ChatScript
-  match: '(?!\s)(=(?!=)|\+=|-=|\*=|/=|\%=|\*\*=|<<=|>>=|>>>=|<<|>>|&=|\^=|\|=)'
+  match: '(?!\s)(=(?!=)|\+=|-=|\*=|/=|\%=|\*\*=|<<=|>>=|>>>=|<<|>>|&=|\^=|\|=|\|)'
 
 - comment: Operators
   name: keyword.numeric.ChatScript
@@ -320,7 +323,7 @@ patterns:
   patterns:
   - include: $self
   - name: keyword.numeric.ChatScript
-    match: (\*|<<|>>|==|\!\=|\!|\?|\[|\]|\{|\}|\"|<|>|~|\_(?![a-z]))|(\w|\-+)
+    match: (\*|<<|>>|==|\!\=|\!|\?|\[|\]|\{|\}|\"|\'|<|>|\_(?![a-z]))|(\w|\-|~+)
     captures:
       '1': {name: keyword.numeric.ChatScript}
       '2': {name: string.source.ChatScript}
@@ -339,7 +342,7 @@ patterns:
   patterns:
   - include: $self
   - name: keyword.numeric.ChatScript
-    match: (\*|<<|>>|==|\!\=|\!|\?|\[|\]|\{|\}|\"|<|>|~|\_(?![a-z]))|(\w|\-+)
+    match: (\*|<<|>>|==|\!\=|\!|\?|\[|\]|\{|\}|\"|\'|<|>|\_(?![a-z]))|(\w|\-|~+)
     captures:
       '1': {name: keyword.numeric.ChatScript}
       '2': {name: string.source.ChatScript}
@@ -360,7 +363,7 @@ patterns:
 
 - comment: Concepts
   name: none.ChatScript
-  begin: '(^concept:).*\('
+  begin: '(concept:).*\('
   beginCaptures:
     '1': {name: entity.name.function.ChatScript}
   end: '\)'
@@ -371,23 +374,27 @@ patterns:
 
 - comment: Describe
   name: entity.name.function.ChatScript
-  match: '(^describe:)'
+  match: '(describe:)'
 
 - comment: Outputmacro
   name: entity.name.function.ChatScript
-  match: '(^outputmacro:)'
+  match: '(outputmacro:)'
+
+- comment: Patternmacro
+  name: entity.name.function.ChatScript
+  match: '(patternmacro:)'
+
+- comment: Dualmacro
+  name: entity.name.function.ChatScript
+  match: '(dualmacro:)'
 
 - comment: Table
   name: entity.name.function.ChatScript
-  match: '(^table:)'
+  match: '(table:)'
 
 - comment: Topic
   name: entity.name.function.ChatScript
-  match: '(^topic:)'
-
-- comment: Topic
-  name: entity.name.function.ChatScript
-  match: '(^DATA:)'
+  match: '(topic:)'
 
 
 
