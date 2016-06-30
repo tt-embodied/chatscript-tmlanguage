@@ -1,18 +1,17 @@
 {
-  "name": "language-chat-script",
-  "version": "1.0.0",
-  "description": "ChatScript language support",
-  "keywords": [
-  "syntax"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kuzyn/chatscript-tmlanguage"
-  },
-  "bugs": {
-    "url": "https://github.com/kuzyn/chatscript-tmlanguage/issues"
-  },
-  "license": "LICENSE.md",
-  "engines": {
-    "atom": ">=1.0.0 <2.0.0"
-  }
+    "name": "language-chat-script",
+    "version": "1.0.0",
+    "description": "ChatScript language support",
+    "keywords": ["syntax"],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kuzyn/chatscript-tmlanguage"
+    },
+    "bugs": {
+        "url": "https://github.com/kuzyn/chatscript-tmlanguage/issues"
+    },
+    "license": "LICENSE.md",
+    "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+    }
+}
