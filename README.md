@@ -2,10 +2,10 @@
 
 ### Summary ###
 
-A [ChatScript](https://github.com/bwilcox-1234/ChatScript) syntax definition. :cake:
+A [ChatScript](https://github.com/bwilcox-1234/ChatScript) syntax definition for Sublime Text, Atom and anything else that works with tmLanguage or CSON :cake: :cake: :cake:
 
 **_June 2016_**  
-**_1.0.0_**  
+**_1.1.0_**  
 **ChatScript 6.5b**  
 
 ### Monokai
@@ -26,6 +26,7 @@ Install through [Package Control](https://packagecontrol.io/installation):
   * Make your changes either in the the JSON or YAML file
   * Compile the file into an actual tmLanguage property list with `CTRL+B` or `Tools/Build With...`
   * Make sure that both JSON and YAML are up-to-date
+  * Make sure that `grammars/ChatScript.cson` is up to date
   * Pull request!
 
 ### Refs
