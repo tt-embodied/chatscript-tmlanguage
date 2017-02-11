@@ -2,23 +2,29 @@
 
 ### Summary ###
 
-A [ChatScript](https://github.com/bwilcox-1234/ChatScript) syntax definition for Sublime Text, Atom and anything else that works with tmLanguage or CSON :cake: :cake: :cake:
+A [ChatScript](https://github.com/bwilcox-1234/ChatScript) syntax definition for Sublime Text, Atom and anything else that works with tmLanguage or CSON  
+:cake: :cake: :cake:
 
-**_June 2016_**  
-**_1.1.0_**  
-**ChatScript 6.5b**  
+**_June 2017_**  
+**_1.2.0_**  
+**ChatScript 7.2**  
 
 ### Monokai
-![alt tag](./monokai-screen.png)
+![alt tag](https://raw.githubusercontent.com/kuzyn/chatscript-tmlanguage/master/monokai-screen.png)
 
 ### Solarized
-![alt tag](./solarized-screen.png)
+![alt tag](https://raw.githubusercontent.com/kuzyn/chatscript-tmlanguage/master/solarized-screen.png)
 
-### Install
+### Install with Sublime Text
 Install through [Package Control](https://packagecontrol.io/installation):
   * `CTRL+SHIFT+P`, _Install..._, `ENTER`
   * Search for _ChatScript syntax_, `ENTER`
-  * That's all, and you'll get the updates too.
+  * Install :+1:
+
+### Install with Atom
+  * In _Settings_, click on _Install_
+  * Search for _language-chat-script_
+  * Install :+1:
 
 ### Contribute
   * Install the [PackageDev](https://github.com/SublimeText/PackageDev#getting-started) package in Sublime Text

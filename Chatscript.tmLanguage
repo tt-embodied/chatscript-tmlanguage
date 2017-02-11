@@ -16,7 +16,7 @@
 			<key>comment</key>
 			<string>System variables (date &amp; time &amp; numbers)</string>
 			<key>match</key>
-			<string>(\%)(date|day|daynumber|fulltime|timenumbers|leapyear|daylightsavings|minute|month|monthname|second|volleytime|time|week|year|rand)</string>
+			<string>(\%)(date|day|daynumber|fulltime|timenumbers|leapyear|daylightsavings|minute|month|monthname|second|volleytime|time|week|year|rand|zulutime)</string>
 			<key>name</key>
 			<string>constant.numeric.ChatScript</string>
 		</dict>
@@ -32,7 +32,7 @@
 			<key>comment</key>
 			<string>System variables (chatbot output)</string>
 			<key>match</key>
-			<string>(\%)(http_response|response|all|document|fact|freetext|freedict|freefact|maxmatchvariables|maxfactsets|host|regression|server|rule|topic|actualtopic|trace|outputrejoinder|lastquestion)</string>
+			<string>(\%)(httpresponse|response|all|document|fact|freetext|freedict|freefact|maxmatchvariables|maxfactsets|host|regression|server|rule|topic|actualtopic|trace|outputrejoinder|lastquestion)</string>
 			<key>name</key>
 			<string>constant.numeric.ChatScript</string>
 		</dict>
@@ -40,7 +40,7 @@
 			<key>comment</key>
 			<string>System variables (build data)</string>
 			<key>match</key>
-			<string>(\%)(dict|engine|os|script|version)</string>
+			<string>(\%)(dict|engine|os|script|version|pid|restart|language)</string>
 			<key>name</key>
 			<string>constant.numeric.ChatScript</string>
 		</dict>
@@ -48,7 +48,7 @@
 			<key>comment</key>
 			<string>Interchange variables</string>
 			<key>match</key>
-			<string>(\$)(cs_afterreset|cs_beforereset|cs_token|cs_response|cs_jsontimeout|cs_crashmsg|cs_abstract|cs_looplimit|cs_trace|cs_control_pre|cs_prepass|cs_control_main|cs_control_post|botprompt|userprompt|cs_crashmsg|cs_language|cs_token|cs_abstract|cs_prepass|cs_wildcardseparator|cs_userfactlimit|cs_response|cs_randindex|cs_utcoffset|cs_randindex|cs_bot|cs_login|\$db_error|\$findtext_start|\$tcpopen_error|\$document)</string>
+			<string>(\$)(cs_afterreset|cs_beforereset|cs_token|cs_response|cs_jsontimeout|cs_crashmsg|cs_abstract|cs_looplimit|cs_trace|cs_control_pre|cs_prepass|cs_control_main|cs_control_post|botprompt|userprompt|cs_crashmsg|cs_language|cs_token|cs_abstract|cs_prepass|cs_wildcardseparator|cs_userfactlimit|cs_response|cs_randindex|cs_utcoffset|cs_randindex|cs_bot|cs_login|\$db_error|\$findtext_start|\$tcpopen_error|\$document|cs_externaltag|cs_usermessagelimit|\$findtext_word|\$csmatch_start|\$csmatch_end|cs_botid)</string>
 			<key>name</key>
 			<string>constant.numeric.ChatScript</string>
 		</dict>
@@ -182,7 +182,7 @@
 			<key>comment</key>
 			<string>Token control</string>
 			<key>match</key>
-			<string>#(DO_SUBSTITUTE_SYSTEM|DO_ESSENTIALS|DO_SUBSTITUTES|DO_CONTRACTIONS|DO_INTERJECTIONS|DO_BRITISH|DO_SPELLING|DO_TEXTING|DO_NOISE|DO_PRIVATE|DO_NUMBER_MERGE|DO_PROPERNAME_MERGE|DO_DATE_MERGE|NO_PROPER_SPELLCHECK|NO_LOWERCASE_PROPER_MERGE|DO_SPELLCHECK|DO_INTERJECTION_SPLITTING|DO_PARSE|DO_POSTAG|NO_IMPERATIVE|NO_WITHIN|NO_SENTENCE_END|NO_HYPHEN_END|NO_COLON_END|NO_SEMICOLON_END|STRICT_CASING|ONLY_LOWERCASE|TOKEN_AS_IS|SPLIT_QUOTE|UNTOUCHED_INPUT)</string>
+			<string>#(DO_SUBSTITUTE_SYSTEM|DO_ESSENTIALS|DO_SUBSTITUTES|DO_CONTRACTIONS|DO_INTERJECTIONS|DO_BRITISH|DO_SPELLING|DO_TEXTING|DO_NOISE|DO_PRIVATE|DO_NUMBER_MERGE|DO_PROPERNAME_MERGE|DO_DATE_MERGE|NO_PROPER_SPELLCHECK|NO_LOWERCASE_PROPER_MERGE|DO_SPELLCHECK|DO_INTERJECTION_SPLITTING|DO_PARSE|DO_POSTAG|NO_IMPERATIVE|NO_WITHIN|NO_SENTENCE_END|NO_HYPHEN_END|NO_COLON_END|NO_SEMICOLON_END|STRICT_CASING|ONLY_LOWERCASE|TOKEN_AS_IS|SPLIT_QUOTE|UNTOUCHED_INPUT|JSON_DIRECT_FROM_OOB|DO_CONDITIONAL_POSTAG|NO_ERASE|DO_SPLIT_UNDERSCORES|MARK_LOWER|NO_INFER_QUESTION|LEAVE_QUOTE|JSON_DIRECT_OOB)</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -322,7 +322,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^(analyze|capitalized|input|original|position|removetokenflags|settokenflags|setwildcardindex))(\()</string>
+			<string>(\^(analyze|capitalized|input|original|position|removetokenflags|settokenflags|setwildcardindex|actualinputrange))(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -508,7 +508,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^(system|popen|tcpopen|export|import|debug|log))(\()</string>
+			<string>(\^(system|popen|tcpopen|export|import|debug|log|environment))(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -539,7 +539,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^(jsonarrayinsert|jsonarraydelete|jsoncreate|jsondelete|jsongather|jsonobjectinsert|jsonopen|jsonprint|jsonwrite|jsonparse|jsonpath|jsonarraysize))(\()</string>
+			<string>(\^(jsonarrayinsert|jsonarraydelete|jsoncreate|jsondelete|jsongather|jsonobjectinsert|jsonopen|jsonprint|jsonwrite|jsonparse|jsonpath|jsonarraysize|jsonobjectinsert|jsonlabel|jsonundecodeString|jsoncopy|jsonkind|jsonreadcvs))(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -570,7 +570,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^(burst|words|canon|explode|extract|findtext|flags|intersectwords|join|properties|pos|decodeinputtoken|decodepos|partofspeech|role|tally|rhyme|substitute|spell|sexed|uppercase|addproperty|define|hasanyproperty|hasallproperty|removeinternalflag|removeproperty|walkdictionary|iterator))(\()</string>
+			<string>(\^(burst|words|canon|explode|extract|findtext|flags|intersectwords|join|properties|pos|decodeinputtoken|decodepos|partofspeech|role|tally|rhyme|substitute|spell|sexed|uppercase|addproperty|define|hasanyproperty|hasallproperty|removeinternalflag|removeproperty|walkdictionary|iterator|wordinconcept|setoriginal|setcanon|settag|setrole|tokenize))(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -601,7 +601,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^(disable|enable|length|pick|reset))(\()</string>
+			<string>(\^(disable|enable|length|pick|reset|clearcontext|authorized|callstack))(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -632,7 +632,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^(result|findfact|query|first|last|pick|sort|delete|length|nth|unpackfactref|save|addproperty|conceptlist|createattribute|createfact|writefact|revisefact|field|find|findmarkedfact|flushfacts|gambittopics|intersectfacts|keywordtopics|last|makereal|next|pendingtopics|pick|querytopics|removeproperty|reset|query|save|unduplicate|uniquefacts|unpackfactref|importfacts))(\()</string>
+			<string>(\^(result|findfact|query|first|last|pick|sort|delete|length|nth|unpackfactref|save|addproperty|conceptlist|createattribute|createfact|writefact|revisefact|field|find|findmarkedfact|flushfacts|gambittopics|intersectfacts|keywordtopics|last|makereal|next|pendingtopics|pick|querytopics|removeproperty|reset|query|save|unduplicate|uniquefacts|unpackfactref|importfacts|serialize|deserialize|match))(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -831,7 +831,7 @@
 			<key>comment</key>
 			<string>Indirect returns/sets</string>
 			<key>match</key>
-			<string>(\^\".*\")|(\^\$+\w+)</string>
+			<string>(\^[\",'].*[\",'])|(\^\$+\w+)</string>
 			<key>name</key>
 			<string>string.source.ChatScript</string>
 		</dict>
@@ -923,6 +923,14 @@
 			<string>entity.name.function.ChatScript</string>
 		</dict>
 		<dict>
+			<key>comment</key>
+			<string>Conditional compilation</string>
+			<key>match</key>
+			<string>(\#\#&lt;&lt;[a-z,A-Z]+)</string>
+			<key>name</key>
+			<string>constant.language.ChatScript</string>
+		</dict>
+		<dict>
 			<key>begin</key>
 			<string>(\#\#&lt;&lt;)</string>
 			<key>comment</key>
@@ -931,6 +939,14 @@
 			<string>(\#\#&gt;&gt;)</string>
 			<key>name</key>
 			<string>comment.line.number-sign.ChatScript</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Conditional compilation end</string>
+			<key>match</key>
+			<string>(\#\#&gt;&gt;)</string>
+			<key>name</key>
+			<string>constant.language.ChatScript</string>
 		</dict>
 		<dict>
 			<key>comment</key>
