@@ -13,7 +13,7 @@ patterns: [
 	}
 	{
 		name: "constant.numeric.ChatScript"
-		match: "(\\%)(bot|revisedinput|command|foreign|impliedyou|input|ip|length|more|morequestion|originalinput|originalsentence|parsed|question|quotation|sentence|tense|userfirstline|user|userinput|voice)"
+		match: "(\\%)(inputrejoinder|bot|revisedinput|command|foreign|impliedyou|input|ip|length|more|morequestion|originalinput|originalsentence|parsed|question|quotation|sentence|tense|userfirstline|user|userinput|voice)"
 		comment: "System variables (user input)"
 	}
 	{
@@ -64,38 +64,39 @@ patterns: [
 			}
 			{
 				name: "keyword.numeric.ChatScript"
-				match: "(\\!|==|\\s(AND|OR)\\s|>=|<=|\\!=|>|<|\\?)"
+				match: "(\\!|==|\\b(AND|OR)\\b|>=|<=|\\!=|>|<|\\?)"
 			}
 		]
-		begin: "((if|else\\sif)(?:\\s*)(?=\\(+))|(else\\s*)(?=\\{|\\n)"
+		begin: '''
+			((if|else\\sif)(?:\\s*)(?=\\(+))|(else)(?:\\s*)(?=\\{|
+			)
+		'''
 		beginCaptures:
-			"1":
+			"2":
 				name: "keyword.numeric.ChatScript"
 			"3":
-				name: "keyword.numeric.ChatScript"
-			"5":
 				name: "keyword.numeric.ChatScript"
 		end: "\\)"
 		name: "none.ChatScript"
 	}
 	{
 		name: "constant.numeric.ChatScript"
-		match: "\\d+"
+		match: "\\b(?<![.,-=])\\d+(?![.,-=])\\b"
 		comment: "Integers"
 	}
 	{
 		name: "constant.numeric.ChatScript"
-		match: "\\s(null|true|false)(?![\\w,\\d])"
+		match: "\\b(null|true|false)\\b[^\"-=\\$%&\\?]"
 		comment: "Boolean & state"
 	}
 	{
 		name: "keyword.numeric.ChatScript"
-		match: "(?!\\s)(=(?!=)|\\+=|-=|\\*=|/=|\\%=|\\*\\*=|<<=|>>=|>>>=|<<|>>|&=|\\^=|\\|=|\\|)"
+		match: "(?!\\s)((=(?!=)|\\+=|-=|\\*=|/=|\\%=|\\*\\*=|<<=|>>=|<<|>>|&=|\\^=|\\|=|\\|)(?:\\s))"
 		comment: "Assigment"
 	}
 	{
 		name: "keyword.numeric.ChatScript"
-		match: "(?:\\(|\\s+)(\\-|\\+|/|\\*|\\s%\\s)"
+		match: "\\B(-|\\+|/|\\*|%)\\B"
 		comment: "Operators"
 	}
 	{
@@ -326,7 +327,7 @@ patterns: [
 				match: "."
 			}
 		]
-		begin: "(\\^(jsonarrayinsert|jsonarraydelete|jsoncreate|jsondelete|jsongather|jsonobjectinsert|jsonopen|jsonprint|jsonwrite|jsonparse|jsonpath|jsonarraysize|jsonobjectinsert|jsonlabel|jsonundecodeString|jsoncopy|jsonkind|jsonreadcvs))(\\()"
+		begin: "(\\^(jsonarrayinsert|jsonarraydelete|jsoncreate|jsondelete|jsongather|jsonobjectinsert|jsonopen|jsonprint|jsonwrite|jsonparse|jsonpath|jsonarraysize|jsonobjectinsert|jsonlabel|jsonundecodeString|jsoncopy|jsonkind|jsonreadcvs|jsontree))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -407,11 +408,11 @@ patterns: [
 	}
 	{
 		name: "string.source.ChatScript"
-		match: "(\\\\[\\w,\\d,\\[,\\],\\(,$,\\-,\\+,_]+)|(\\\\([n,r,t]?))"
-		comment: "Print escapes"
+		match: "((\\\\[\\w,\\d,\\[,\\],\\(,$,-,\\+,_]+)|(\\\\([n,r,t,',\"]))|(\\\\\\)))"
+		comment: "Escaped characters"
 	}
 	{
-		comment: "Matching rules"
+		comment: "CS symbols rules"
 		patterns: [
 			{
 				include: "$self"
@@ -434,7 +435,7 @@ patterns: [
 				name: "entity.other.inherited-class.ChatScript"
 			"3":
 				name: "keyword.numeric.ChatScript"
-		end: "\\)"
+		end: "(?<!\\\\)\\)"
 		contentName: "none.ChatScript"
 	}
 	{
@@ -476,9 +477,44 @@ patterns: [
 				name: "entity.other.inherited-class.ChatScript"
 	}
 	{
+		comment: "Multiline double quotes strings constructs"
+		patterns: [
+			{
+				include: "$self"
+			}
+			{
+				name: "string.source.ChatScript"
+				match: "."
+			}
+		]
+		begin: "(\\^(\")([\\s\\w\\W])*?)"
+		end: "(\")"
 		name: "string.source.ChatScript"
-		match: "(\\^[\\\",'].*[\\\",'])|(\\^\\$+\\w+)"
-		comment: "Indirect returns/sets"
+	}
+	{
+		name: "string.source.ChatScript"
+		match: "(\\^(\").+(\"))"
+		comment: "Strings double quotes constructs"
+	}
+	{
+		comment: "Multiline double quotes strings constructs"
+		patterns: [
+			{
+				include: "$self"
+			}
+			{
+				name: "string.source.ChatScript"
+				match: "."
+			}
+		]
+		begin: "(\\^(')([\\s\\w\\W])*?)"
+		end: "(')"
+		name: "string.source.ChatScript"
+	}
+	{
+		name: "string.source.ChatScript"
+		match: "(\\^(').+('))"
+		comment: "Strings double quotes constructs"
 	}
 	{
 		name: "keyword.numeric.ChatScript"
