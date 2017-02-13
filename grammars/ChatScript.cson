@@ -53,7 +53,7 @@ patterns: [
 	}
 	{
 		name: "none.ChatScript"
-		match: "(\\$[a-zA-Z\\d-_]+)(\\.[\\w$-]+)?"
+		match: "(\\$[a-zA-Z\\d_-]+)(\\.[\\w$-]+)?"
 		comment: "User variables"
 		captures:
 			"1":

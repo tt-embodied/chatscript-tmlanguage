@@ -106,7 +106,7 @@
 			<key>comment</key>
 			<string>User variables</string>
 			<key>match</key>
-			<string>(\$[a-zA-Z\d-_]+)(\.[\w$-]+)?</string>
+			<string>(\$[a-zA-Z\d_-]+)(\.[\w$-]+)?</string>
 			<key>name</key>
 			<string>none.ChatScript</string>
 		</dict>
