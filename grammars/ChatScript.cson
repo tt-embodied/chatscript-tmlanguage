@@ -33,7 +33,7 @@ patterns: [
 	}
 	{
 		name: "constant.language.ChatScript"
-		match: "(\\s*)(\\'?)(_\\d+)"
+		match: "(\\s*)(\\'?)(_\\d+)\\b"
 		comment: "Input capture variables"
 		captures:
 			"2":
@@ -52,9 +52,14 @@ patterns: [
 		comment: "User transient variables"
 	}
 	{
-		name: "variable.parameter.ChatScript∫∫"
-		match: "\\$[a-z,A-Z,\\d,\\-,_]+"
+		name: "none.ChatScript"
+		match: "(\\$[a-zA-Z\\d-_]+)(\\.[\\w$-]+)?"
 		comment: "User variables"
+		captures:
+			"1":
+				name: "variable.parameter.ChatScript"
+			"2":
+				name: "none.ChatScript"
 	}
 	{
 		comment: "Execution flow"
@@ -96,7 +101,7 @@ patterns: [
 	}
 	{
 		name: "keyword.numeric.ChatScript"
-		match: "\\B(-|\\+|/|\\*|%)\\B"
+		match: "((?<![/,'\";=])\\B(-|\\+|/|\\*|%)(?![/,'\";=])\\B)"
 		comment: "Operators"
 	}
 	{
@@ -106,7 +111,7 @@ patterns: [
 	}
 	{
 		name: "constant.language.ChatScript"
-		match: "#(DO_SUBSTITUTE_SYSTEM|DO_ESSENTIALS|DO_SUBSTITUTES|DO_CONTRACTIONS|DO_INTERJECTIONS|DO_BRITISH|DO_SPELLING|DO_TEXTING|DO_NOISE|DO_PRIVATE|DO_NUMBER_MERGE|DO_PROPERNAME_MERGE|DO_DATE_MERGE|NO_PROPER_SPELLCHECK|NO_LOWERCASE_PROPER_MERGE|DO_SPELLCHECK|DO_INTERJECTION_SPLITTING|DO_PARSE|DO_POSTAG|NO_IMPERATIVE|NO_WITHIN|NO_SENTENCE_END|NO_HYPHEN_END|NO_COLON_END|NO_SEMICOLON_END|STRICT_CASING|ONLY_LOWERCASE|TOKEN_AS_IS|SPLIT_QUOTE|UNTOUCHED_INPUT|JSON_DIRECT_FROM_OOB|DO_CONDITIONAL_POSTAG|NO_ERASE|DO_SPLIT_UNDERSCORES|MARK_LOWER|NO_INFER_QUESTION|LEAVE_QUOTE|JSON_DIRECT_OOB)"
+		match: "#(DO_SUBSTITUTE_SYSTEM|DO_ESSENTIALS|DO_SUBSTITUTES|DO_CONTRACTIONS|DO_INTERJECTIONS|DO_BRITISH|DO_SPELLING|DO_TEXTING|DO_NOISE|DO_PRIVATE|DO_NUMBER_MERGE|DO_PROPERNAME_MERGE|DO_DATE_MERGE|NO_PROPER_SPELLCHECK|NO_LOWERCASE_PROPER_MERGE|DO_SPELLCHECK|DO_INTERJECTION_SPLITTING|DO_PARSE|DO_POSTAG|NO_IMPERATIVE|NO_WITHIN|NO_SENTENCE_END|NO_HYPHEN_END|NO_COLON_END|NO_SEMICOLON_END|STRICT_CASING|ONLY_LOWERCASE|TOKEN_AS_IS|SPLIT_QUOTE|UNTOUCHED_INPUT|JSON_DIRECT_FROM_OOB|DO_CONDITIONAL_POSTAG|NO_ERASE|DO_SPLIT_UNDERSCORE|MARK_LOWER|NO_INFER_QUESTION|LEAVE_QUOTE|JSON_DIRECT_OOB|NO_FIX_UTF)"
 		comment: "Token control"
 	}
 	{
@@ -419,7 +424,7 @@ patterns: [
 			}
 			{
 				name: "keyword.numeric.ChatScript"
-				match: "(\\*|<<|>>|==|\\!\\=|\\!|\\?|\\[|\\]|\\{|\\}|\\\"|\\'|<|>|\\_(?![a-z]))|(\\w|\\-|~+)"
+				match: "(\\*|<<|>>|==|\\!\\=|\\!|\\?|\\[|\\]|\\{|\\}|\\\"|'|<|>|_(?![a-z]))|(\\w+|-|~)"
 				captures:
 					"1":
 						name: "keyword.numeric.ChatScript"
@@ -451,7 +456,7 @@ patterns: [
 			}
 			{
 				name: "keyword.numeric.ChatScript"
-				match: "(\\*|<<|>>|==|\\!\\=|\\!|\\?|\\[|\\]|\\{|\\}|\\\"|\\'|<|>|\\_(?![a-z]))|(\\w|\\-|~+)"
+				match: "(\\*|<<|>>|==|\\!\\=|\\!|\\?|\\[|\\]|\\{|\\}|\\\"|'|<|>|_(?![a-z]))|(\\w|-|~+)"
 				captures:
 					"1":
 						name: "keyword.numeric.ChatScript"
@@ -465,7 +470,7 @@ patterns: [
 				name: "entity.name.function.ChatScript"
 			"2":
 				name: "entity.other.inherited-class.ChatScript"
-		end: "\\)"
+		end: "(\\))"
 		contentName: "none.ChatScript"
 	}
 	{
@@ -587,7 +592,7 @@ patterns: [
 	}
 	{
 		name: "comment.line.number-sign.ChatScript"
-		match: "(\\#\\s?.*)|(\\#!\\s?.*)|(\\#!x\\s?.*)"
+		match: "(\\#(\\s|##)+.*)|(\\#!(\\s|##)+.*)|(\\#!x(\\s|#).*)"
 		comment: "Comments"
 	}
 ]

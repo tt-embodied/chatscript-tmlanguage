@@ -69,7 +69,7 @@
 			<key>comment</key>
 			<string>Input capture variables</string>
 			<key>match</key>
-			<string>(\s*)(\'?)(_\d+)</string>
+			<string>(\s*)(\'?)(_\d+)\b</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -90,12 +90,25 @@
 			<string>variable.parameter.ChatScript</string>
 		</dict>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.ChatScript</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>none.ChatScript</string>
+				</dict>
+			</dict>
 			<key>comment</key>
 			<string>User variables</string>
 			<key>match</key>
-			<string>\$[a-z,A-Z,\d,\-,_]+</string>
+			<string>(\$[a-zA-Z\d-_]+)(\.[\w$-]+)?</string>
 			<key>name</key>
-			<string>variable.parameter.ChatScript∫∫</string>
+			<string>none.ChatScript</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -162,7 +175,7 @@
 			<key>comment</key>
 			<string>Operators</string>
 			<key>match</key>
-			<string>\B(-|\+|/|\*|%)\B</string>
+			<string>((?&lt;![/,'";=])\B(-|\+|/|\*|%)(?![/,'";=])\B)</string>
 			<key>name</key>
 			<string>keyword.numeric.ChatScript</string>
 		</dict>
@@ -178,7 +191,7 @@
 			<key>comment</key>
 			<string>Token control</string>
 			<key>match</key>
-			<string>#(DO_SUBSTITUTE_SYSTEM|DO_ESSENTIALS|DO_SUBSTITUTES|DO_CONTRACTIONS|DO_INTERJECTIONS|DO_BRITISH|DO_SPELLING|DO_TEXTING|DO_NOISE|DO_PRIVATE|DO_NUMBER_MERGE|DO_PROPERNAME_MERGE|DO_DATE_MERGE|NO_PROPER_SPELLCHECK|NO_LOWERCASE_PROPER_MERGE|DO_SPELLCHECK|DO_INTERJECTION_SPLITTING|DO_PARSE|DO_POSTAG|NO_IMPERATIVE|NO_WITHIN|NO_SENTENCE_END|NO_HYPHEN_END|NO_COLON_END|NO_SEMICOLON_END|STRICT_CASING|ONLY_LOWERCASE|TOKEN_AS_IS|SPLIT_QUOTE|UNTOUCHED_INPUT|JSON_DIRECT_FROM_OOB|DO_CONDITIONAL_POSTAG|NO_ERASE|DO_SPLIT_UNDERSCORES|MARK_LOWER|NO_INFER_QUESTION|LEAVE_QUOTE|JSON_DIRECT_OOB)</string>
+			<string>#(DO_SUBSTITUTE_SYSTEM|DO_ESSENTIALS|DO_SUBSTITUTES|DO_CONTRACTIONS|DO_INTERJECTIONS|DO_BRITISH|DO_SPELLING|DO_TEXTING|DO_NOISE|DO_PRIVATE|DO_NUMBER_MERGE|DO_PROPERNAME_MERGE|DO_DATE_MERGE|NO_PROPER_SPELLCHECK|NO_LOWERCASE_PROPER_MERGE|DO_SPELLCHECK|DO_INTERJECTION_SPLITTING|DO_PARSE|DO_POSTAG|NO_IMPERATIVE|NO_WITHIN|NO_SENTENCE_END|NO_HYPHEN_END|NO_COLON_END|NO_SEMICOLON_END|STRICT_CASING|ONLY_LOWERCASE|TOKEN_AS_IS|SPLIT_QUOTE|UNTOUCHED_INPUT|JSON_DIRECT_FROM_OOB|DO_CONDITIONAL_POSTAG|NO_ERASE|DO_SPLIT_UNDERSCORE|MARK_LOWER|NO_INFER_QUESTION|LEAVE_QUOTE|JSON_DIRECT_OOB|NO_FIX_UTF)</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -744,7 +757,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(\*|&lt;&lt;|&gt;&gt;|==|\!\=|\!|\?|\[|\]|\{|\}|\"|\'|&lt;|&gt;|\_(?![a-z]))|(\w|\-|~+)</string>
+					<string>(\*|&lt;&lt;|&gt;&gt;|==|\!\=|\!|\?|\[|\]|\{|\}|\"|'|&lt;|&gt;|_(?![a-z]))|(\w+|-|~)</string>
 					<key>name</key>
 					<string>keyword.numeric.ChatScript</string>
 				</dict>
@@ -779,7 +792,7 @@
 			<key>contentName</key>
 			<string>none.ChatScript</string>
 			<key>end</key>
-			<string>\)</string>
+			<string>(\))</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -801,7 +814,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(\*|&lt;&lt;|&gt;&gt;|==|\!\=|\!|\?|\[|\]|\{|\}|\"|\'|&lt;|&gt;|\_(?![a-z]))|(\w|\-|~+)</string>
+					<string>(\*|&lt;&lt;|&gt;&gt;|==|\!\=|\!|\?|\[|\]|\{|\}|\"|'|&lt;|&gt;|_(?![a-z]))|(\w|-|~+)</string>
 					<key>name</key>
 					<string>keyword.numeric.ChatScript</string>
 				</dict>
@@ -1002,7 +1015,7 @@
 			<key>comment</key>
 			<string>Comments</string>
 			<key>match</key>
-			<string>(\#\s?.*)|(\#!\s?.*)|(\#!x\s?.*)</string>
+			<string>(\#(\s|##)+.*)|(\#!(\s|##)+.*)|(\#!x(\s|#).*)</string>
 			<key>name</key>
 			<string>comment.line.number-sign.ChatScript</string>
 		</dict>
