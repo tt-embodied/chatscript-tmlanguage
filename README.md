@@ -5,7 +5,7 @@
 A [ChatScript](https://github.com/bwilcox-1234/ChatScript) syntax definition for Sublime Text, Atom and anything else that works with tmLanguage or CSON  
 :cake: :cake: :cake:
 
-**_June 2017_**  
+**_February 2017_**  
 **_1.2.0_**  
 **ChatScript 7.2**  
 
