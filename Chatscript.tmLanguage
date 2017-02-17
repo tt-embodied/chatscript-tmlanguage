@@ -151,7 +151,7 @@
 			<key>comment</key>
 			<string>Integers</string>
 			<key>match</key>
-			<string>(?&lt;!_)\-?\d(?![\w\-+?&amp;])\b</string>
+			<string>(?&lt;!_)\-?\d+(?![\w\-+?&amp;])\b</string>
 			<key>name</key>
 			<string>constant.numeric.ChatScript</string>
 		</dict>

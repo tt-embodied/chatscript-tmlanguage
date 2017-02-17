@@ -91,7 +91,7 @@
         },
         {
             "name": "constant.numeric.ChatScript",
-            "match": "(?<!_)\\-?\\d(?![\\w\\-+?&])\\b",
+            "match": "(?<!_)\\-?\\d+(?![\\w\\-+?&])\\b",
             "comment": "Integers"
         },
         {
