@@ -151,7 +151,7 @@
 			<key>comment</key>
 			<string>Integers</string>
 			<key>match</key>
-			<string>\b(?&lt;![.,-=])\d+(?![.,-=])\b</string>
+			<string>(?&lt;!_)\-?\d(?![\w\-+?&amp;])\b</string>
 			<key>name</key>
 			<string>constant.numeric.ChatScript</string>
 		</dict>
@@ -840,7 +840,7 @@
 			<key>begin</key>
 			<string>(\^(")([\s\w\W])*?)</string>
 			<key>comment</key>
-			<string>Multiline double quotes strings constructs</string>
+			<string>Multiline double quotes strings elements</string>
 			<key>end</key>
 			<string>(")</string>
 			<key>name</key>
@@ -861,7 +861,7 @@
 		</dict>
 		<dict>
 			<key>comment</key>
-			<string>Strings double quotes constructs</string>
+			<string>Strings double quotes elements</string>
 			<key>match</key>
 			<string>(\^(").+("))</string>
 			<key>name</key>
@@ -871,7 +871,7 @@
 			<key>begin</key>
 			<string>(\^(')([\s\w\W])*?)</string>
 			<key>comment</key>
-			<string>Multiline double quotes strings constructs</string>
+			<string>Multiline single quotes strings elements</string>
 			<key>end</key>
 			<string>(')</string>
 			<key>name</key>
@@ -892,7 +892,7 @@
 		</dict>
 		<dict>
 			<key>comment</key>
-			<string>Strings double quotes constructs</string>
+			<string>Strings single quotes elements</string>
 			<key>match</key>
 			<string>(\^(').+('))</string>
 			<key>name</key>
