@@ -8,27 +8,27 @@ scopeName: "source.top"
 patterns: [
 	{
 		name: "constant.numeric.ChatScript"
-		match: "(\\%)(date|day|daynumber|fulltime|timenumbers|leapyear|daylightsavings|minute|month|monthname|second|volleytime|time|week|year|rand|zulutime)"
+		match: "(\\%)(?i:(date|daynumber|fulltime|timenumbers|leapyear|daylightsavings|minute|month|monthname|second|volleytime|week|year|rand|zulutime|day|time))"
 		comment: "System variables (date & time & numbers)"
 	}
 	{
 		name: "constant.numeric.ChatScript"
-		match: "(\\%)(inputrejoinder|bot|revisedinput|command|foreign|impliedyou|input|ip|length|more|morequestion|originalinput|originalsentence|parsed|question|quotation|sentence|tense|userfirstline|user|userinput|voice)"
+		match: "(\\%)(?i:(inputrejoinder|bot|revisedinput|command|foreign|impliedyou|input|ip|length|more|morequestion|originalinput|originalsentence|parsed|question|quotation|sentence|tense|userfirstline|user|userinput|voice))"
 		comment: "System variables (user input)"
 	}
 	{
 		name: "constant.numeric.ChatScript"
-		match: "(\\%)(httpresponse|response|all|document|fact|freetext|freedict|freefact|maxmatchvariables|maxfactsets|host|regression|server|rule|topic|actualtopic|trace|outputrejoinder|lastquestion)"
+		match: "(\\%)(?i:(httpresponse|response|all|document|fact|freetext|freedict|freefact|maxmatchvariables|maxfactsets|host|regression|server|rule|topic|actualtopic|trace|outputrejoinder|lastquestion))"
 		comment: "System variables (chatbot output)"
 	}
 	{
 		name: "constant.numeric.ChatScript"
-		match: "(\\%)(dict|engine|os|script|version|pid|restart|language)"
+		match: "(\\%)(?i:(dict|engine|os|script|version|pid|restart|language))"
 		comment: "System variables (build data)"
 	}
 	{
 		name: "constant.numeric.ChatScript"
-		match: "(\\$)(cs_afterreset|cs_beforereset|cs_token|cs_response|cs_jsontimeout|cs_crashmsg|cs_abstract|cs_looplimit|cs_trace|cs_control_pre|cs_prepass|cs_control_main|cs_control_post|botprompt|userprompt|cs_crashmsg|cs_language|cs_token|cs_abstract|cs_prepass|cs_wildcardseparator|cs_userfactlimit|cs_response|cs_randindex|cs_utcoffset|cs_randindex|cs_bot|cs_login|\\$db_error|\\$findtext_start|\\$tcpopen_error|\\$document|cs_externaltag|cs_usermessagelimit|\\$findtext_word|\\$csmatch_start|\\$csmatch_end|cs_botid)"
+		match: "(\\$)(?i:(cs_afterreset|cs_beforereset|cs_token|cs_response|cs_jsontimeout|cs_crashmsg|cs_abstract|cs_looplimit|cs_trace|cs_control_pre|cs_prepass|cs_control_main|cs_control_post|botprompt|userprompt|cs_crashmsg|cs_language|cs_token|cs_abstract|cs_prepass|cs_wildcardseparator|cs_userfactlimit|cs_response|cs_randindex|cs_utcoffset|cs_randindex|cs_bot|cs_login|\\$db_error|\\$findtext_start|\\$tcpopen_error|\\$document|cs_externaltag|cs_usermessagelimit|\\$findtext_word|\\$csmatch_start|\\$csmatch_end|cs_botid))"
 		comment: "Interchange variables"
 	}
 	{
@@ -170,7 +170,7 @@ patterns: [
 				match: "."
 			}
 		]
-		begin: "(\\^(addtopic|available|cleartopics|counttopics|gambit|getrule|hasgambit|keep|lastused|next|poptopic|refine|rejoinder|respond|retry|reuse|sequence|setrejoinder|topicflags))(\\()"
+		begin: "(\\^(?i:(addtopic|available|cleartopics|counttopics|gambit|getrule|hasgambit|keep|lastused|next|poptopic|refine|rejoinder|respond|retry|reuse|sequence|setrejoinder|topicflags)))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -188,7 +188,7 @@ patterns: [
 				match: "."
 			}
 		]
-		begin: "(\\^(mark|unmark|position|setposition|marked))(\\()"
+		begin: "(\\^(?i:(mark|unmark|position|setposition|marked)))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -206,7 +206,7 @@ patterns: [
 				match: "."
 			}
 		]
-		begin: "(\\^(analyze|capitalized|input|original|position|removetokenflags|settokenflags|setwildcardindex|actualinputrange))(\\()"
+		begin: "(\\^(?i:(analyze|capitalized|input|original|position|removetokenflags|settokenflags|setwildcardindex|actualinputrange)))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -224,7 +224,7 @@ patterns: [
 				match: "."
 			}
 		]
-		begin: "(\\^(compute|timefromseconds|timeinfofromseconds|timetoeconds))(\\()"
+		begin: "(\\^(?i:(compute|timefromseconds|timeinfofromseconds|timetoeconds)))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -242,7 +242,7 @@ patterns: [
 				match: "."
 			}
 		]
-		begin: "(\\^(flushoutput|insertprint|keephistory|lastsaid|print|preprint|repeat|reviseOutput|savesentence|restoresentence|notrace))(\\()"
+		begin: "(\\^(?i:(flushoutput|insertprint|keephistory|lastsaid|print|preprint|repeat|reviseOutput|savesentence|restoresentence|notrace)))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -260,7 +260,7 @@ patterns: [
 				match: "."
 			}
 		]
-		begin: "(\\^(response|responsequestion|responseruleid))(\\()"
+		begin: "(\\^(?i:(response|responsequestion|responseruleid)))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -278,7 +278,7 @@ patterns: [
 				match: "."
 			}
 		]
-		begin: "(\\^(postprintbefore|postprintafter|csboot|csshotdown))(\\()"
+		begin: "(\\^(?i:(postprintbefore|postprintafter|csboot|csshotdown)))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -296,7 +296,7 @@ patterns: [
 				match: "."
 			}
 		]
-		begin: "(\\^(argument|command|end|eval|loop|fail|load|match|nofail|notnull|norejoinder|nottrace|return|addcontext|incontext))(\\()"
+		begin: "(\\^(?i:(argument|command|end|eval|loop|fail|load|match|nofail|notnull|norejoinder|nottrace|return|addcontext|incontext)))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -314,7 +314,7 @@ patterns: [
 				match: "."
 			}
 		]
-		begin: "(\\^(system|popen|tcpopen|export|import|debug|log|environment))(\\()"
+		begin: "(\\^(?i:(system|popen|tcpopen|export|import|debug|log|environment)))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -332,7 +332,7 @@ patterns: [
 				match: "."
 			}
 		]
-		begin: "(\\^(jsonarrayinsert|jsonarraydelete|jsoncreate|jsondelete|jsongather|jsonobjectinsert|jsonopen|jsonprint|jsonwrite|jsonparse|jsonpath|jsonarraysize|jsonobjectinsert|jsonlabel|jsonundecodeString|jsoncopy|jsonkind|jsonreadcvs|jsontree))(\\()"
+		begin: "(\\^(?i:(jsonarrayinsert|jsonarraydelete|jsoncreate|jsondelete|jsongather|jsonobjectinsert|jsonopen|jsonprint|jsonwrite|jsonparse|jsonpath|jsonarraysize|jsonobjectinsert|jsonlabel|jsonundecodestring|jsoncopy|jsonkind|jsonreadcvs|jsontree)))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -350,7 +350,7 @@ patterns: [
 				match: "."
 			}
 		]
-		begin: "(\\^(burst|words|canon|explode|extract|findtext|flags|intersectwords|join|properties|pos|decodeinputtoken|decodepos|partofspeech|role|tally|rhyme|substitute|spell|sexed|uppercase|addproperty|define|hasanyproperty|hasallproperty|removeinternalflag|removeproperty|walkdictionary|iterator|wordinconcept|setoriginal|setcanon|settag|setrole|tokenize))(\\()"
+		begin: "(\\^(?i:(burst|words|canon|explode|extract|findtext|flags|intersectwords|join|properties|pos|decodeinputtoken|decodepos|partofspeech|role|tally|rhyme|substitute|spell|sexed|uppercase|addproperty|define|hasanyproperty|hasallproperty|removeinternalflag|removeproperty|walkdictionary|iterator|wordinconcept|setoriginal|setcanon|settag|setrole|tokenize)))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -368,7 +368,7 @@ patterns: [
 				match: "."
 			}
 		]
-		begin: "(\\^(disable|enable|length|pick|reset|clearcontext|authorized|callstack))(\\()"
+		begin: "(\\^(?i:(disable|enable|length|pick|reset|clearcontext|authorized|callstack)))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -386,7 +386,7 @@ patterns: [
 				match: "."
 			}
 		]
-		begin: "(\\^(result|findfact|query|first|last|pick|sort|delete|length|nth|unpackfactref|save|addproperty|conceptlist|createattribute|createfact|writefact|revisefact|field|find|findmarkedfact|flushfacts|gambittopics|intersectfacts|keywordtopics|last|makereal|next|pendingtopics|pick|querytopics|removeproperty|reset|query|save|unduplicate|uniquefacts|unpackfactref|importfacts|serialize|deserialize|match))(\\()"
+		begin: "(\\^(?i:(result|findfact|query|first|last|pick|sort|delete|length|nth|unpackfactref|save|addproperty|conceptlist|createattribute|createfact|writefact|revisefact|field|find|findmarkedfact|flushfacts|gambittopics|intersectfacts|keywordtopics|last|makereal|next|pendingtopics|pick|querytopics|removeproperty|reset|query|save|unduplicate|uniquefacts|unpackfactref|importfacts|serialize|deserialize|match)))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
