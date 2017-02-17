@@ -69,7 +69,7 @@ patterns: [
 			}
 			{
 				name: "keyword.numeric.ChatScript"
-				match: "(\\!|==|\\b(AND|OR)\\b|>=|<=|\\!=|>|<|\\?)"
+				match: "(\\!|==|\\b(AND|OR)\\b|>=|<=|!=|>|<|\\?)"
 			}
 		]
 		begin: '''
@@ -96,7 +96,7 @@ patterns: [
 	}
 	{
 		name: "keyword.numeric.ChatScript"
-		match: "(?!\\s)((=(?!=)|\\+=|-=|\\*=|/=|\\%=|\\*\\*=|<<=|>>=|<<|>>|&=|\\^=|\\|=|\\|)(?:\\s))"
+		match: "(?!\\s)((=(?!=)|\\+=|-=|\\*=|/=|\\%=|\\*\\*=|<<=|>>=|<<|>>|&=|\\^=|\\|=|\\|))"
 		comment: "Assigment"
 	}
 	{
