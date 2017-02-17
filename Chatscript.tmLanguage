@@ -141,7 +141,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(\!|==|\b(AND|OR)\b|&gt;=|&lt;=|\!=|&gt;|&lt;|\?)</string>
+					<string>(\!|==|\b(AND|OR)\b|&gt;=|&lt;=|!=|&gt;|&lt;|\?)</string>
 					<key>name</key>
 					<string>keyword.numeric.ChatScript</string>
 				</dict>
@@ -167,7 +167,7 @@
 			<key>comment</key>
 			<string>Assigment</string>
 			<key>match</key>
-			<string>(?!\s)((=(?!=)|\+=|-=|\*=|/=|\%=|\*\*=|&lt;&lt;=|&gt;&gt;=|&lt;&lt;|&gt;&gt;|&amp;=|\^=|\|=|\|)(?:\s))</string>
+			<string>(?!\s)((=(?!=)|\+=|-=|\*=|/=|\%=|\*\*=|&lt;&lt;=|&gt;&gt;=|&lt;&lt;|&gt;&gt;|&amp;=|\^=|\|=|\|))</string>
 			<key>name</key>
 			<string>keyword.numeric.ChatScript</string>
 		</dict>
