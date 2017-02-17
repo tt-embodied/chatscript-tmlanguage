@@ -199,7 +199,7 @@
 			<key>comment</key>
 			<string>Print output codes</string>
 			<key>match</key>
-			<string>(?!\w)(#*)(OUTPUT_RAW|OUTPUT_RETURNVALUE_ONLY|OUTPUT_NOCOMMANUMBER|OUTPUT_NOQUOTES|OUTPUT_NOUNDERSCORE)</string>
+			<string>(?!\w)(#*)(OUTPUT_RAW|OUTPUT_RETURNVALUE_ONLY|OUTPUT_NOCOMMANUMBER|OUTPUT_NOQUOTES|OUTPUT_NOUNDERSCORE)\b</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -207,7 +207,7 @@
 			<key>comment</key>
 			<string>End/nofail codes</string>
 			<key>match</key>
-			<string>(?!\w)(#*)(NOFAIL|FAIL|CALL|RULE|LOOP|TOPIC|SENTENCE|INPUT|PLAN)</string>
+			<string>(?!\w)(#*)(NOFAIL|FAIL|CALL|RULE|LOOP|TOPIC|SENTENCE|INPUT|PLAN)\b</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -215,7 +215,7 @@
 			<key>comment</key>
 			<string>TCP open</string>
 			<key>match</key>
-			<string>(?!\w)(#*)(POST|GET|TRACE_TCP|POSTU|GETU)</string>
+			<string>(?!\w)(#*)(POST|GET|TRACE_TCP|POSTU|GETU)\b</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -223,7 +223,7 @@
 			<key>comment</key>
 			<string>Logs</string>
 			<key>match</key>
-			<string>(?!\w)(#*)(FILE|OPEN|CLOSE)</string>
+			<string>(?!\w)(#*)(FILE|OPEN|CLOSE)\b</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -231,7 +231,7 @@
 			<key>comment</key>
 			<string>Json</string>
 			<key>match</key>
-			<string>(?!\w)(#*)(INDEX|VALUE)</string>
+			<string>(?!\w)(#*)(INDEX|VALUE)\b</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -239,7 +239,7 @@
 			<key>comment</key>
 			<string>Words</string>
 			<key>match</key>
-			<string>(?!\w)(#*)(NOUN|VERB|ADJECTIVE|ADVERB|PREPOSITION)</string>
+			<string>(?!\w)(#*)(NOUN|VERB|ADJECTIVE|ADVERB|PREPOSITION)\b</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -247,7 +247,7 @@
 			<key>comment</key>
 			<string>Facts</string>
 			<key>match</key>
-			<string>(?!\w)(#*)(direct_s|direct_v|direct_o|direct_sv|direct_so|direct_vo|direct_svo|Unipropogate|FACTDEAD)</string>
+			<string>(?!\w)(#*)(direct_s|direct_v|direct_o|direct_sv|direct_so|direct_vo|direct_svo|Unipropogate|FACTDEAD)\b</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -255,7 +255,7 @@
 			<key>comment</key>
 			<string>POS</string>
 			<key>match</key>
-			<string>(?!\w)(#*)(NOUN|VERB|ESSENTIAL_POS|ADJECTIVE|ADVERB|BASIC_POS|PREPOSITION|ESSENTIAL_FLAGS|CONJUNCTION_COORDINATE|CONJUNCTION_SUBORDINATE|CONJUNCTION|PREDETERMINER|DETERMINER|POSSESSIVE|PRONOUN_POSSESSIVE|POSSESSIVE_BITS|DETERMINER_BITS|COMMA|REQUIRE_CONCEPT|PAREN|PUNCTUATION|QUOTE|CURRENCY|ADJECTIVE_NORMAL|ADJECTIVE_NUMBER|ADJECTIVE_NOUN|ADJECTIVE_PARTICIPLE|ADJECTIVE_BITS|INTERJECTION|THERE_EXISTENTIAL|FOREIGN_WORD|TO_INFINITIVE|NOUN_ADJECTIVE|NOUN_SINGULAR|NOUN_PLURAL|NOUN_PROPER_SINGULAR|NOUN_PROPER_PLURAL|NOUN_GERUND|NOUN_NUMBER|NOUN_INFINITIVE|NOUN_PROPER|NORMAL_NOUN_BITS|NOUN_BITS|VERB_PRESENT|VERB_PRESENT_3PS|VERB_PRESENT_PARTICIPLE|VERB_PAST|VERB_PAST_PARTICIPLE|VERB_INFINITIVE|PARTICLE|VERB_BITS|PRONOUN_SUBJECT|PRONOUN_OBJECT|PRONOUN_BITS|AUX_DO|AUX_HAVE|AUX_BE|AUX_VERB_PRESENT|AUX_VERB_FUTURE|AUX_VERB_PAST|AUX_VERB_TENSES|AUX_VERB|STARTTAGS|AS_IS)</string>
+			<string>(?!\w)(#*)(NOUN|VERB|ESSENTIAL_POS|ADJECTIVE|ADVERB|BASIC_POS|PREPOSITION|ESSENTIAL_FLAGS|CONJUNCTION_COORDINATE|CONJUNCTION_SUBORDINATE|CONJUNCTION|PREDETERMINER|DETERMINER|POSSESSIVE|PRONOUN_POSSESSIVE|POSSESSIVE_BITS|DETERMINER_BITS|COMMA|REQUIRE_CONCEPT|PAREN|PUNCTUATION|QUOTE|CURRENCY|ADJECTIVE_NORMAL|ADJECTIVE_NUMBER|ADJECTIVE_NOUN|ADJECTIVE_PARTICIPLE|ADJECTIVE_BITS|INTERJECTION|THERE_EXISTENTIAL|FOREIGN_WORD|TO_INFINITIVE|NOUN_ADJECTIVE|NOUN_SINGULAR|NOUN_PLURAL|NOUN_PROPER_SINGULAR|NOUN_PROPER_PLURAL|NOUN_GERUND|NOUN_NUMBER|NOUN_INFINITIVE|NOUN_PROPER|NORMAL_NOUN_BITS|NOUN_BITS|VERB_PRESENT|VERB_PRESENT_3PS|VERB_PRESENT_PARTICIPLE|VERB_PAST|VERB_PAST_PARTICIPLE|VERB_INFINITIVE|PARTICLE|VERB_BITS|PRONOUN_SUBJECT|PRONOUN_OBJECT|PRONOUN_BITS|AUX_DO|AUX_HAVE|AUX_BE|AUX_VERB_PRESENT|AUX_VERB_FUTURE|AUX_VERB_PAST|AUX_VERB_TENSES|AUX_VERB|STARTTAGS|AS_IS)\b</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -263,7 +263,7 @@
 			<key>comment</key>
 			<string>Other special words</string>
 			<key>match</key>
-			<string>(?!\w)(#*)(TOPRULES|PENDING|START|END|BOTH|BOT|USER|AUTOSPACE|HAS_SUBSTITUTE|CONCEPT|TOPIC)</string>
+			<string>(?!\w)(#*)(TOPRULES|PENDING|START|END|BOTH|BOT|USER|AUTOSPACE|HAS_SUBSTITUTE|CONCEPT|TOPIC)\b</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -1005,7 +1005,15 @@
 			<key>comment</key>
 			<string>Conditional compilation</string>
 			<key>match</key>
-			<string>(\#\#&lt;&lt;[a-z,A-Z]+)</string>
+			<string>(\#\#&lt;&lt;(?i:(ENGLISH|FRENCH|GERMAN|SPANISH))+)</string>
+			<key>name</key>
+			<string>constant.language.ChatScript</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Conditional compilation single line</string>
+			<key>match</key>
+			<string>(\#(?i:(ENGLISH|FRENCH|GERMAN|SPANISH))+)</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -1031,7 +1039,7 @@
 			<key>comment</key>
 			<string>Comments</string>
 			<key>match</key>
-			<string>(\#(\s|##)+.*)|(\#!(\s|##)+.*)|(\#!x(\s|#).*)</string>
+			<string>(\#(\s|#)+.*)|(\#!(\s)+.*)|(\#!x(\s|#).*)</string>
 			<key>name</key>
 			<string>comment.line.number-sign.ChatScript</string>
 		</dict>

@@ -121,47 +121,47 @@
         },
         {
             "name": "constant.language.ChatScript",
-            "match": "(?!\\w)(#*)(OUTPUT_RAW|OUTPUT_RETURNVALUE_ONLY|OUTPUT_NOCOMMANUMBER|OUTPUT_NOQUOTES|OUTPUT_NOUNDERSCORE)",
+            "match": "(?!\\w)(#*)(OUTPUT_RAW|OUTPUT_RETURNVALUE_ONLY|OUTPUT_NOCOMMANUMBER|OUTPUT_NOQUOTES|OUTPUT_NOUNDERSCORE)\\b",
             "comment": "Print output codes"
         },
         {
             "name": "constant.language.ChatScript",
-            "match": "(?!\\w)(#*)(NOFAIL|FAIL|CALL|RULE|LOOP|TOPIC|SENTENCE|INPUT|PLAN)",
+            "match": "(?!\\w)(#*)(NOFAIL|FAIL|CALL|RULE|LOOP|TOPIC|SENTENCE|INPUT|PLAN)\\b",
             "comment": "End/nofail codes"
         },
         {
             "name": "constant.language.ChatScript",
-            "match": "(?!\\w)(#*)(POST|GET|TRACE_TCP|POSTU|GETU)",
+            "match": "(?!\\w)(#*)(POST|GET|TRACE_TCP|POSTU|GETU)\\b",
             "comment": "TCP open"
         },
         {
             "name": "constant.language.ChatScript",
-            "match": "(?!\\w)(#*)(FILE|OPEN|CLOSE)",
+            "match": "(?!\\w)(#*)(FILE|OPEN|CLOSE)\\b",
             "comment": "Logs"
         },
         {
             "name": "constant.language.ChatScript",
-            "match": "(?!\\w)(#*)(INDEX|VALUE)",
+            "match": "(?!\\w)(#*)(INDEX|VALUE)\\b",
             "comment": "Json"
         },
         {
             "name": "constant.language.ChatScript",
-            "match": "(?!\\w)(#*)(NOUN|VERB|ADJECTIVE|ADVERB|PREPOSITION)",
+            "match": "(?!\\w)(#*)(NOUN|VERB|ADJECTIVE|ADVERB|PREPOSITION)\\b",
             "comment": "Words"
         },
         {
             "name": "constant.language.ChatScript",
-            "match": "(?!\\w)(#*)(direct_s|direct_v|direct_o|direct_sv|direct_so|direct_vo|direct_svo|Unipropogate|FACTDEAD)",
+            "match": "(?!\\w)(#*)(direct_s|direct_v|direct_o|direct_sv|direct_so|direct_vo|direct_svo|Unipropogate|FACTDEAD)\\b",
             "comment": "Facts"
         },
         {
             "name": "constant.language.ChatScript",
-            "match": "(?!\\w)(#*)(NOUN|VERB|ESSENTIAL_POS|ADJECTIVE|ADVERB|BASIC_POS|PREPOSITION|ESSENTIAL_FLAGS|CONJUNCTION_COORDINATE|CONJUNCTION_SUBORDINATE|CONJUNCTION|PREDETERMINER|DETERMINER|POSSESSIVE|PRONOUN_POSSESSIVE|POSSESSIVE_BITS|DETERMINER_BITS|COMMA|REQUIRE_CONCEPT|PAREN|PUNCTUATION|QUOTE|CURRENCY|ADJECTIVE_NORMAL|ADJECTIVE_NUMBER|ADJECTIVE_NOUN|ADJECTIVE_PARTICIPLE|ADJECTIVE_BITS|INTERJECTION|THERE_EXISTENTIAL|FOREIGN_WORD|TO_INFINITIVE|NOUN_ADJECTIVE|NOUN_SINGULAR|NOUN_PLURAL|NOUN_PROPER_SINGULAR|NOUN_PROPER_PLURAL|NOUN_GERUND|NOUN_NUMBER|NOUN_INFINITIVE|NOUN_PROPER|NORMAL_NOUN_BITS|NOUN_BITS|VERB_PRESENT|VERB_PRESENT_3PS|VERB_PRESENT_PARTICIPLE|VERB_PAST|VERB_PAST_PARTICIPLE|VERB_INFINITIVE|PARTICLE|VERB_BITS|PRONOUN_SUBJECT|PRONOUN_OBJECT|PRONOUN_BITS|AUX_DO|AUX_HAVE|AUX_BE|AUX_VERB_PRESENT|AUX_VERB_FUTURE|AUX_VERB_PAST|AUX_VERB_TENSES|AUX_VERB|STARTTAGS|AS_IS)",
+            "match": "(?!\\w)(#*)(NOUN|VERB|ESSENTIAL_POS|ADJECTIVE|ADVERB|BASIC_POS|PREPOSITION|ESSENTIAL_FLAGS|CONJUNCTION_COORDINATE|CONJUNCTION_SUBORDINATE|CONJUNCTION|PREDETERMINER|DETERMINER|POSSESSIVE|PRONOUN_POSSESSIVE|POSSESSIVE_BITS|DETERMINER_BITS|COMMA|REQUIRE_CONCEPT|PAREN|PUNCTUATION|QUOTE|CURRENCY|ADJECTIVE_NORMAL|ADJECTIVE_NUMBER|ADJECTIVE_NOUN|ADJECTIVE_PARTICIPLE|ADJECTIVE_BITS|INTERJECTION|THERE_EXISTENTIAL|FOREIGN_WORD|TO_INFINITIVE|NOUN_ADJECTIVE|NOUN_SINGULAR|NOUN_PLURAL|NOUN_PROPER_SINGULAR|NOUN_PROPER_PLURAL|NOUN_GERUND|NOUN_NUMBER|NOUN_INFINITIVE|NOUN_PROPER|NORMAL_NOUN_BITS|NOUN_BITS|VERB_PRESENT|VERB_PRESENT_3PS|VERB_PRESENT_PARTICIPLE|VERB_PAST|VERB_PAST_PARTICIPLE|VERB_INFINITIVE|PARTICLE|VERB_BITS|PRONOUN_SUBJECT|PRONOUN_OBJECT|PRONOUN_BITS|AUX_DO|AUX_HAVE|AUX_BE|AUX_VERB_PRESENT|AUX_VERB_FUTURE|AUX_VERB_PAST|AUX_VERB_TENSES|AUX_VERB|STARTTAGS|AS_IS)\\b",
             "comment": "POS"
         },
         {
             "name": "constant.language.ChatScript",
-            "match": "(?!\\w)(#*)(TOPRULES|PENDING|START|END|BOTH|BOT|USER|AUTOSPACE|HAS_SUBSTITUTE|CONCEPT|TOPIC)",
+            "match": "(?!\\w)(#*)(TOPRULES|PENDING|START|END|BOTH|BOT|USER|AUTOSPACE|HAS_SUBSTITUTE|CONCEPT|TOPIC)\\b",
             "comment": "Other special words"
         },
         {
@@ -616,9 +616,14 @@
             "comment": "Topic"
         },
         {
-            "match": "(\\#\\#<<[a-z,A-Z]+)",
+            "match": "(\\#\\#<<(?i:(ENGLISH|FRENCH|GERMAN|SPANISH))+)",
             "name": "constant.language.ChatScript",
             "comment": "Conditional compilation"
+        },
+        {
+            "match": "(\\#(?i:(ENGLISH|FRENCH|GERMAN|SPANISH))+)",
+            "name": "constant.language.ChatScript",
+            "comment": "Conditional compilation single line"
         },
         {
             "begin": "(\\#\\#<<)",
@@ -633,7 +638,7 @@
         },
         {
             "name": "comment.line.number-sign.ChatScript",
-            "match": "(\\#(\\s|##)+.*)|(\\#!(\\s|##)+.*)|(\\#!x(\\s|#).*)",
+            "match": "(\\#(\\s|#)+.*)|(\\#!(\\s)+.*)|(\\#!x(\\s|#).*)",
             "comment": "Comments"
         }
     ],
