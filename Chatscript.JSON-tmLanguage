@@ -91,7 +91,7 @@
         },
         {
             "name": "constant.numeric.ChatScript",
-            "match": "\\b(?<![.,-=])\\d+(?![.,-=])\\b",
+            "match": "(?<!_)\\-?\\d(?![\\w\\-+?&])\\b",
             "comment": "Integers"
         },
         {
@@ -514,7 +514,7 @@
             }
         },
         {
-            "comment": "Multiline double quotes strings constructs",
+            "comment": "Multiline double quotes strings elements",
             "patterns": [{
                     "include": "$self"
                 },
@@ -530,10 +530,10 @@
         {
             "name": "string.source.ChatScript",
             "match": "(\\^(\").+(\"))",
-            "comment": "Strings double quotes constructs"
+            "comment": "Strings double quotes elements"
         },
         {
-            "comment": "Multiline double quotes strings constructs",
+            "comment": "Multiline single quotes strings elements",
             "patterns": [{
                     "include": "$self"
                 },
@@ -549,7 +549,7 @@
         {
             "name": "string.source.ChatScript",
             "match": "(\\^(').+('))",
-            "comment": "Strings double quotes constructs"
+            "comment": "Strings single quotes elements"
         },
         {
             "name": "keyword.numeric.ChatScript",
