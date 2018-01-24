@@ -71,7 +71,7 @@
 			<key>comment</key>
 			<string>Interchange variables</string>
 			<key>match</key>
-			<string>(\$)(cs_afterreset|cs_beforereset|cs_token|cs_response|cs_jsontimeout|cs_crashmsg|cs_abstract|cs_looplimit|cs_trace|cs_control_pre|cs_prepass|cs_control_main|cs_control_post|cs_usermessagelimit|cs_externaltag|botprompt|userprompt|cs_language|cs_wildcardseparator|cs_userfactlimit|cs_randindex|cs_utcoffset|cs_bot|cs_login|cs_fullfloat|cs_botid|cs_numbers|cs_topicretrylimit|cs_saveusedjson|cs_proxycredentials|cs_proxyserver|cs_proxymethod|\$db_error|\$findtext_start|\$findtext_word|\$tcpopen_error|\$document|\$csmatch_start|\$csmatch_end|\$topic_retry_limit_exceeded)</string>
+			<string>(\$)(cs_outputchoice|cs_afterreset|cs_beforereset|cs_token|cs_response|cs_jsontimeout|cs_crashmsg|cs_abstract|cs_looplimit|cs_trace|cs_control_pre|cs_prepass|cs_control_main|cs_control_post|cs_usermessagelimit|cs_externaltag|botprompt|userprompt|cs_language|cs_wildcardseparator|cs_userfactlimit|cs_randindex|cs_utcoffset|cs_bot|cs_login|cs_fullfloat|cs_botid|cs_numbers|cs_topicretrylimit|cs_saveusedjson|cs_proxycredentials|cs_proxyserver|cs_proxymethod|\$db_error|\$findtext_start|\$findtext_word|\$tcpopen_error|\$document|\$csmatch_start|\$csmatch_end|\$topic_retry_limit_exceeded)</string>
 			<key>name</key>
 			<string>constant.numeric.ChatScript</string>
 		</dict>
@@ -197,7 +197,7 @@
 			<key>comment</key>
 			<string>Response control</string>
 			<key>match</key>
-			<string>#(RESPONSE_UPPERSTART|RESPONSE_REMOVESPACEBEFORECOMMA|RESPONSE_ALTERUNDERSCORES|ALL_RESPONSES|RESPONSE_REMOVETILDE)</string>
+			<string>#(RESPONSE_UPPERSTART|RESPONSE_REMOVESPACEBEFORECOMMA|RESPONSE_ALTERUNDERSCORES|ALL_RESPONSES|RESPONSE_REMOVETILDE|RESPONSE_CURLYQUOTES)</string>
 			<key>name</key>
 			<string>constant.language.ChatScript</string>
 		</dict>
@@ -376,7 +376,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^(compute|isnumber|timefromseconds|timeinfofromseconds|timetoeconds))(\()</string>
+			<string>(\^(compute|isnumber|timefromseconds|timeinfofromseconds|timetoseconds))(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -438,7 +438,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\^(response|responsequestion|responseruleid))(\()</string>
+			<string>(\^(response|responsequestion|responseruleid|setresponse))(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -502,7 +502,7 @@
 			<key>comment</key>
 			<string>System variables (user input)</string>
 			<key>match</key>
-			<string>(\%)(bot|revisedinput|command|foreign|impliedyou|input|ip|language|length|more|morequestion|originalinput|originalsentence|parsed|question|quotation|sentence|tense|tokenflags|userfirstline|user|userinput|voice|rand)</string>
+			<string>(\%)(externaltagging|bot|revisedinput|command|foreign|impliedyou|input|ip|language|length|more|morequestion|originalinput|originalsentence|parsed|question|quotation|sentence|tense|tokenflags|userfirstline|user|userinput|voice|rand)</string>
 			<key>name</key>
 			<string>constant.numeric.ChatScript</string>
 		</dict>

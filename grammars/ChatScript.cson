@@ -40,7 +40,7 @@ patterns: [
 	}
 	{
 		comment: "Interchange variables"
-		match: "(\\$)(cs_afterreset|cs_beforereset|cs_token|cs_response|cs_jsontimeout|cs_crashmsg|cs_abstract|cs_looplimit|cs_trace|cs_control_pre|cs_prepass|cs_control_main|cs_control_post|cs_usermessagelimit|cs_externaltag|botprompt|userprompt|cs_language|cs_wildcardseparator|cs_userfactlimit|cs_randindex|cs_utcoffset|cs_bot|cs_login|cs_fullfloat|cs_botid|cs_numbers|cs_topicretrylimit|cs_saveusedjson|cs_proxycredentials|cs_proxyserver|cs_proxymethod|\\$db_error|\\$findtext_start|\\$findtext_word|\\$tcpopen_error|\\$document|\\$csmatch_start|\\$csmatch_end|\\$topic_retry_limit_exceeded)"
+		match: "(\\$)(cs_outputchoice|cs_afterreset|cs_beforereset|cs_token|cs_response|cs_jsontimeout|cs_crashmsg|cs_abstract|cs_looplimit|cs_trace|cs_control_pre|cs_prepass|cs_control_main|cs_control_post|cs_usermessagelimit|cs_externaltag|botprompt|userprompt|cs_language|cs_wildcardseparator|cs_userfactlimit|cs_randindex|cs_utcoffset|cs_bot|cs_login|cs_fullfloat|cs_botid|cs_numbers|cs_topicretrylimit|cs_saveusedjson|cs_proxycredentials|cs_proxyserver|cs_proxymethod|\\$db_error|\\$findtext_start|\\$findtext_word|\\$tcpopen_error|\\$document|\\$csmatch_start|\\$csmatch_end|\\$topic_retry_limit_exceeded)"
 		name: "constant.numeric.ChatScript"
 	}
 	{
@@ -112,7 +112,7 @@ patterns: [
 	}
 	{
 		comment: "Response control"
-		match: "#(RESPONSE_UPPERSTART|RESPONSE_REMOVESPACEBEFORECOMMA|RESPONSE_ALTERUNDERSCORES|ALL_RESPONSES|RESPONSE_REMOVETILDE)"
+		match: "#(RESPONSE_UPPERSTART|RESPONSE_REMOVESPACEBEFORECOMMA|RESPONSE_ALTERUNDERSCORES|ALL_RESPONSES|RESPONSE_REMOVETILDE|RESPONSE_CURLYQUOTES)"
 		name: "constant.language.ChatScript"
 	}
 	{
@@ -220,7 +220,7 @@ patterns: [
 		]
 	}
 	{
-		begin: "(\\^(compute|isnumber|timefromseconds|timeinfofromseconds|timetoeconds))(\\()"
+		begin: "(\\^(compute|isnumber|timefromseconds|timeinfofromseconds|timetoseconds))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -256,7 +256,7 @@ patterns: [
 		]
 	}
 	{
-		begin: "(\\^(response|responsequestion|responseruleid))(\\()"
+		begin: "(\\^(response|responsequestion|responseruleid|setresponse))(\\()"
 		beginCaptures:
 			"1":
 				name: "support.function.ChatScript"
@@ -293,7 +293,7 @@ patterns: [
 	}
 	{
 		comment: "System variables (user input)"
-		match: "(\\%)(bot|revisedinput|command|foreign|impliedyou|input|ip|language|length|more|morequestion|originalinput|originalsentence|parsed|question|quotation|sentence|tense|tokenflags|userfirstline|user|userinput|voice|rand)"
+		match: "(\\%)(externaltagging|bot|revisedinput|command|foreign|impliedyou|input|ip|language|length|more|morequestion|originalinput|originalsentence|parsed|question|quotation|sentence|tense|tokenflags|userfirstline|user|userinput|voice|rand)"
 		name: "constant.numeric.ChatScript"
 	}
 	{
