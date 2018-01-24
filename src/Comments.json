@@ -1,0 +1,20 @@
+{
+    "name": "Comments",
+    "scope": "source.top",
+    "settings": {
+        "shellVariables": [{
+            "name": "TM_COMMENT_START",
+            "value": "# "
+        }, {
+            "name": "TM_COMMENT_START_2",
+            "value": "##<<\n"
+        }, {
+            "name": "TM_COMMENT_END_2",
+            "value": "\n##>>"
+        }, {
+            "name": "TM_COMMENT_DISABLE_INDENT",
+            "value": "no"
+        }]
+    },
+    "uuid": "2f22c25f-6fb4-4c05-967b-4f509564862b"
+}
