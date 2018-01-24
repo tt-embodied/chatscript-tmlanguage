@@ -16,16 +16,21 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
+  "config": {
+    "sortJson": "node_modules/sort-json/app/cmd.js"
+  },
   "scripts": {
     "test": "tape tests/index.js",
-    "build": "npm run make-cson && npm run make-tmlanguage && npm run make-tmpreferences",
+    "build": "npm run sort-json && npm run make-cson && npm run make-tmlanguage && npm run make-tmpreferences",
     "make-cson": "node_modules/cson/bin/json2cson src/Chatscript.json > grammars/Chatscript.cson",
     "make-tmlanguage": "python build/make-plist.py src/Chatscript.json Chatscript.tmLanguage",
-    "make-tmpreferences": "python build/make-plist.py src/Comments.json Comments.tmPreferences"
+    "make-tmpreferences": "python build/make-plist.py src/Comments.json Comments.tmPreferences",
+    "sort-json": "$npm_package_config_sortJson -d 6 src/Chatscript.json && $npm_package_config_sortJson -d 6 src/Comments.json"
   },
   "dependencies": {
     "cson": "^4.1.0",
     "plist": "^2.1.0",
+    "sort-json": "^1.6.1",
     "tape": "^4.8.0"
   }
 }
