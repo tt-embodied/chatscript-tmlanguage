@@ -1,8 +1,9 @@
 {
-  "name": "language-chat-script",
+  "name": "chatscript-language",
   "version": "1.3.0",
   "description": "ChatScript language support",
   "publisher": "kuzyn",
+  "icon": "images/icon.png",
   "keywords": [
     "syntax"
   ],
