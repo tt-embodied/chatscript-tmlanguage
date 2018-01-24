@@ -1,6 +1,6 @@
 {
   "name": "language-chat-script",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "ChatScript language support",
   "keywords": [
     "syntax"
@@ -20,16 +20,21 @@
     "sortJson": "node_modules/sort-json/app/cmd.js"
   },
   "scripts": {
-    "test": "tape tests/index.js",
+    "test": "npm run compare-tmlangage && npm run compare-tmpreferences && tape tests/index.js",
     "build": "npm run sort-json && npm run make-cson && npm run make-tmlanguage && npm run make-tmpreferences",
     "make-cson": "node_modules/cson/bin/json2cson src/Chatscript.json > grammars/Chatscript.cson",
     "make-tmlanguage": "python build/make-plist.py src/Chatscript.json Chatscript.tmLanguage",
     "make-tmpreferences": "python build/make-plist.py src/Comments.json Comments.tmPreferences",
-    "sort-json": "$npm_package_config_sortJson -d 6 src/Chatscript.json && $npm_package_config_sortJson -d 6 src/Comments.json"
+    "sort-json": "$npm_package_config_sortJson -d 6 src/Chatscript.json && $npm_package_config_sortJson -d 6 src/Comments.json",
+    "compare-tmlangage": "python tests/compare-src.py Chatscript.tmLanguage src/Chatscript.json",
+    "compare-tmpreferences": "python tests/compare-src.py Comments.tmPreferences src/Comments.json"
+
   },
-  "dependencies": {
+  "pre-push": ["test"],
+  "devDependencies": {
     "cson": "^4.1.0",
     "plist": "^2.1.0",
+    "pre-push": "^0.1.1",
     "sort-json": "^1.6.1",
     "tape": "^4.8.0"
   }
