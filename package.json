@@ -12,8 +12,20 @@
   "bugs": {
     "url": "https://github.com/kuzyn/chatscript-tmlanguage/issues"
   },
-  "license": "LICENSE.md",
+  "license": "SEE LICENCE IN LICENSE.md",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
+  },
+  "scripts": {
+    "test": "tape tests/index.js",
+    "build": "npm run make-cson && npm run make-tmlanguage && npm run make-tmpreferences",
+    "make-cson": "node_modules/cson/bin/json2cson src/Chatscript.json > grammars/Chatscript.cson",
+    "make-tmlanguage": "python build/make-plist.py src/Chatscript.json Chatscript.tmLanguage",
+    "make-tmpreferences": "python build/make-plist.py src/Comments.json Comments.tmPreferences"
+  },
+  "dependencies": {
+    "cson": "^4.1.0",
+    "plist": "^2.1.0",
+    "tape": "^4.8.0"
   }
 }

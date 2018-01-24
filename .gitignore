@@ -4,3 +4,4 @@ Preferences.*
 *.swp
 *.top
 oscrypto-ca-bundle.crt
+node_modules
