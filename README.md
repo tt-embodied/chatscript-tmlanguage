@@ -6,19 +6,19 @@ A [ChatScript](https://github.com/bwilcox-1234/ChatScript) syntax definition for
 
 :cake: :cake: :cake:  
 
-**_February 2017_**  
-**_v1.2.1_**  
-**ChatScript 7.2**  
+**_January 2018_**  
+**_v1.3.0_**  
+**ChatScript 7.73**  
 
 ### Monokai
-![alt tag](https://raw.githubusercontent.com/kuzyn/chatscript-tmlanguage/master/sshots/monokai-screen.png)
+![alt tag](https://raw.githubusercontent.com/kuzyn/chatscript-tmlanguage/master/screenshots/monokai-screen.png)
 
 ### Solarized
-![alt tag](https://raw.githubusercontent.com/kuzyn/chatscript-tmlanguage/master/sshots/solarized-screen.png)
+![alt tag](https://raw.githubusercontent.com/kuzyn/chatscript-tmlanguage/master/screenshots/solarized-screen.png)
 
 ### Install with Sublime Text
-Install through [Package Control](https://packagecontrol.io/installation):
-  * `CTRL+SHIFT+P`, _Install..._, `ENTER`  
+Install through the [Package Control](https://packagecontrol.io/installation):
+  * `MOD+SHIFT+P`, _Install..._, `ENTER`  
   * Search for _ChatScript syntax_, `ENTER`  
   * Install :+1:  
 
@@ -27,13 +27,17 @@ Install through [Package Control](https://packagecontrol.io/installation):
   * Search for _language-chat-script_  
   * Install :+1:  
 
+### Install with Visual Code Studio
+  * `MOD+SHIFT+P`, _Extensions: Install..._, `ENTER`  
+  * Search for _chatscript_  
+  * Install :+1:  
+
 ### Contribute
-  * Install the [PackageDev](https://github.com/SublimeText/PackageDev#getting-started) package in Sublime Text  
-  * Clone the repo into `/Application Support/Sublime Text 3/Packages/User` for easy live testing (you'll be able to select & test the syntax as you edit it)  
-  * Make your changes either in the the JSON or YAML file  
-  * Compile the file into an actual tmLanguage property list with `CTRL+B` or `Tools/Build With...`  
-  * Make sure that both JSON and YAML are up-to-date  
-  * Make sure that `grammars/ChatScript.cson` is up to date  
+  * Make sure you have`node`, `npm` and `python` installed  
+  * Run `npm install`  
+  * Make your changes to the JSON syntax in `src/`  
+  * Run `npm run build`  
+  * Commit your changes  
   * Pull request!  
 
 ### Refs

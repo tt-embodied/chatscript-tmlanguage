@@ -1,5 +1,12 @@
 # Change Log
 
+## [v1.3.0] - 2018-01-24
+* Brought in PR #58 (closes #57 #56 #53 #51 & more)
+* Added build scripts via `npm run build`
+* Cleaned up the folder structure
+* Removed YAML files
+* Added src/build check before push
+
 ## [v1.2.1] - 2017-02-17
 * Fix trailing spaces after operators
 * Check word anchor after constant when matching (#37)
