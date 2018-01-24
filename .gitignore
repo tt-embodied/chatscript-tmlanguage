@@ -1,7 +1,7 @@
-.DS_Store
-Package Control.*
-Preferences.*
 *.swp
 *.top
-oscrypto-ca-bundle.crt
+.DS_Store
 node_modules
+oscrypto-ca-bundle.crt
+Package Control.*
+Preferences.*
