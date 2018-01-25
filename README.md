@@ -11,10 +11,10 @@ A [ChatScript](https://github.com/bwilcox-1234/ChatScript) syntax definition for
 **ChatScript 7.73**  
 
 ### Monokai
-![alt tag](https://raw.githubusercontent.com/kuzyn/chatscript-tmlanguage/master/screenshots/monokai-screen.png)
+![alt tag](https://raw.githubusercontent.com/kuzyn/chatscript-tmlanguage/master/images/monokai-screen.png)
 
 ### Solarized
-![alt tag](https://raw.githubusercontent.com/kuzyn/chatscript-tmlanguage/master/screenshots/solarized-screen.png)
+![alt tag](https://raw.githubusercontent.com/kuzyn/chatscript-tmlanguage/master/images/solarized-screen.png)
 
 ### Install with Sublime Text
 Install through the [Package Control](https://packagecontrol.io/installation):
