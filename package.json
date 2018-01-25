@@ -38,7 +38,7 @@
     "contributes": {
         "languages": [
             {
-                "id": "chatscript-language",
+                "id": "chatscript",
                 "aliases": [
                     "Chatscript",
                     "CS"
@@ -48,14 +48,14 @@
                     ".top",
                     ".tst"
                 ],
-                "configuration": "./src/language-configuration.json"
+                "configuration": "src/language-configuration.json"
             }
         ],
         "grammars": [
             {
-                "language": "Chatscript",
+                "language": "chatscript",
                 "scopeName": "source.top",
-                "path": "./Chatscript.tmLanguage"
+                "path": "Chatscript.tmLanguage"
             }
         ]
     },
