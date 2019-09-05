@@ -912,7 +912,7 @@
             <key>comment</key>
             <string>Output Macro</string>
             <key>match</key>
-            <string>^(outputmacro:)\s+(?=\^(\w+)\s*\((.*)\))</string>
+            <string>^(outputmacro:)\s+(?=\^(\w+)\s*(?:variable\s*)?\((.*)\))</string>
             <key>name</key>
             <string>meta.outputmacro.ChatScript</string>
             <key>captures</key>
