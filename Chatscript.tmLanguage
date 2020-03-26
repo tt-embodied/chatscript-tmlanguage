@@ -866,7 +866,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(concept:)\s+~(\w+)\s*\(</string>
+			<string>(concept:)\s+~(\w+)\s*(MORE|)\s*\(</string>
 			<key>beginCaptures</key>
 			<dict>
                 <key>1</key>
